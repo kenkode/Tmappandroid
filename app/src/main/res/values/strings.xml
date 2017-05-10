@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tmapp</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_province">ProvinceActivity</string>
+    <string name="title_activity_origin">OriginActivity</string>
+    <string name="title_activity_destination">DestinationActivity</string>
+    <string name="title_activity_vehicle">VehicleActivity</string>
+    <string name="title_activity_travellers">TravellersActivity</string>
+</resources>
