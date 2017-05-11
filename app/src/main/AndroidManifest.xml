@@ -35,7 +35,10 @@
             android:label="@string/title_activity_vehicle" />
         <activity
             android:name=".TravellersActivity"
-            android:label="@string/title_activity_travellers"></activity>
+            android:label="@string/title_activity_travellers" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"></activity>
     </application>
 
 </manifest>

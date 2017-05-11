@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProvinceActivity.class).putExtra("mode", "travel"));
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("mode", "travel"));
             }
         });
 

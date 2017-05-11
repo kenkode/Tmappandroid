@@ -6,4 +6,5 @@
     <string name="title_activity_destination">DestinationActivity</string>
     <string name="title_activity_vehicle">VehicleActivity</string>
     <string name="title_activity_travellers">TravellersActivity</string>
+    <string name="title_activity_home">Home</string>
 </resources>
