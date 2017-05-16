@@ -33,15 +33,17 @@ public class HomeDownloader extends AsyncTask<String, Integer, String> {
     Spinner to;
     Button search;
     EditText btnpick;
+    EditText timepick;
     ProgressDialog pd;
 
-    public HomeDownloader(Context c, String address, Spinner from, Spinner to, Button search, EditText btnpick){
+    public HomeDownloader(Context c, String address, Spinner from, Spinner to, Button search, EditText btnpick, EditText timepick){
         this.c = c;
         this.address = address;
         this.from = from;
         this.to = to;
         this.search = search;
         this.btnpick = btnpick;
+        this.timepick = timepick;
     }
 
 
@@ -68,10 +70,9 @@ public class HomeDownloader extends AsyncTask<String, Integer, String> {
         super.onPostExecute(s);
 
         pd.dismiss();
-
         // Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            HomeParser p = new HomeParser(c, s, from, to, search, btnpick);
+            HomeParser p = new HomeParser(c, s, from, to, search, btnpick, timepick);
             p.execute();
         }else{
             Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();

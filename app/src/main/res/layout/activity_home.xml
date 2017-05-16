@@ -46,6 +46,33 @@
         android:layout_toEndOf="@+id/textView10" />
 
     <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="Travel Time : "
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Select Travel Time"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:drawableRight="@drawable/time1"
+        android:layout_alignBaseline="@+id/textView15"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +80,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/textView10"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="140dp"
         android:text="From : "
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
@@ -73,7 +100,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="180dp"
         android:text="To : "
         android:textColor="@color/colorWhite"
         android:textSize="20sp"/>

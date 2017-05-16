@@ -27,17 +27,19 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
     ListView lv;
-    String province;
+    String date;
+    String time;
     String destination;
     String origin;
     SearchView searchView;
     ProgressDialog pd;
 
-    public VehicleData(Context c, String address, ListView lv, String province, String destination, String origin, SearchView searchView){
+    public VehicleData(Context c, String address, ListView lv, String date, String time, String destination, String origin, SearchView searchView){
         this.c = c;
         this.address = address;
         this.lv = lv;
-        this.province = province;
+        this.date = date;
+        this.time = time;
         this.destination = destination;
         this.origin = origin;
         this.searchView = searchView;
@@ -70,7 +72,7 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
 
         //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            VehicleParser p = new VehicleParser(c, s, lv, province, destination, origin, searchView);
+            VehicleParser p = new VehicleParser(c, s, lv, date, time, destination, origin, searchView);
             p.execute();
         }else{
             Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
@@ -81,25 +83,6 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
         InputStream Is = null;
         String line = null;
         String prov = "";
-
-
-        if(province.equals("Nairobi")){
-            prov = "is_nairobi";
-        }else if(province.equals("Central")){
-            prov = "is_central";
-        }else if(province.equals("Western")){
-            prov = "is_western";
-        }else if(province.equals("Nyanza")){
-            prov = "is_nyanza";
-        }else if(province.equals("Eastern")){
-            prov = "is_eastern";
-        }else if(province.equals("North Eastern")){
-            prov = "is_northeastern";
-        }else if(province.equals("Coast")){
-            prov = "is_coast";
-        }else if(province.equals("Riftvalley")){
-            prov = "is_rift";
-        }
 
         try{
 
@@ -112,7 +95,7 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
             OutputStream outputStream = con.getOutputStream();
 
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("province", "UTF-8")+"="+URLEncoder.encode(prov,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8");
+            String post_data = URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();

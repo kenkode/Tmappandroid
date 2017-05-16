@@ -38,17 +38,22 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
     Button search;
     String frm_txt;
     String to_txt;
+    String arrival;
+    String departure;
+    String vehicle;
     EditText btnpick;
+    EditText timepick;
     ArrayList<String> origins = new ArrayList<>();
     ProgressDialog pd;
 
-    public HomeParser(Context c, String data, Spinner from, Spinner to, Button search, EditText btnpick){
+    public HomeParser(Context c, String data, Spinner from, Spinner to, Button search, EditText btnpick, EditText timepick){
         this.c = c;
         this.data = data;
         this.from = from;
         this.to = to;
         this.search = search;
         this.btnpick = btnpick;
+        this.timepick = timepick;
     }
 
     @Override
@@ -109,7 +114,11 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
                     Bundle b = new Bundle();
                     b.putString("from", frm_txt);
                     b.putString("to", to_txt);
-                    b.putString("date", btnpick.toString());
+                    b.putString("arrival", arrival);
+                    b.putString("departure", departure);
+                    b.putString("vehicle", vehicle);
+                    b.putString("date", btnpick.getText().toString());
+                    b.putString("time", timepick.getText().toString());
                     i.putExtras(b);
                     c.startActivity(i);
                 }

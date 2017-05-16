@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class VehicleActivity extends Activity {
 
-    String url = "http://192.168.56.1/tmapp/android/vehicle.php";
+    String url = "http://192.168.56.1/tmapp/android/searchVehicle.php";
     SearchView searchBar;
 
     @Override
@@ -19,16 +19,18 @@ public class VehicleActivity extends Activity {
         setContentView(R.layout.activity_vehicle);
 
         Bundle bundle = getIntent().getExtras();
-        String province = bundle.getString("province");
-        String destination = bundle.getString("destination");
-        String origin = bundle.getString("origin");
+        String date = bundle.getString("date");
+        String time = bundle.getString("time");
+        String destination = bundle.getString("to");
+        String origin = bundle.getString("from");
+        String organization = bundle.getString("organization");
 
         searchBar = (SearchView)findViewById(R.id.searchBar);
 
         //Toast.makeText(vehicles.this, province + " Province"+","+destination, Toast.LENGTH_SHORT).show();
 
         final ListView lv = (ListView) findViewById(R.id.vehicleList);
-        final VehicleData v = new VehicleData(this, url, lv, province, destination, origin, searchBar);
+        final VehicleData v = new VehicleData(this, url, lv, date, time, destination, origin, searchBar);
 
         v.execute();
     }

@@ -57,9 +57,27 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.vehicleName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.vehicleImage);
+        TextView route = (TextView) convertView.findViewById(R.id.route);
+        TextView arrival = (TextView) convertView.findViewById(R.id.arrival);
+        TextView departure = (TextView) convertView.findViewById(R.id.departure);
+        //TextView price = (TextView) convertView.findViewById(R.id.price);
+        TextView vip = (TextView) convertView.findViewById(R.id.vipfare);
+        TextView economic = (TextView) convertView.findViewById(R.id.economicfare);
+        TextView organization = (TextView) convertView.findViewById(R.id.organization);
+        TextView vehicleid = (TextView) convertView.findViewById(R.id.vehicleid);
+        TextView firstclassapply = (TextView) convertView.findViewById(R.id.firstclassapply);
 
         Vehicles vehicle = vehicles.get(position);
         nametxt.setText(vehicle.getName());
+        route.setText(vehicle.getRoute());
+        arrival.setText(vehicle.getArrival());
+        departure.setText(vehicle.getDeparture());
+        //price.setText(vehicle.getPrice());
+        vip.setText(vehicle.getVipprice());
+        economic.setText(vehicle.getEconomicfare());
+        organization.setText(vehicle.getOrganization());
+        vehicleid.setText(vehicle.getVehicleid());
+        firstclassapply.setText(vehicle.getFirstclassapply());
 
         PicassoClient.downloadImage(c,vehicle.getImageUrl(), logo);
 
