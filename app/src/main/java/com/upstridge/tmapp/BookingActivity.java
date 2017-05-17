@@ -10,6 +10,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.sql.BatchUpdateException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +21,7 @@ public class BookingActivity extends Activity {
     EditText firstname,lastname,email,phone,idno;
     Spinner fare,mode;
     Button book;
+    String vehiclename = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class BookingActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         final String organization = bundle.getString("organization");
         final String vehicle = bundle.getString("vid");
+        vehiclename = bundle.getString("vehicle");
         final String destination = bundle.getString("destination");
         final String date = bundle.getString("date");
         final String time = bundle.getString("time");
@@ -97,6 +101,32 @@ public class BookingActivity extends Activity {
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    private void sendEmail() {
+        //Getting content for email
+        String emailaddress = email.getText().toString().trim();
+        String subject = "Booking Details";
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        String strDate = sdf.format(c.getTime());
+
+        String message = "Hi "+firstname.getText().toString()+" "+lastname.getText().toString()+",\n\n"
+                       + "This is a confirmation that you have successfully booked "+vehiclename+" on "+strDate+"\n\n"
+                       + "Your booking details are:\n"
+                       + "1. First Name           : "+firstname.getText().toString()+"\n"
+                       + "2. Last Name            : "+lastname.getText().toString()+"\n"
+                       + "3. Phone Number         : "+phone.getText().toString()+"\n"
+                       + "4. ID / Passport Number : "+idno.getText().toString()+"\n"
+                       + "5. Amount               : "+fare.getSelectedItem().toString()+"\n"
+                       + "6. Payment Mode         : "+mode.getSelectedItem().toString()+"\n";
+
+        //Creating SendMail object
+        SendMail sm = new SendMail(this, emailaddress, subject, message);
+
+        //Executing sendmail to send email
+        sm.execute();
     }
 
 }

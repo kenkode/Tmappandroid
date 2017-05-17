@@ -12,4 +12,7 @@
         <item>VIP</item>
         <item>Economic</item>
     </string-array>
+    <string name="title_activity_seats">SeatsActivity</string>
+
+
 </resources>

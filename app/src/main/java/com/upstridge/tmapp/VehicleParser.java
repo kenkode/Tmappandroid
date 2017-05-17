@@ -132,7 +132,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                     String vid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
                     String firstclassapply =((TextView)view.findViewById(R.id.firstclassapply)).getText().toString();
 
-                    Intent i = new Intent(c, BookingActivity.class);
+                    Intent i = new Intent(c, SeatSelectionActivityNew.class);
                     Bundle b = new Bundle();
                     b.putString("destination", destination);
                     b.putString("date", date);

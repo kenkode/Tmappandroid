@@ -113,7 +113,7 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignLeft="@+id/travel"
         android:layout_alignStart="@+id/travel"
-        android:text="Travel"
+        android:text="Bus"
         android:textAlignment="center"
         android:textSize="18sp" />
 

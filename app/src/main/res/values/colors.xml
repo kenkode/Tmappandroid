@@ -8,4 +8,6 @@
     <color name="colorYellow">#ffce00</color>
     <color name="colorBackground">#1f2427</color>
     <color name="colorBlue">#11bdff</color>
+    <color name="greydark">#ff585858</color>
+
 </resources>
