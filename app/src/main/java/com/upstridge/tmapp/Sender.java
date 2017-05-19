@@ -24,12 +24,12 @@ public class Sender extends AsyncTask<Void,Void,String>{
     Context c;
     String urlAddress,organization,vehicle,destination,origin,date,time,arrival,departure;
     EditText firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt ;
-    Spinner fare,mode;
-    String firstname,lastname,email,phone,idno,price,paymentmode;
+    Spinner fare,mode,seat;
+    String firstname,lastname,email,phone,idno,price,paymentmode,selectedseat;
 
     ProgressDialog pd;
 
-    public Sender(Context c, String urlAddress, String organization, String vehicle,String destination,String origin,String date,String time,String arrival,String departure,Spinner fare, Spinner mode, EditText...editTexts) {
+    public Sender(Context c, String urlAddress, String organization, String vehicle,String destination,String origin,String date,String time,String arrival,String departure,Spinner fare, Spinner mode, Spinner seat, EditText...editTexts) {
         this.c = c;
         this.urlAddress = urlAddress;
         this.organization = organization;
@@ -42,6 +42,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         this.departure = departure;
         this.fare = fare;
         this.mode = mode;
+        this.seat = seat;
 
         this.firstnametxt = editTexts[0];
         this.lastnametxt = editTexts[1];
@@ -56,6 +57,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         idno = idnotxt.getText().toString();
         price = fare.getSelectedItem().toString();
         paymentmode = mode.getSelectedItem().toString();
+        selectedseat = seat.getSelectedItem().toString();
     }
 
     @Override
@@ -101,7 +103,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         try{
             OutputStream os = con.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
-            bw.write(new DataPackage(firstname,lastname,email,phone,idno,price,paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure).packData());
+            bw.write(new DataPackage(firstname,lastname,email,phone,idno,price,paymentmode,selectedseat,organization,vehicle,destination,origin,date,time,arrival,departure).packData());
 
             bw.flush();
             bw.close();

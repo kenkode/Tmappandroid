@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.sql.BatchUpdateException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,9 +20,10 @@ public class BookingActivity extends Activity {
 
     String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
     EditText firstname,lastname,email,phone,idno;
-    Spinner fare,mode;
+    Spinner fare,mode,seat;
     Button book;
     String vehiclename = "";
+    ArrayList<String> seats= new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class BookingActivity extends Activity {
         final String vip = bundle.getString("vip");
         final String economic = bundle.getString("economic");
         String firstclassapply = bundle.getString("firstclassapply");
+        seats=  getIntent().getStringArrayListExtra("seats");
 
         String[] faretypes=new String[]{"VIP","Economic"};
 
@@ -64,6 +67,11 @@ public class BookingActivity extends Activity {
         fareArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fare.setAdapter(fareArray);
 
+        seat=(Spinner) findViewById(R.id.seats);
+        ArrayAdapter<String> seatArray= new ArrayAdapter<String>(BookingActivity.this,android.R.layout.simple_spinner_item, seats);
+        seatArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        seat.setAdapter(seatArray);
+
         mode=(Spinner) findViewById(R.id.mode);
         ArrayAdapter<String> modeArray= new ArrayAdapter<String>(BookingActivity.this,android.R.layout.simple_spinner_item, modes);
         modeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,7 +94,7 @@ public class BookingActivity extends Activity {
                 }else if(idno.getText().toString().trim().equals("")){
                     idno.setError("Please insert your national identity number");
                 }else {
-                    Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, fare, mode, firstname, lastname, email, phone, idno);
+                    Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, fare, mode, seat, firstname, lastname, email, phone, idno);
                     s.execute();
                 }
             }

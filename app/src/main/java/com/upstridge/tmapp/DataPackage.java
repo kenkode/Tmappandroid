@@ -12,9 +12,9 @@ import java.util.Iterator;
  */
 
 public class DataPackage {
-    String firstname,lastname,email,phone,idno,fare,paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure;
+    String firstname,lastname,email,phone,idno,fare,paymentmode,selectedseat,organization,vehicle,destination,origin,date,time,arrival,departure;
 
-    public DataPackage(String firstname, String lastname, String email, String phone, String idno,String fare, String paymentmode, String organization, String vehicle, String destination, String origin, String date, String time, String arrival, String departure) {
+    public DataPackage(String firstname, String lastname, String email, String phone, String idno,String fare, String paymentmode, String selectedseat, String organization, String vehicle, String destination, String origin, String date, String time, String arrival, String departure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -22,6 +22,7 @@ public class DataPackage {
         this.idno = idno;
         this.fare = fare;
         this.paymentmode = paymentmode;
+        this.selectedseat = selectedseat;
         this.organization = organization;
         this.vehicle = vehicle;
         this.destination = destination;
@@ -44,6 +45,7 @@ public class DataPackage {
             jo.put("idno", idno);
             jo.put("amount", fare);
             jo.put("paymentmode", paymentmode);
+            jo.put("seat", selectedseat);
             jo.put("organization", organization);
             jo.put("vehicle", vehicle);
             jo.put("destination", destination);

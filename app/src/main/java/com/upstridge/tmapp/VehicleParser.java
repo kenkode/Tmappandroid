@@ -33,6 +33,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
     String time;
     String destination;
     String origin;
+    String type;
+    String capacity;
     String vipprice;
     String ecprice;
     String arr;
@@ -143,6 +145,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                     b.putString("departure", dep);
                     b.putString("vip", vipprice);
                     b.putString("economic", ecprice);
+                    b.putString("type",type);
+                    b.putString("capacity",capacity);
                     b.putString("organization", organization);
                     b.putString("vid", vid);
                     b.putString("firstclassapply", firstclassapply);
@@ -179,6 +183,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 String departure = "Departure : "+jo.getString("departure");
                 arr = jo.getString("arrival");
                 dep = jo.getString("departure");
+                type = jo.getString("type");
+                capacity = jo.getString("capacity");
                 String vipfare = "Vip Fare : KES "+jo.getString("firstclass");
                 String economicfare = "Economic Fare : KES "+jo.getString("economic");
                 vipprice = jo.getString("firstclass");
