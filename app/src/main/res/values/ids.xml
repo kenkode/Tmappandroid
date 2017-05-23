@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="fname"/>
+    <item type="id" name="lname"/>
+    <item type="id" name="emailaddress"/>
+    <item type="id" name="phoneno"/>
+    <item type="id" name="idpass"/>
+    <item type="id" name="seatno"/>
+    <item type="id" name="amount"/>
+    <item type="id" name="title"/>
+    <item type="id" name="dynamic"/>
+    <item type="id" name="fnametxt"/>
+    <item type="id" name="lnametxt"/>
+    <item type="id" name="emailtxt"/>
+    <item type="id" name="phonetxt"/>
+    <item type="id" name="idpasstxt"/>
+    <item type="id" name="seattxt"/>
+    <item type="id" name="amounttxt"/>
+</resources>

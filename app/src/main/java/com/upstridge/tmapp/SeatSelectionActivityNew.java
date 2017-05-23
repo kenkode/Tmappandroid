@@ -149,6 +149,13 @@ public class SeatSelectionActivityNew extends Activity implements OnItemClickLis
 		int i = 3;
         int j = 0;
 		int col = 0;
+		int z = 0;
+
+		if(type.equals("Large Bus")){
+			z = z + 2;
+		}else if(type.equals("Minibus")){
+			z = z + 2;
+		}
 
 		if(type.equals("Large Bus")){
 			col = col + 6;
@@ -165,20 +172,32 @@ public class SeatSelectionActivityNew extends Activity implements OnItemClickLis
 		for (i = 3; i <= n-col; ++i) {
 			if (i < 5) {
 				gridArray.add(new Item(seatIcon, "seat " + i));
-			} else {
+			}else{
 				if (type.equals("Large Bus")) {
 					if (i % 6 == 5) {
 						gridArray.add(new Item(blankIcon, ""));
 						y = y + 1;
-					} else {
-						gridArray.add(new Item(seatIcon, "seat " + (i - (i / 6))));
+					}else if(i == 9 || i == 10){
+                        gridArray.add(new Item(blankIcon, ""));
+                    } else {
+						if(i < 9){
+							gridArray.add(new Item(seatIcon, "seat " + (i - (i / 6))));
+						}else {
+							gridArray.add(new Item(seatIcon, "seat " + (i - 2 - (i / 6))));
+						}
 					}
 				}else if(type.equals("Minibus")){
 					if (i % 5 == 0) {
 						gridArray.add(new Item(blankIcon, ""));
 						y = y + 1;
+					}else if(i == 8 || i == 9){
+						gridArray.add(new Item(blankIcon, ""));
 					} else {
-						gridArray.add(new Item(seatIcon, "seat " + (i - (i / 5))));
+						if (i < 8) {
+							gridArray.add(new Item(seatIcon, "seat " + (i - (i / 5))));
+						}else{
+							gridArray.add(new Item(seatIcon, "seat " + (i - 2 - (i / 5))));
+						}
 					}
 				}else if(type.equals("Shuttle") || type.equals("Matatu") || type.equals("Large Matatu")){
 						gridArray.add(new Item(seatIcon, "seat " + i));
@@ -186,7 +205,7 @@ public class SeatSelectionActivityNew extends Activity implements OnItemClickLis
 			}
 		}
 
-		for (j = i; j <= n-col+y; ++j)
+		for (j = i; j <= n-col+y+z; ++j)
 		{
 			if (type.equals("Large Bus")) {
 				if (j % 6 == 5) {

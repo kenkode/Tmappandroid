@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.upstridge.tmapp.BookingActivity">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/first"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
     <TextView
         android:id="@+id/textView12"
         android:layout_width="match_parent"
@@ -35,15 +46,15 @@
 
     <EditText
         android:id="@+id/firstname"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView12"
-        android:layout_toEndOf="@+id/textView14"
         android:ems="10"
         android:hint="First name"
         android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/phone"
-        android:layout_alignStart="@+id/phone" />
+        android:layout_alignBaseline="@+id/textView14"
+        android:layout_alignBottom="@+id/textView14"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView15"
@@ -60,15 +71,15 @@
 
     <EditText
         android:id="@+id/lastname"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView14"
-        android:layout_toEndOf="@+id/textView15"
+        android:layout_alignBaseline="@+id/textView15"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="Last name"
-        android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/firstname"
-        android:layout_alignStart="@+id/firstname" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView16"
@@ -85,14 +96,15 @@
 
     <EditText
         android:id="@+id/phone"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView16"
+        android:layout_alignBottom="@+id/textView16"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="Phone Number"
-        android:inputType="phone"
-        android:layout_below="@+id/textView15"
-        android:layout_alignLeft="@+id/email"
-        android:layout_alignStart="@+id/email" />
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/textView17"
@@ -109,15 +121,15 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress"
         android:layout_alignBaseline="@+id/textView17"
         android:layout_alignBottom="@+id/textView17"
-        android:layout_alignLeft="@+id/idno"
-        android:layout_alignStart="@+id/idno" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textView18"
@@ -134,15 +146,14 @@
 
     <EditText
         android:id="@+id/idno"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView17"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView18"
         android:ems="10"
-        android:layout_marginTop="15dp"
         android:hint="Identity No / Passport No"
-        android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/fare"
-        android:layout_alignStart="@+id/fare" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView19"
@@ -159,11 +170,11 @@
 
     <Spinner
         android:id="@+id/seats"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView19"
-        android:layout_alignLeft="@+id/mode"
-        android:layout_alignStart="@+id/mode" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView19" />
 
     <TextView
         android:id="@+id/textView20"
@@ -180,11 +191,22 @@
 
     <Spinner
         android:id="@+id/fare"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView20"
-        android:layout_alignLeft="@+id/mode"
-        android:layout_alignStart="@+id/mode" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/last"
+        android:layout_below="@+id/first">
 
     <TextView
         android:id="@+id/textView21"
@@ -192,7 +214,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView20"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="14dp"
@@ -213,9 +234,12 @@
         android:background="#ffce00"
         android:textColor="@color/colorBlack"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:text="Book Now"
-        android:layout_below="@+id/fare"
+        android:layout_below="@+id/mode"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
+
+</RelativeLayout>
+</ScrollView>

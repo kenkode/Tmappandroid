@@ -1,12 +1,19 @@
 package com.upstridge.tmapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.annotation.IdRes;
+import android.text.InputType;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.BatchUpdateException;
@@ -77,6 +84,272 @@ public class BookingActivity extends Activity {
         modeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mode.setAdapter(modeArray);
 
+        RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.booking);
+        RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.last);
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+        relativeLayout.setId(R.id.dynamic);
+        // Defining the RelativeLayout layout parameters.
+        // In this case I want to fill its parent
+        RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        param.addRule(RelativeLayout.BELOW,R.id.first);
+        param.setMargins(0, 60, 0, 30);
+        relativeLayout.setLayoutParams(param);
+
+        if(seats.size() > 1) {
+
+            for (int i = 0; i < seats.size(); i++) {
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                TextView title = new TextView(this);
+                title.setId(R.id.title);
+                title.setTextSize(16);
+                title.setTextColor(Color.rgb(17, 189, 255));
+                title.setText((i + 2) + " Person Details");
+                title.setGravity(Gravity.CENTER);
+                param.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+                param.setMargins(10, 0, 0, 30);
+
+                title.setLayoutParams(param);
+                relativeLayout.addView(title);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView fname = new TextView(this);
+                fname.setId(R.id.fname);
+                fname.setText("First Name:");
+                fname.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, title.getId());
+                param.setMargins(30, 0, 0, 30);
+                fname.setLayoutParams(param);
+                relativeLayout.addView(fname);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                final EditText fnametxt = new HideHintEditText(this, "First name");
+                fnametxt.setWidth(490);
+                fnametxt.setHint("First name");
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        fname.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        fname.getId());
+                fnametxt.setLayoutParams(param);
+                relativeLayout.addView(fnametxt);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView lname = new TextView(this);
+                lname.setId(R.id.lname);
+                lname.setText("Last Name:");
+                lname.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, fname.getId());
+                param.setMargins(30, 0, 0, 30);
+                lname.setLayoutParams(param);
+                relativeLayout.addView(lname);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                EditText lnametxt = new HideHintEditText(this, "Last name");
+                lnametxt.setWidth(490);
+
+                lnametxt.setHint("Last name");
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        lname.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        lname.getId());
+                lnametxt.setLayoutParams(param);
+                relativeLayout.addView(lnametxt);
+
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView phoneno = new TextView(this);
+                phoneno.setId(R.id.phoneno);
+                phoneno.setText("Phone No:");
+                phoneno.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, lname.getId());
+                param.setMargins(30, 0, 0, 30);
+                phoneno.setLayoutParams(param);
+                relativeLayout.addView(phoneno);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                EditText phonetxt = new HideHintEditText(this, "Phone Number");
+                phonetxt.setWidth(490);
+
+                phonetxt.setHint("Phone Number");
+                phonetxt.setInputType(InputType.TYPE_CLASS_PHONE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        phoneno.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        phoneno.getId());
+                phonetxt.setLayoutParams(param);
+                relativeLayout.addView(phonetxt);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView emailaddress = new TextView(this);
+                emailaddress.setId(R.id.emailaddress);
+                emailaddress.setText("Email:");
+                emailaddress.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, phoneno.getId());
+                param.setMargins(30, 0, 0, 30);
+                emailaddress.setLayoutParams(param);
+                relativeLayout.addView(emailaddress);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                EditText emailtxt = new HideHintEditText(this, "Email Address");
+                emailtxt.setWidth(490);
+
+                emailtxt.setHint("Email Address");
+                emailtxt.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        emailaddress.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        emailaddress.getId());
+                emailtxt.setLayoutParams(param);
+                relativeLayout.addView(emailtxt);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView idnumber = new TextView(this);
+                idnumber.setId(R.id.idpass);
+                idnumber.setText("Identity No /\nPassport No:");
+                idnumber.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, emailaddress.getId());
+                param.setMargins(30, 0, 0, 30);
+                idnumber.setLayoutParams(param);
+                relativeLayout.addView(idnumber);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                EditText idtxt = new HideHintEditText(this, "Identity No / Passport No");
+                idtxt.setWidth(490);
+
+                idtxt.setHint("Identity No / Passport No");
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_TOP,
+                        idnumber.getId());
+                idtxt.setLayoutParams(param);
+                relativeLayout.addView(idtxt);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView seatno = new TextView(this);
+                seatno.setId(R.id.seatno);
+                seatno.setText("Select Seat:");
+                seatno.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, idnumber.getId());
+                param.setMargins(30, 0, 0, 30);
+                seatno.setLayoutParams(param);
+                relativeLayout.addView(seatno);
+
+                param = new RelativeLayout.LayoutParams(
+                        490,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                Spinner seattxt = new Spinner(this);
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        seatno.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        seatno.getId());
+                seattxt.setLayoutParams(param);
+                seattxt.setAdapter(seatArray);
+                relativeLayout.addView(seattxt);
+
+                param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // Creating a new TextView
+                TextView amount = new TextView(this);
+                amount.setId(R.id.amount);
+                amount.setText("Select Fare:");
+                amount.setTextSize(15);
+                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.BELOW, seatno.getId());
+                param.setMargins(30, 0, 0, 30);
+                amount.setLayoutParams(param);
+                relativeLayout.addView(amount);
+
+                param = new RelativeLayout.LayoutParams(
+                        490,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                Spinner amounttxt = new Spinner(this);
+                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+                param.addRule(RelativeLayout.ALIGN_BASELINE,
+                        amount.getId());
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        amount.getId());
+                amounttxt.setLayoutParams(param);
+                amounttxt.setAdapter(fareArray);
+                relativeLayout.addView(amounttxt);
+
+            }
+
+            rootLayout.addView(relativeLayout);
+
+            RelativeLayout.LayoutParams param1 = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+            param1.addRule(RelativeLayout.BELOW, R.id.dynamic);
+            bottomLayout.setLayoutParams(param1);
+            // Defining the layout parameters of the TextView
+
+        }
         book = (Button)findViewById(R.id.book);
         book.setOnClickListener(new View.OnClickListener() {
             @Override
