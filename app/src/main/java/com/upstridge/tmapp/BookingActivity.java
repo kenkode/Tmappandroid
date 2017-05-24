@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -84,23 +85,27 @@ public class BookingActivity extends Activity {
         modeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mode.setAdapter(modeArray);
 
-        RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.booking);
-        RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.last);
-        RelativeLayout relativeLayout = new RelativeLayout(this);
-        relativeLayout.setId(R.id.dynamic);
-        // Defining the RelativeLayout layout parameters.
-        // In this case I want to fill its parent
-        RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-        param.addRule(RelativeLayout.BELOW,R.id.first);
-        param.setMargins(0, 60, 0, 30);
-        relativeLayout.setLayoutParams(param);
 
         if(seats.size() > 1) {
 
-            for (int i = 0; i < seats.size(); i++) {
+            RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.booking);
+            RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.last);
+            RelativeLayout[] relativeLayout = new RelativeLayout[seats.size()-1];
+            //RelativeLayout relativeLayout = new RelativeLayout(this);
+            LinearLayout lp = new LinearLayout(this);
+
+            for (int i = 0; i < seats.size()-1; i++) {
+                relativeLayout[i] = new RelativeLayout(this);
+                relativeLayout[i].setId(R.id.dynamic+(i+1));
+                // Defining the RelativeLayout layout parameters.
+                // In this case I want to fill its parent
+                RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                param.addRule(RelativeLayout.BELOW,R.id.first);
+                param.setMargins(0, 60, 0, 30);
+                relativeLayout[i].setLayoutParams(param);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -116,7 +121,7 @@ public class BookingActivity extends Activity {
                 param.setMargins(10, 0, 0, 30);
 
                 title.setLayoutParams(param);
-                relativeLayout.addView(title);
+                relativeLayout[i].addView(title);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -131,7 +136,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, title.getId());
                 param.setMargins(30, 0, 0, 30);
                 fname.setLayoutParams(param);
-                relativeLayout.addView(fname);
+                relativeLayout[i].addView(fname);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -139,6 +144,7 @@ public class BookingActivity extends Activity {
 
                 final EditText fnametxt = new HideHintEditText(this, "First name");
                 fnametxt.setWidth(490);
+                fnametxt.setId(R.id.fnametxt);
                 fnametxt.setHint("First name");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
@@ -147,7 +153,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         fname.getId());
                 fnametxt.setLayoutParams(param);
-                relativeLayout.addView(fnametxt);
+                relativeLayout[i].addView(fnametxt);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -162,7 +168,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, fname.getId());
                 param.setMargins(30, 0, 0, 30);
                 lname.setLayoutParams(param);
-                relativeLayout.addView(lname);
+                relativeLayout[i].addView(lname);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -170,7 +176,7 @@ public class BookingActivity extends Activity {
 
                 EditText lnametxt = new HideHintEditText(this, "Last name");
                 lnametxt.setWidth(490);
-
+                lnametxt.setId(R.id.lnametxt);
                 lnametxt.setHint("Last name");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
@@ -179,7 +185,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         lname.getId());
                 lnametxt.setLayoutParams(param);
-                relativeLayout.addView(lnametxt);
+                relativeLayout[i].addView(lnametxt);
 
 
                 param = new RelativeLayout.LayoutParams(
@@ -195,7 +201,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, lname.getId());
                 param.setMargins(30, 0, 0, 30);
                 phoneno.setLayoutParams(param);
-                relativeLayout.addView(phoneno);
+                relativeLayout[i].addView(phoneno);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -203,7 +209,7 @@ public class BookingActivity extends Activity {
 
                 EditText phonetxt = new HideHintEditText(this, "Phone Number");
                 phonetxt.setWidth(490);
-
+                phonetxt.setId(R.id.phonetxt);
                 phonetxt.setHint("Phone Number");
                 phonetxt.setInputType(InputType.TYPE_CLASS_PHONE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
@@ -213,7 +219,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         phoneno.getId());
                 phonetxt.setLayoutParams(param);
-                relativeLayout.addView(phonetxt);
+                relativeLayout[i].addView(phonetxt);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -228,7 +234,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, phoneno.getId());
                 param.setMargins(30, 0, 0, 30);
                 emailaddress.setLayoutParams(param);
-                relativeLayout.addView(emailaddress);
+                relativeLayout[i].addView(emailaddress);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -236,7 +242,7 @@ public class BookingActivity extends Activity {
 
                 EditText emailtxt = new HideHintEditText(this, "Email Address");
                 emailtxt.setWidth(490);
-
+                emailtxt.setId(R.id.emailtxt);
                 emailtxt.setHint("Email Address");
                 emailtxt.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
@@ -246,7 +252,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         emailaddress.getId());
                 emailtxt.setLayoutParams(param);
-                relativeLayout.addView(emailtxt);
+                relativeLayout[i].addView(emailtxt);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -261,7 +267,7 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, emailaddress.getId());
                 param.setMargins(30, 0, 0, 30);
                 idnumber.setLayoutParams(param);
-                relativeLayout.addView(idnumber);
+                relativeLayout[i].addView(idnumber);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -269,14 +275,14 @@ public class BookingActivity extends Activity {
 
                 EditText idtxt = new HideHintEditText(this, "Identity No / Passport No");
                 idtxt.setWidth(490);
-
+                idtxt.setId(R.id.idpasstxt);
                 idtxt.setHint("Identity No / Passport No");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_TOP,
                         idnumber.getId());
                 idtxt.setLayoutParams(param);
-                relativeLayout.addView(idtxt);
+                relativeLayout[i].addView(idtxt);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -291,13 +297,14 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, idnumber.getId());
                 param.setMargins(30, 0, 0, 30);
                 seatno.setLayoutParams(param);
-                relativeLayout.addView(seatno);
+                relativeLayout[i].addView(seatno);
 
                 param = new RelativeLayout.LayoutParams(
                         490,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 Spinner seattxt = new Spinner(this);
+                seattxt.setId(R.id.seattxt);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
@@ -306,7 +313,7 @@ public class BookingActivity extends Activity {
                         seatno.getId());
                 seattxt.setLayoutParams(param);
                 seattxt.setAdapter(seatArray);
-                relativeLayout.addView(seattxt);
+                relativeLayout[i].addView(seattxt);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -321,13 +328,14 @@ public class BookingActivity extends Activity {
                 param.addRule(RelativeLayout.BELOW, seatno.getId());
                 param.setMargins(30, 0, 0, 30);
                 amount.setLayoutParams(param);
-                relativeLayout.addView(amount);
+                relativeLayout[i].addView(amount);
 
                 param = new RelativeLayout.LayoutParams(
                         490,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 Spinner amounttxt = new Spinner(this);
+                amounttxt.setId(R.id.amounttxt);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
@@ -336,16 +344,31 @@ public class BookingActivity extends Activity {
                         amount.getId());
                 amounttxt.setLayoutParams(param);
                 amounttxt.setAdapter(fareArray);
-                relativeLayout.addView(amounttxt);
+                relativeLayout[i].addView(amounttxt);
 
+                if(i == 0 ){
+                    param = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                    param.addRule(RelativeLayout.BELOW,R.id.first);
+                    param.setMargins(0, 60, 0, 30);
+                    relativeLayout[i].setLayoutParams(param);
+                }else {
+                    param = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    param.addRule(RelativeLayout.BELOW, relativeLayout[i-1].getId());
+                    param.setMargins(0, 10, 0, 10);
+                    relativeLayout[i].setLayoutParams(param);
+                }
+                rootLayout.addView(relativeLayout[i]);
             }
-
-            rootLayout.addView(relativeLayout);
 
             RelativeLayout.LayoutParams param1 = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
-            param1.addRule(RelativeLayout.BELOW, R.id.dynamic);
+            param1.addRule(RelativeLayout.BELOW, R.id.dynamic+(seats.size()-1));
             bottomLayout.setLayoutParams(param1);
             // Defining the layout parameters of the TextView
 

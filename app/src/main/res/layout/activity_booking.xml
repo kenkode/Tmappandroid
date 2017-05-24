@@ -235,6 +235,7 @@
         android:textColor="@color/colorBlack"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:text="Book Now"
         android:layout_below="@+id/mode"
         android:layout_centerHorizontal="true" />
