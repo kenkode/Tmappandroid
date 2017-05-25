@@ -28,10 +28,19 @@ public class BookingActivity extends Activity {
 
     String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
     EditText firstname,lastname,email,phone,idno;
+    EditText [] fnametxt,lnametxt,emailtxt,phonetxt,idtxt;
+    Spinner[] amounttxt,seattxt;
     Spinner fare,mode,seat;
     Button book;
     String vehiclename = "";
     ArrayList<String> seats= new ArrayList<String>();
+    ArrayList<String> fnamevalues = new ArrayList<>();
+    ArrayList<String> lnamevalues = new ArrayList<>();
+    ArrayList<String> phonevalues = new ArrayList<>();
+    ArrayList<String> emailvalues = new ArrayList<>();
+    ArrayList<String> seatvalues = new ArrayList<>();
+    ArrayList<String> farevalues = new ArrayList<>();
+    ArrayList<String> idnovalues = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +95,19 @@ public class BookingActivity extends Activity {
         mode.setAdapter(modeArray);
 
 
+
         if(seats.size() > 1) {
 
             RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.booking);
             RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.last);
             RelativeLayout[] relativeLayout = new RelativeLayout[seats.size()-1];
+            fnametxt = new EditText[seats.size()-1];
+            lnametxt = new EditText[seats.size()-1];
+            phonetxt = new EditText[seats.size()-1];
+            emailtxt = new EditText[seats.size()-1];
+            seattxt = new Spinner[seats.size()-1];
+            amounttxt = new Spinner[seats.size()-1];
+            idtxt = new EditText[seats.size()-1];
             //RelativeLayout relativeLayout = new RelativeLayout(this);
             LinearLayout lp = new LinearLayout(this);
 
@@ -142,18 +159,20 @@ public class BookingActivity extends Activity {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                final EditText fnametxt = new HideHintEditText(this, "First name");
-                fnametxt.setWidth(490);
-                fnametxt.setId(R.id.fnametxt);
-                fnametxt.setHint("First name");
+
+
+                fnametxt[i] = new HideHintEditText(this, "First name");
+                fnametxt[i].setWidth(490);
+                fnametxt[i].setId(R.id.fnametxt);
+                fnametxt[i].setHint("First name");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         fname.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         fname.getId());
-                fnametxt.setLayoutParams(param);
-                relativeLayout[i].addView(fnametxt);
+                fnametxt[i].setLayoutParams(param);
+                relativeLayout[i].addView(fnametxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -174,18 +193,18 @@ public class BookingActivity extends Activity {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                EditText lnametxt = new HideHintEditText(this, "Last name");
-                lnametxt.setWidth(490);
-                lnametxt.setId(R.id.lnametxt);
-                lnametxt.setHint("Last name");
+                lnametxt[i] = new HideHintEditText(this, "Last name");
+                lnametxt[i].setWidth(490);
+                lnametxt[i].setId(R.id.lnametxt);
+                lnametxt[i].setHint("Last name");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         lname.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         lname.getId());
-                lnametxt.setLayoutParams(param);
-                relativeLayout[i].addView(lnametxt);
+                lnametxt[i].setLayoutParams(param);
+                relativeLayout[i].addView(lnametxt[i]);
 
 
                 param = new RelativeLayout.LayoutParams(
@@ -207,19 +226,19 @@ public class BookingActivity extends Activity {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                EditText phonetxt = new HideHintEditText(this, "Phone Number");
-                phonetxt.setWidth(490);
-                phonetxt.setId(R.id.phonetxt);
-                phonetxt.setHint("Phone Number");
-                phonetxt.setInputType(InputType.TYPE_CLASS_PHONE);
+                phonetxt[i] = new HideHintEditText(this, "Phone Number");
+                phonetxt[i].setWidth(490);
+                phonetxt[i].setId(R.id.phonetxt);
+                phonetxt[i].setHint("Phone Number");
+                phonetxt[i].setInputType(InputType.TYPE_CLASS_PHONE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         phoneno.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         phoneno.getId());
-                phonetxt.setLayoutParams(param);
-                relativeLayout[i].addView(phonetxt);
+                phonetxt[i].setLayoutParams(param);
+                relativeLayout[i].addView(phonetxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -240,19 +259,19 @@ public class BookingActivity extends Activity {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                EditText emailtxt = new HideHintEditText(this, "Email Address");
-                emailtxt.setWidth(490);
-                emailtxt.setId(R.id.emailtxt);
-                emailtxt.setHint("Email Address");
-                emailtxt.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                emailtxt[i] = new HideHintEditText(this, "Email Address");
+                emailtxt[i].setWidth(490);
+                emailtxt[i].setId(R.id.emailtxt);
+                emailtxt[i].setHint("Email Address");
+                emailtxt[i].setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         emailaddress.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         emailaddress.getId());
-                emailtxt.setLayoutParams(param);
-                relativeLayout[i].addView(emailtxt);
+                emailtxt[i].setLayoutParams(param);
+                relativeLayout[i].addView(emailtxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -273,16 +292,16 @@ public class BookingActivity extends Activity {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                EditText idtxt = new HideHintEditText(this, "Identity No / Passport No");
-                idtxt.setWidth(490);
-                idtxt.setId(R.id.idpasstxt);
-                idtxt.setHint("Identity No / Passport No");
+                idtxt[i] = new HideHintEditText(this, "Identity No / Passport No");
+                idtxt[i].setWidth(490);
+                idtxt[i].setId(R.id.idpasstxt);
+                idtxt[i].setHint("Identity No / Passport No");
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_TOP,
                         idnumber.getId());
-                idtxt.setLayoutParams(param);
-                relativeLayout[i].addView(idtxt);
+                idtxt[i].setLayoutParams(param);
+                relativeLayout[i].addView(idtxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -303,17 +322,17 @@ public class BookingActivity extends Activity {
                         490,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                Spinner seattxt = new Spinner(this);
-                seattxt.setId(R.id.seattxt);
+                seattxt[i] = new Spinner(this);
+                seattxt[i].setId(R.id.seattxt);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         seatno.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         seatno.getId());
-                seattxt.setLayoutParams(param);
-                seattxt.setAdapter(seatArray);
-                relativeLayout[i].addView(seattxt);
+                seattxt[i].setLayoutParams(param);
+                seattxt[i].setAdapter(seatArray);
+                relativeLayout[i].addView(seattxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -334,17 +353,17 @@ public class BookingActivity extends Activity {
                         490,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                Spinner amounttxt = new Spinner(this);
-                amounttxt.setId(R.id.amounttxt);
+                amounttxt[i] = new Spinner(this);
+                amounttxt[i].setId(R.id.amounttxt);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
                         amount.getId());
                 param.addRule(RelativeLayout.ALIGN_BOTTOM,
                         amount.getId());
-                amounttxt.setLayoutParams(param);
-                amounttxt.setAdapter(fareArray);
-                relativeLayout[i].addView(amounttxt);
+                amounttxt[i].setLayoutParams(param);
+                amounttxt[i].setAdapter(fareArray);
+                relativeLayout[i].addView(amounttxt[i]);
 
                 if(i == 0 ){
                     param = new RelativeLayout.LayoutParams(
@@ -377,6 +396,14 @@ public class BookingActivity extends Activity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fnamevalues.clear();
+                lnamevalues.clear();
+                emailvalues.clear();
+                phonevalues.clear();
+                idnovalues.clear();
+                seatvalues.clear();
+                farevalues.clear();
+
                 if(firstname.getText().toString().trim().equals("")){
                     firstname.setError("Please insert your first name");
                 }else if(lastname.getText().toString().trim().equals("")){
@@ -389,12 +416,150 @@ public class BookingActivity extends Activity {
                     email.setError("Please insert a valid email address");
                 }else if(idno.getText().toString().trim().equals("")){
                     idno.setError("Please insert your national identity number");
-                }else {
-                    Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, fare, mode, seat, firstname, lastname, email, phone, idno);
+                }else if(idno.getText().toString().trim().equals("")){
+                    idno.setError("Please insert your national identity number / Passport number");
+                }else if(isfnameEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (fnametxt[i].getText().toString().trim().equals("")) {
+                            fnametxt[i].setError("Please insert "+(i+2)+" person`s first name");
+                        }
+                    }
+                }else if(islnameEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (lnametxt[i].getText().toString().trim().equals("")) {
+                            lnametxt[i].setError("Please insert "+(i+2)+" person`s last name");
+                        }
+                    }
+                }else if(isphoneEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (phonetxt[i].getText().toString().trim().equals("")) {
+                            phonetxt[i].setError("Please insert "+(i+2)+" person`s phone number");
+                        }
+                    }
+                }else if(isemailEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (emailtxt[i].getText().toString().trim().equals("")) {
+                            emailtxt[i].setError("Please insert "+(i+2)+" person`s email");
+                        }
+                    }
+                }else if(isemailValid() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                            emailtxt[i].setError("Please insert a valid email address for "+(i+2)+" person");
+                        }
+                    }
+                }else if(isidnoEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (idtxt[i].getText().toString().trim().equals("")) {
+                            idtxt[i].setError("Please insert "+(i+2)+" person`s national identity number / Passport number");
+                        }
+                    }
+                }else if(isfnameEdited() == false){
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if (fnametxt[i].getText().toString().trim().equals("")) {
+                            fnametxt[i].setError("Please insert your first name");
+                        }
+                    }
+                }else{
+                    fnamevalues.add(firstname.getText().toString());
+                    lnamevalues.add(lastname.getText().toString());
+                    phonevalues.add(phone.getText().toString());
+                    emailvalues.add(email.getText().toString());
+                    idnovalues.add(idno.getText().toString());
+                    seatvalues.add(seat.getSelectedItem().toString());
+                    farevalues.add(fare.getSelectedItem().toString());
+
+                    for (int i = 0; i < seats.size()-1; i++) {
+                        if(!fnametxt[i].getText().toString().trim().equals("")){
+                            fnamevalues.add(fnametxt[i].getText().toString());
+                        }
+                        if(!lnametxt[i].getText().toString().trim().equals("")) {
+                            lnamevalues.add(lnametxt[i].getText().toString());
+                        }
+                        if(!phonetxt[i].getText().toString().trim().equals("")) {
+                            phonevalues.add(phonetxt[i].getText().toString());
+                        }
+                        if(!emailtxt[i].getText().toString().trim().equals("") && emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                            emailvalues.add(emailtxt[i].getText().toString());
+                        }
+                        if(!idtxt[i].getText().toString().trim().equals("")) {
+                            idnovalues.add(idtxt[i].getText().toString());
+                        }
+                        seatvalues.add(seattxt[i].getSelectedItem().toString());
+                        farevalues.add(amounttxt[i].getSelectedItem().toString());
+                    }
+
+                    Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
                     s.execute();
                 }
             }
         });
+    }
+
+    public boolean isfnameEdited(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if (fnametxt[i].getText().toString().trim().equals("")) {
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean islnameEdited(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if(lnametxt[i].getText().toString().trim().equals("")){
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean isphoneEdited(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if(phonetxt[i].getText().toString().trim().equals("")){
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean isemailEdited(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if(emailtxt[i].getText().toString().trim().equals("")){
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean isemailValid(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if(!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")){
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean isidnoEdited(){
+
+        for (int i = 0; i < seats.size()-1; i++) {
+            if(idtxt[i].getText().toString().trim().equals("")) {
+                return false;
+            }
+        }
+        // we reached this point so all edit texts have been given input
+        return true;
     }
 
     public boolean isValidEmail(String email)

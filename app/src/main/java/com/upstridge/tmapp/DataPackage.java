@@ -5,6 +5,7 @@ import android.widget.Spinner;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -12,9 +13,10 @@ import java.util.Iterator;
  */
 
 public class DataPackage {
-    String firstname,lastname,email,phone,idno,fare,paymentmode,selectedseat,organization,vehicle,destination,origin,date,time,arrival,departure;
+    ArrayList<String> firstname,lastname,email,phone,idno,fare,selectedseat;
+    String paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure;
 
-    public DataPackage(String firstname, String lastname, String email, String phone, String idno,String fare, String paymentmode, String selectedseat, String organization, String vehicle, String destination, String origin, String date, String time, String arrival, String departure) {
+    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin, String date, String time, String arrival, String departure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
