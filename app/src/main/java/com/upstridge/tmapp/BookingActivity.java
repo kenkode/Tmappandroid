@@ -8,6 +8,8 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +29,7 @@ import java.util.regex.Pattern;
 public class BookingActivity extends Activity {
 
     String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
+    TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;
     EditText [] fnametxt,lnametxt,emailtxt,phonetxt,idtxt;
     Spinner[] amounttxt,seattxt;
@@ -108,6 +111,7 @@ public class BookingActivity extends Activity {
             seattxt = new Spinner[seats.size()-1];
             amounttxt = new Spinner[seats.size()-1];
             idtxt = new EditText[seats.size()-1];
+            seaterror = new TextView[seats.size()-1];
             //RelativeLayout relativeLayout = new RelativeLayout(this);
             LinearLayout lp = new LinearLayout(this);
 
@@ -334,6 +338,23 @@ public class BookingActivity extends Activity {
                 seattxt[i].setAdapter(seatArray);
                 relativeLayout[i].addView(seattxt[i]);
 
+
+                param = new RelativeLayout.LayoutParams(0,0);
+
+                seaterror[i] = new TextView(this);
+                seaterror[i].setId(R.id.seatInvisibleError);
+                param.setMargins(0,0,0,0);
+                seaterror[i].setPadding(0,0,10,0);
+                seaterror[i].setFocusable(true);
+                seaterror[i].setFocusableInTouchMode(true);
+                param.addRule(RelativeLayout.ALIGN_RIGHT, seattxt[i].getId());
+                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+
+                param.addRule(RelativeLayout.ALIGN_BOTTOM,
+                        seattxt[i].getId());
+                seaterror[i].setLayoutParams(param);
+                relativeLayout[i].addView(seaterror[i]);
+
                 param = new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -454,12 +475,6 @@ public class BookingActivity extends Activity {
                             idtxt[i].setError("Please insert "+(i+2)+" person`s national identity number / Passport number");
                         }
                     }
-                }else if(isfnameEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (fnametxt[i].getText().toString().trim().equals("")) {
-                            fnametxt[i].setError("Please insert your first name");
-                        }
-                    }
                 }else{
                     fnamevalues.add(firstname.getText().toString());
                     lnamevalues.add(lastname.getText().toString());
@@ -489,8 +504,58 @@ public class BookingActivity extends Activity {
                         farevalues.add(amounttxt[i].getSelectedItem().toString());
                     }
 
-                    Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
-                    s.execute();
+                    StringBuilder builder = new StringBuilder();
+                    for(String seat: seatvalues){
+                        builder.append(seat+",");
+                    }
+                    //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
+
+                    if(isSeatEdited(seatvalues) == false){
+                        for (int i = 0; i < seatvalues.size(); i++) {
+                            for (int k = i + 1; k < seatvalues.size(); k++) {
+                                if (seatvalues.get(i) == seatvalues.get(k)) {
+                                    if (seattxt[i].getSelectedItem().toString().equals(seatvalues.get(i))){
+                                        //seattxt[i].setError("Please insert your first name");
+
+                                       /* TextView errorText = (TextView) seattxt[i].getSelectedView();
+                                        errorText.setError("You have selected " + seats.get(i) + " more than once");
+                                        errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                                        errorText.setText("You have selected " + seats.get(i) + " more than once");//changes the selected item text to this
+                                        Toast.makeText(BookingActivity.this, "You have selected " + seats.get(i) + " more than once", Toast.LENGTH_LONG).show();*/
+
+                                        View view = seattxt[i].getSelectedView();
+
+                                        // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
+                                        // appears, and then shake control if in error
+                                        TextView seatListItem = (TextView)view;
+
+                                        seatListItem.setError("You have selected " + seats.get(i) + " more than once");
+                                        seatListItem.requestFocus();
+
+
+                                        seaterror[i].requestFocus();
+                                        seaterror[i].setError("You have selected " + seats.get(i) + " more than once");
+                                   }else{
+                                        View view = seattxt[i].getSelectedView();
+
+                                        // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
+                                        // appears, and then shake control if in error
+                                        TextView seatListItem = (TextView)view;
+
+                                        seatListItem.setError("");
+                                        seatListItem.requestFocus();
+
+
+                                        seaterror[i].requestFocus();
+                                        seaterror[i].setError("");
+                                    }
+                                }
+                            }
+                        }
+                    }else {
+                        Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                        s.execute();
+                    }
                 }
             }
         });
@@ -558,6 +623,25 @@ public class BookingActivity extends Activity {
                 return false;
             }
         }
+        // we reached this point so all edit texts have been given input
+        return true;
+    }
+
+    public boolean isSeatEdited(ArrayList seatvalues){
+
+        for (int i = 0; i < seatvalues.size(); i++) {
+            for (int k = i + 1; k < seatvalues.size(); k++) {
+                if (seatvalues.get(i) == seatvalues.get(k)) {
+                    return false;
+                }
+            }
+        }
+
+        /*for (int i = 0; i < seats.size()-1; i++) {
+            if(seattxt[i].getSelectedItem().toString().trim().equals(seattxt[i+1].getSelectedItem().toString()) || seattxt[i].getSelectedItem().toString().trim().equals(seat.getSelectedItem().toString())) {
+                return false;
+            }
+        }*/
         // we reached this point so all edit texts have been given input
         return true;
     }

@@ -8,12 +8,15 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static com.upstridge.tmapp.R.id.seats;
+
 /**
  * Created by Wango-PC on 5/12/2017.
  */
 
 public class DataPackage {
     ArrayList<String> firstname,lastname,email,phone,idno,fare,selectedseat;
+
     String paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure;
 
     public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin, String date, String time, String arrival, String departure) {
@@ -38,6 +41,7 @@ public class DataPackage {
     public String packData(){
         JSONObject jo = new JSONObject();
         StringBuffer sb = new StringBuffer();
+
 
         try{
             jo.put("firstname", firstname);
