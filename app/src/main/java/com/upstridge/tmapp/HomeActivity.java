@@ -28,7 +28,8 @@ public class HomeActivity extends Activity {
     EditText timepick, t;
     static final int DIALOG_TID = 1;
     int hour, min;
-    String url = "http://192.168.56.1/tmapp/android/destination.php";
+    //String url = "http://192.168.56.1/tmapp/android/destination.php";
+    String url = "http://admin.upstridge.co.ke/android/destination.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

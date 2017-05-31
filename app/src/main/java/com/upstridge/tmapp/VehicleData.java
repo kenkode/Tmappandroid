@@ -75,7 +75,7 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
             VehicleParser p = new VehicleParser(c, s, lv, date, time, destination, origin, searchView);
             p.execute();
         }else{
-            Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(c, "No vehicles available", Toast.LENGTH_SHORT).show();
         }
     }
 

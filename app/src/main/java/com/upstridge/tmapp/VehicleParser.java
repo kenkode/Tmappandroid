@@ -156,7 +156,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
             });
 
         }else{
-            Toast.makeText(c,"Data not available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(c,"No vehicles available",Toast.LENGTH_SHORT).show();
         }
 
         pd.dismiss();

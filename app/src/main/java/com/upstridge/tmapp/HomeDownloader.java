@@ -74,9 +74,9 @@ public class HomeDownloader extends AsyncTask<String, Integer, String> {
         if(s != null){
             HomeParser p = new HomeParser(c, s, from, to, search, btnpick, timepick);
             p.execute();
-        }else{
+        }/*else{
             Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     private String downloadData(){

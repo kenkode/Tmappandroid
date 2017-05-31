@@ -124,9 +124,9 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
                 }
             });
 
-        }else{
+        }/*else{
             Toast.makeText(c,"Unable to parse data...Please try again later",Toast.LENGTH_SHORT).show();
-        }
+        }*/
         pd.dismiss();
     }
 

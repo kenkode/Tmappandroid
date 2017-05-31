@@ -28,7 +28,8 @@ import java.util.regex.Pattern;
 
 public class BookingActivity extends Activity {
 
-    String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
+    //String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
+    String urlAddress = "http://admin.upstridge.co.ke/android/booking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;
     EditText [] fnametxt,lnametxt,emailtxt,phonetxt,idtxt;
