@@ -12,7 +12,16 @@
         <item>VIP</item>
         <item>Economic</item>
     </string-array>
+    <string-array name="array_time">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Night</item>
+    </string-array>
     <string name="title_activity_seats">SeatsActivity</string>
+    <string name="title_activity_select_period">SelectPeriod</string>
+    <string name="title_activity_request_taxi">RequestTaxiActivity</string>
+    <string name="title_activity_taxi">TaxiActivity</string>
 
 
 </resources>

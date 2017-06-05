@@ -49,7 +49,7 @@ public class SeatSelectionActivityNew extends Activity implements OnItemClickLis
 		final String vehicle = bundle.getString("vid");
 		final String vehiclename = bundle.getString("vehicle");
 		final String destination = bundle.getString("destination");
-		final String date = bundle.getString("date");
+		//final String date = bundle.getString("date");
 		final String time = bundle.getString("time");
 		final String origin = bundle.getString("origin");
 		final String arrival = bundle.getString("arrival");
@@ -92,7 +92,7 @@ public class SeatSelectionActivityNew extends Activity implements OnItemClickLis
 					 Intent i = new Intent(getApplicationContext(), BookingActivity.class);
 					 Bundle b = new Bundle();
 					 b.putString("destination", destination);
-					 b.putString("date", date);
+					 //b.putString("date", date);
 					 b.putString("time", time);
 					 b.putString("vehicle", vehiclename);
 					 b.putString("origin", origin);

@@ -29,31 +29,30 @@ import java.util.ArrayList;
  * Created by Wango-PC on 4/29/2017.
  */
 
-public class HomeParser extends AsyncTask<Void,Integer,Integer> {
+public class PeriodParser extends AsyncTask<Void,Integer,Integer> {
 
     Context c;
+    Spinner time;
     Spinner from;
     String data;
     Spinner to;
     Button search;
+    String time_txt;
     String frm_txt;
     String to_txt;
     String arrival;
     String departure;
     String vehicle;
-    EditText btnpick;
-    EditText timepick;
     ArrayList<String> origins = new ArrayList<>();
     ProgressDialog pd;
 
-    public HomeParser(Context c, String data, Spinner from, Spinner to, Button search, EditText btnpick, EditText timepick){
+    public PeriodParser(Context c, String data, Spinner time, Spinner from, Spinner to, Button search){
         this.c = c;
         this.data = data;
+        this.time = time;
         this.from = from;
         this.to = to;
         this.search = search;
-        this.btnpick = btnpick;
-        this.timepick = timepick;
     }
 
     @Override
@@ -110,10 +109,12 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    time_txt = time.getSelectedItem().toString();
                     Intent i = new Intent(c, VehicleActivity.class);
                     Bundle b = new Bundle();
                     b.putString("from", frm_txt);
                     b.putString("to", to_txt);
+                    b.putString("time", time_txt);
                     b.putString("arrival", arrival);
                     b.putString("departure", departure);
                     b.putString("vehicle", vehicle);

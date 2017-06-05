@@ -1,5 +1,6 @@
 package com.upstridge.tmapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -28,8 +29,8 @@ import java.util.regex.Pattern;
 
 public class BookingActivity extends Activity {
 
-    //String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
-    String urlAddress = "http://admin.upstridge.co.ke/android/booking.php";
+    String urlAddress = "http://192.168.56.1/tmapp/android/booking.php";
+    //String urlAddress = "http://admin.upstridge.co.ke/android/booking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;
     EditText [] fnametxt,lnametxt,emailtxt,phonetxt,idtxt;
@@ -56,7 +57,7 @@ public class BookingActivity extends Activity {
         final String vehicle = bundle.getString("vid");
         vehiclename = bundle.getString("vehicle");
         final String destination = bundle.getString("destination");
-        final String date = bundle.getString("date");
+        //final String date = bundle.getString("date");
         final String time = bundle.getString("time");
         final String origin = bundle.getString("origin");
         final String arrival = bundle.getString("arrival");
@@ -418,105 +419,111 @@ public class BookingActivity extends Activity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fnamevalues.clear();
-                lnamevalues.clear();
-                emailvalues.clear();
-                phonevalues.clear();
-                idnovalues.clear();
-                seatvalues.clear();
-                farevalues.clear();
 
-                if(firstname.getText().toString().trim().equals("")){
-                    firstname.setError("Please insert your first name");
-                }else if(lastname.getText().toString().trim().equals("")){
-                    lastname.setError("Please insert your last name");
-                }else if(phone.getText().toString().trim().equals("")){
-                    phone.setError("Please insert your phone number");
-                }else if(email.getText().toString().trim().equals("")){
-                    email.setError("Please insert your email");
-                }else if (!email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                    email.setError("Please insert a valid email address");
-                }else if(idno.getText().toString().trim().equals("")){
-                    idno.setError("Please insert your national identity number");
-                }else if(idno.getText().toString().trim().equals("")){
-                    idno.setError("Please insert your national identity number / Passport number");
-                }else if(isfnameEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (fnametxt[i].getText().toString().trim().equals("")) {
-                            fnametxt[i].setError("Please insert "+(i+2)+" person`s first name");
-                        }
-                    }
-                }else if(islnameEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (lnametxt[i].getText().toString().trim().equals("")) {
-                            lnametxt[i].setError("Please insert "+(i+2)+" person`s last name");
-                        }
-                    }
-                }else if(isphoneEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (phonetxt[i].getText().toString().trim().equals("")) {
-                            phonetxt[i].setError("Please insert "+(i+2)+" person`s phone number");
-                        }
-                    }
-                }else if(isemailEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (emailtxt[i].getText().toString().trim().equals("")) {
-                            emailtxt[i].setError("Please insert "+(i+2)+" person`s email");
-                        }
-                    }
-                }else if(isemailValid() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                            emailtxt[i].setError("Please insert a valid email address for "+(i+2)+" person");
-                        }
-                    }
-                }else if(isidnoEdited() == false){
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if (idtxt[i].getText().toString().trim().equals("")) {
-                            idtxt[i].setError("Please insert "+(i+2)+" person`s national identity number / Passport number");
-                        }
-                    }
-                }else{
-                    fnamevalues.add(firstname.getText().toString());
-                    lnamevalues.add(lastname.getText().toString());
-                    phonevalues.add(phone.getText().toString());
-                    emailvalues.add(email.getText().toString());
-                    idnovalues.add(idno.getText().toString());
-                    seatvalues.add(seat.getSelectedItem().toString());
-                    farevalues.add(fare.getSelectedItem().toString());
+                if(!firstname.getText().toString().trim().equals("")){
+                    Intent i = new Intent(getApplicationContext(), RequestTaxiActivity.class);
 
-                    for (int i = 0; i < seats.size()-1; i++) {
-                        if(!fnametxt[i].getText().toString().trim().equals("")){
-                            fnamevalues.add(fnametxt[i].getText().toString());
-                        }
-                        if(!lnametxt[i].getText().toString().trim().equals("")) {
-                            lnamevalues.add(lnametxt[i].getText().toString());
-                        }
-                        if(!phonetxt[i].getText().toString().trim().equals("")) {
-                            phonevalues.add(phonetxt[i].getText().toString());
-                        }
-                        if(!emailtxt[i].getText().toString().trim().equals("") && emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                            emailvalues.add(emailtxt[i].getText().toString());
-                        }
-                        if(!idtxt[i].getText().toString().trim().equals("")) {
-                            idnovalues.add(idtxt[i].getText().toString());
-                        }
-                        seatvalues.add(seattxt[i].getSelectedItem().toString());
-                        farevalues.add(amounttxt[i].getSelectedItem().toString());
-                    }
+                    startActivity(i);
+                }else {
+                    fnamevalues.clear();
+                    lnamevalues.clear();
+                    emailvalues.clear();
+                    phonevalues.clear();
+                    idnovalues.clear();
+                    seatvalues.clear();
+                    farevalues.clear();
 
-                    StringBuilder builder = new StringBuilder();
-                    for(String seat: seatvalues){
-                        builder.append(seat+",");
-                    }
-                    //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
+                    if (firstname.getText().toString().trim().equals("")) {
+                        firstname.setError("Please insert your first name");
+                    } else if (lastname.getText().toString().trim().equals("")) {
+                        lastname.setError("Please insert your last name");
+                    } else if (phone.getText().toString().trim().equals("")) {
+                        phone.setError("Please insert your phone number");
+                    } else if (email.getText().toString().trim().equals("")) {
+                        email.setError("Please insert your email");
+                    } else if (!email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                        email.setError("Please insert a valid email address");
+                    } else if (idno.getText().toString().trim().equals("")) {
+                        idno.setError("Please insert your national identity number");
+                    } else if (idno.getText().toString().trim().equals("")) {
+                        idno.setError("Please insert your national identity number / Passport number");
+                    } else if (isfnameEdited() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (fnametxt[i].getText().toString().trim().equals("")) {
+                                fnametxt[i].setError("Please insert " + (i + 2) + " person`s first name");
+                            }
+                        }
+                    } else if (islnameEdited() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (lnametxt[i].getText().toString().trim().equals("")) {
+                                lnametxt[i].setError("Please insert " + (i + 2) + " person`s last name");
+                            }
+                        }
+                    } else if (isphoneEdited() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (phonetxt[i].getText().toString().trim().equals("")) {
+                                phonetxt[i].setError("Please insert " + (i + 2) + " person`s phone number");
+                            }
+                        }
+                    } else if (isemailEdited() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (emailtxt[i].getText().toString().trim().equals("")) {
+                                emailtxt[i].setError("Please insert " + (i + 2) + " person`s email");
+                            }
+                        }
+                    } else if (isemailValid() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                                emailtxt[i].setError("Please insert a valid email address for " + (i + 2) + " person");
+                            }
+                        }
+                    } else if (isidnoEdited() == false) {
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (idtxt[i].getText().toString().trim().equals("")) {
+                                idtxt[i].setError("Please insert " + (i + 2) + " person`s national identity number / Passport number");
+                            }
+                        }
+                    } else {
+                        fnamevalues.add(firstname.getText().toString());
+                        lnamevalues.add(lastname.getText().toString());
+                        phonevalues.add(phone.getText().toString());
+                        emailvalues.add(email.getText().toString());
+                        idnovalues.add(idno.getText().toString());
+                        seatvalues.add(seat.getSelectedItem().toString());
+                        farevalues.add(fare.getSelectedItem().toString());
 
-                    if(isSeatEdited(seatvalues) == false){
-                        for (int i = 0; i < seatvalues.size(); i++) {
-                            for (int k = i + 1; k < seatvalues.size(); k++) {
-                                if (seatvalues.get(i) == seatvalues.get(k)) {
-                                    if (seattxt[i].getSelectedItem().toString().equals(seatvalues.get(i))){
-                                        //seattxt[i].setError("Please insert your first name");
+                        for (int i = 0; i < seats.size() - 1; i++) {
+                            if (!fnametxt[i].getText().toString().trim().equals("")) {
+                                fnamevalues.add(fnametxt[i].getText().toString());
+                            }
+                            if (!lnametxt[i].getText().toString().trim().equals("")) {
+                                lnamevalues.add(lnametxt[i].getText().toString());
+                            }
+                            if (!phonetxt[i].getText().toString().trim().equals("")) {
+                                phonevalues.add(phonetxt[i].getText().toString());
+                            }
+                            if (!emailtxt[i].getText().toString().trim().equals("") && emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                                emailvalues.add(emailtxt[i].getText().toString());
+                            }
+                            if (!idtxt[i].getText().toString().trim().equals("")) {
+                                idnovalues.add(idtxt[i].getText().toString());
+                            }
+                            seatvalues.add(seattxt[i].getSelectedItem().toString());
+                            farevalues.add(amounttxt[i].getSelectedItem().toString());
+                        }
+
+                        StringBuilder builder = new StringBuilder();
+                        for (String seat : seatvalues) {
+                            builder.append(seat + ",");
+                        }
+                        //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
+
+                        if (isSeatEdited(seatvalues) == false) {
+                            for (int i = 0; i < seatvalues.size(); i++) {
+                                for (int k = i + 1; k < seatvalues.size(); k++) {
+                                    if (seatvalues.get(i) == seatvalues.get(k)) {
+                                        if (seattxt[i].getSelectedItem().toString().equals(seatvalues.get(i))) {
+                                            //seattxt[i].setError("Please insert your first name");
 
                                        /* TextView errorText = (TextView) seattxt[i].getSelectedView();
                                         errorText.setError("You have selected " + seats.get(i) + " more than once");
@@ -524,38 +531,39 @@ public class BookingActivity extends Activity {
                                         errorText.setText("You have selected " + seats.get(i) + " more than once");//changes the selected item text to this
                                         Toast.makeText(BookingActivity.this, "You have selected " + seats.get(i) + " more than once", Toast.LENGTH_LONG).show();*/
 
-                                        View view = seattxt[i].getSelectedView();
+                                            View view = seattxt[i].getSelectedView();
 
-                                        // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
-                                        // appears, and then shake control if in error
-                                        TextView seatListItem = (TextView)view;
+                                            // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
+                                            // appears, and then shake control if in error
+                                            TextView seatListItem = (TextView) view;
 
-                                        seatListItem.setError("You have selected " + seats.get(i) + " more than once");
-                                        seatListItem.requestFocus();
-
-
-                                        seaterror[i].requestFocus();
-                                        seaterror[i].setError("You have selected " + seats.get(i) + " more than once");
-                                   }else{
-                                        View view = seattxt[i].getSelectedView();
-
-                                        // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
-                                        // appears, and then shake control if in error
-                                        TextView seatListItem = (TextView)view;
-
-                                        seatListItem.setError("");
-                                        seatListItem.requestFocus();
+                                            seatListItem.setError("You have selected " + seats.get(i) + " more than once");
+                                            seatListItem.requestFocus();
 
 
-                                        seaterror[i].requestFocus();
-                                        seaterror[i].setError("");
+                                            seaterror[i].requestFocus();
+                                            seaterror[i].setError("You have selected " + seats.get(i) + " more than once");
+                                        } else {
+                                            View view = seattxt[i].getSelectedView();
+
+                                            // Set TextView in Secondary Unit spinner to be in error so that red (!) icon
+                                            // appears, and then shake control if in error
+                                            TextView seatListItem = (TextView) view;
+
+                                            seatListItem.setError("");
+                                            seatListItem.requestFocus();
+
+
+                                            seaterror[i].requestFocus();
+                                            seaterror[i].setError("");
+                                        }
                                     }
                                 }
                             }
+                        } else {
+                            Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                            s.execute();
                         }
-                    }else {
-                        Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
-                        s.execute();
                     }
                 }
             }

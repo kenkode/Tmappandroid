@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class VehicleActivity extends Activity {
 
-    //String url = "http://192.168.56.1/tmapp/android/searchVehicle.php";
-    String url = "http://admin.upstridge.co.ke/android/searchVehicle.php";
+    String url = "http://192.168.56.1/tmapp/android/searchVehicle.php";
+    //String url = "http://admin.upstridge.co.ke/android/searchVehicle.php";
 
     SearchView searchBar;
 
@@ -21,7 +22,7 @@ public class VehicleActivity extends Activity {
         setContentView(R.layout.activity_vehicle);
 
         Bundle bundle = getIntent().getExtras();
-        String date = bundle.getString("date");
+        //String date = bundle.getString("date");
         String time = bundle.getString("time");
         String destination = bundle.getString("to");
         String origin = bundle.getString("from");
@@ -29,10 +30,10 @@ public class VehicleActivity extends Activity {
 
         searchBar = (SearchView)findViewById(R.id.searchBar);
 
-        //Toast.makeText(vehicles.this, province + " Province"+","+destination, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
 
         final ListView lv = (ListView) findViewById(R.id.vehicleList);
-        final VehicleData v = new VehicleData(this, url, lv, date, time, destination, origin, searchBar);
+        final VehicleData v = new VehicleData(this, url, lv, time, destination, origin, searchBar);
 
         v.execute();
     }

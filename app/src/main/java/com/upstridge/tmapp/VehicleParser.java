@@ -29,7 +29,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
     Context c;
     ListView lv;
     String data;
-    String date;
+    //String date;
     String time;
     String destination;
     String origin;
@@ -47,11 +47,11 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public VehicleParser(Context c, String data, ListView lv, String date, String time, String destination, String origin, SearchView searchView) {
+    public VehicleParser(Context c, String data, ListView lv, String time, String destination, String origin, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
-        this.date = date;
+        //this.date = date;
         this.time = time;
         this.destination = destination;
         this.origin = origin;
@@ -137,7 +137,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                     Intent i = new Intent(c, SeatSelectionActivityNew.class);
                     Bundle b = new Bundle();
                     b.putString("destination", destination);
-                    b.putString("date", date);
+                    //b.putString("date", date);
                     b.putString("time", time);
                     b.putString("vehicle", vehicle);
                     b.putString("origin",origin);

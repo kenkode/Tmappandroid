@@ -3,8 +3,11 @@ package com.upstridge.tmapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -20,29 +23,25 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by Wango on 12/11/2016.
+ * Created by Wango-PC on 5/4/2017.
  */
-public class VehicleData extends AsyncTask<String, Integer, String> {
 
+public class PeriodDownloader extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
-    ListView lv;
-    //String date;
-    String time;
-    String destination;
-    String origin;
-    SearchView searchView;
+    Spinner time;
+    Spinner from;
+    Spinner to;
+    Button search;
     ProgressDialog pd;
 
-    public VehicleData(Context c, String address, ListView lv, String time, String destination, String origin, SearchView searchView){
+    public PeriodDownloader(Context c, String address,Spinner time, Spinner from, Spinner to, Button search){
         this.c = c;
         this.address = address;
-        this.lv = lv;
-        //this.date = date;
         this.time = time;
-        this.destination = destination;
-        this.origin = origin;
-        this.searchView = searchView;
+        this.from = from;
+        this.to = to;
+        this.search = search;
     }
 
 
@@ -69,14 +68,13 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
         super.onPostExecute(s);
 
         pd.dismiss();
-
-        //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
+        // Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            VehicleParser p = new VehicleParser(c, s, lv, time, destination, origin, searchView);
+            PeriodParser p = new PeriodParser(c, s, time, from, to, search);
             p.execute();
-        }else{
-            Toast.makeText(c, "No vehicles available", Toast.LENGTH_SHORT).show();
-        }
+        }/*else{
+            Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     private String downloadData(){
@@ -84,22 +82,17 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
         String line = null;
         String prov = "";
 
+
+
+
         try{
 
             URL url = new URL(address);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
+            con.setRequestMethod("GET");
             con.setDoOutput(true);
             con.setDoInput(true);
 
-            OutputStream outputStream = con.getOutputStream();
-
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8");
-            bufferedWriter.write(post_data);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
             InputStream inputStream = con.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
             //String result = "";
@@ -113,7 +106,7 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
 
             StringBuffer sb = new StringBuffer();
 
-            if(bufferedWriter != null){
+            if(bufferedReader != null){
                 while((line = bufferedReader.readLine()) != null){
                     sb.append(line+"\n");
                 }
@@ -124,7 +117,6 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
             bufferedReader.close();
             inputStream.close();
             con.disconnect();
-
 
 
             return sb.toString();

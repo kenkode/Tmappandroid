@@ -44,11 +44,19 @@
             android:label="@string/title_activity_booking" />
         <activity
             android:name=".SeatsActivity"
-            android:label="@string/title_activity_seats"></activity>
+            android:label="@string/title_activity_seats" />
         <activity
             android:name=".SeatSelectionActivityNew"
-            android:label="@string/title_activity_seats"></activity>
-
+            android:label="@string/title_activity_seats" />
+        <activity
+            android:name=".SelectPeriod"
+            android:label="@string/title_activity_select_period" />
+        <activity
+            android:name=".RequestTaxiActivity"
+            android:label="@string/title_activity_request_taxi" />
+        <activity
+            android:name=".TaxiActivity"
+            android:label="@string/title_activity_taxi"></activity>
     </application>
 
 </manifest>
