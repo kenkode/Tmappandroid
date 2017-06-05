@@ -100,11 +100,11 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Snackbar.make(view, des.get(position), Snackbar.LENGTH_SHORT).show();
-                    Intent i = new Intent(c, VehicleActivity.class);
+                    /*Intent i = new Intent(c, VehicleActivity.class);
                     Bundle b = new Bundle();
                     b.putString("taxi", des.get(position));
                     i.putExtras(b);
-                    c.startActivity(i);
+                    c.startActivity(i);*/
                 }
             });
 

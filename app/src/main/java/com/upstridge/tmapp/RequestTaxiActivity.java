@@ -1,5 +1,6 @@
 package com.upstridge.tmapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -23,6 +24,11 @@ public class RequestTaxiActivity extends Activity {
             @Override
             public void onClick(View v) {
                 final String request = ((RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+                if(request.equals("Yes")){
+                    Intent i = new Intent(getApplicationContext(), TaxiActivity.class);
+
+                    startActivity(i);
+                }
                 //Toast.makeText(RequestTaxiActivity.this,request,Toast.LENGTH_SHORT).show();
             }
         });
