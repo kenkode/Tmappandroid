@@ -31,7 +31,9 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
     ListView lv;
     String data;
     SearchView searchView;
-    ArrayList<String> des = new ArrayList<>();
+    ArrayList<Taxi> taxi = new ArrayList<>();
+
+    CustomTaxiAdapter adapter;
 
     ProgressDialog pd;
 
@@ -65,22 +67,21 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
         //Toast.makeText(c,integer,Toast.LENGTH_SHORT).show();
 
         if(integer == 1){
-            final ArrayAdapter<String> adapter =
-                    new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1, des){
+            adapter = new CustomTaxiAdapter(c,taxi);
+            /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,veh){
 
-                        @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
-                            View view =super.getView(position, convertView, parent);
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view =super.getView(position, convertView, parent);
 
-                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+                    TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-            /*YOUR CHOICE OF COLOR*/
-                            textView.setTextColor(Color.WHITE);
-                            textView.setTextSize(20);
+                    textView.setTextColor(Color.WHITE);
+                    textView.setTextSize(20);
 
-                            return view;
-                        }
-                    };
+                    return view;
+                }
+            };*/
             lv.setAdapter(adapter);
 
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -91,25 +92,56 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    adapter.getFilter().filter(newText);
+                    int textlength = newText.length();
+                    ArrayList<Taxi> tempArrayList = new ArrayList<Taxi>();
+                    for(Taxi c: taxi){
+                        if (textlength <= c.getName().length()) {
+                            if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
+                                tempArrayList.add(c);
+                            }
+                        }
+                    }
+                    adapter = new CustomTaxiAdapter(c, tempArrayList);
+                    lv.setAdapter(adapter);
+                    //adapter.getFilter().filter(newText);
                     return false;
                 }
             });
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Snackbar.make(view, des.get(position), Snackbar.LENGTH_SHORT).show();
-                    /*Intent i = new Intent(c, VehicleActivity.class);
-                    Bundle b = new Bundle();
-                    b.putString("taxi", des.get(position));
-                    i.putExtras(b);
-                    c.startActivity(i);*/
-                }
-            });
+                    String vehicle =((TextView)view.findViewById(R.id.vehicleName)).getText().toString();
+                    String arrival =((TextView)view.findViewById(R.id.arrival)).getText().toString();
+                    String departure =((TextView)view.findViewById(R.id.departure)).getText().toString();
+                    String vip =((TextView)view.findViewById(R.id.vipfare)).getText().toString();
+                    String economic =((TextView)view.findViewById(R.id.economicfare)).getText().toString();
+                    String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
+                    String vid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
+                    String firstclassapply =((TextView)view.findViewById(R.id.firstclassapply)).getText().toString();
 
+                    Intent i = new Intent(c, SeatSelectionActivityNew.class);
+                    Bundle b = new Bundle();
+                    b.putString("destination", destination);
+                    //b.putString("date", date);
+                    b.putString("time", time);
+                    b.putString("vehicle", vehicle);
+                    b.putString("origin",origin);
+                    b.putString("arrival", arr);
+                    b.putString("departure", dep);
+                    b.putString("vip", vipprice);
+                    b.putString("economic", ecprice);
+                    b.putString("type",type);
+                    b.putString("capacity",capacity);
+                    b.putString("organization", organization);
+                    b.putString("vid", vid);
+                    b.putString("firstclassapply", firstclassapply);
+                    i.putExtras(b);
+                    c.startActivity(i);
+                }
+            });*/
         }else{
-            Toast.makeText(c,"Data not available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(c,"No Taxi available",Toast.LENGTH_SHORT).show();
         }
 
         pd.dismiss();
@@ -122,14 +154,24 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
             JSONArray ja = new JSONArray(data);
             JSONObject jo = null;
 
-            des.clear();
+            taxi.clear();
+
+            Taxi tx;
 
             for (int i = 0; i < ja.length(); i++) {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
+                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("logo");
 
-                des.add(name);
+
+                //String price = "VIP : KES "+jo.getString("firstclass") + " Economic : KES "+jo.getString("economic");
+
+                tx = new Taxi();
+                tx.setName(name);
+                tx.setImageUrl(imageUrl);
+
+                taxi.add(tx);
             }
             return 1;
         } catch (JSONException e) {

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    >
+
+    <android.support.v4.widget.CircleImageView
+        android:id="@+id/vehicleImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/default_taxi"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/vehicleImage"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Taxis"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/vehicleImage"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Vehicle"
+        android:textSize="17sp"
+        />
 
 </RelativeLayout>

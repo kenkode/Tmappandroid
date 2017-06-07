@@ -10,11 +10,19 @@ import com.squareup.picasso.Picasso;
  */
 
 public class PicassoClient {
-    public static void downloadImage(Context c, String imageUrl, ImageView img){
+    public static void downloadImage(Context c, String imageUrl, String type, ImageView img){
         if(imageUrl.length() > 0 && imageUrl != null){
-            Picasso.with(c).load(imageUrl).placeholder(R.drawable.bus3).into(img);
+            if(type == "bus"){
+                Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_bus).into(img);
+            }else if(type == "taxi") {
+                Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_taxi).into(img);
+            }
         }else {
-            Picasso.with(c).load(R.drawable.bus3).into(img);
+            if(type == "bus"){
+                Picasso.with(c).load(R.drawable.default_bus).into(img);
+            }else if(type == "taxi") {
+                Picasso.with(c).load(R.drawable.default_taxi).into(img);
+            }
         }
     }
 }

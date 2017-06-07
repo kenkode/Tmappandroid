@@ -79,7 +79,7 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         vehicleid.setText(vehicle.getVehicleid());
         firstclassapply.setText(vehicle.getFirstclassapply());
 
-        PicassoClient.downloadImage(c,vehicle.getImageUrl(), logo);
+        PicassoClient.downloadImage(c,vehicle.getImageUrl(), "bus", logo);
 
         return convertView;
     }
