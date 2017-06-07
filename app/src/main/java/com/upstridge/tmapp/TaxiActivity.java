@@ -7,7 +7,7 @@ import android.widget.SearchView;
 
 public class TaxiActivity extends Activity {
 
-    String url = "http://192.168.56.1/tmapp/android/searchTaxi.php";
+    String url = "http://192.168.2.101/tmapp/android/searchTaxi.php";
     SearchView searchBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

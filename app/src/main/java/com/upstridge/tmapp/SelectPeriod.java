@@ -8,7 +8,7 @@ import android.widget.Spinner;
 
 public class SelectPeriod extends Activity {
 
-    String url = "http://192.168.56.1/tmapp/android/destination.php";
+    String url = "http://192.168.2.101/tmapp/android/destination.php";
     //String url = "http://admin.upstridge.co.ke/android/destination.php";
 
     @Override
