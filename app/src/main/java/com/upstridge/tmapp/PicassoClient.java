@@ -16,12 +16,16 @@ public class PicassoClient {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_bus).into(img);
             }else if(type == "taxi") {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_taxi).into(img);
+            }else if(type == "train") {
+                Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_train).into(img);
             }
         }else {
             if(type == "bus"){
                 Picasso.with(c).load(R.drawable.default_bus).into(img);
             }else if(type == "taxi") {
                 Picasso.with(c).load(R.drawable.default_taxi).into(img);
+            }else if(type == "train") {
+                Picasso.with(c).load(R.drawable.default_train).into(img);
             }
         }
     }

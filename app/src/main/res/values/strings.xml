@@ -22,6 +22,10 @@
     <string name="title_activity_select_period">SelectPeriod</string>
     <string name="title_activity_request_taxi">RequestTaxiActivity</string>
     <string name="title_activity_taxi">TaxiActivity</string>
+    <string name="title_activity_sgr">SgrActivity</string>
+    <string name="title_activity_sgr_detail">SgrDetailActivity</string>
+    <string name="title_activity_model">model</string>
+    <string name="title_activity_sgr_booking">SgrBooking</string>
 
 
 </resources>

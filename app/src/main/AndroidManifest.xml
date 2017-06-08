@@ -56,7 +56,22 @@
             android:label="@string/title_activity_request_taxi" />
         <activity
             android:name=".TaxiActivity"
-            android:label="@string/title_activity_taxi"></activity>
+            android:label="@string/title_activity_taxi" />
+        <activity
+            android:name=".sgr.SgrActivity"
+            android:label="@string/title_activity_sgr" />
+        <activity
+            android:name=".sgr.SgrDetailActivity"
+            android:label="@string/title_activity_sgr_detail" />
+        <activity
+            android:name=".sgr.SeatSelectionActivityNew"
+            android:label="@string/title_activity_sgr_detail" />
+        <activity
+            android:name=".sgr.SgrSeats"
+            android:label="@string/title_activity_sgr_detail" />
+        <activity
+            android:name=".sgr.SgrBooking"
+            android:label="@string/title_activity_sgr_booking"></activity>
     </application>
 
 </manifest>

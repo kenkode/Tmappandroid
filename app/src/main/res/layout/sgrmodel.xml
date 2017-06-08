@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/vehicleImage"
+        android:padding="10dp"
+        android:src="@drawable/default_train"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Name"
+        android:id="@+id/vehicleName"
+        android:textSize="16dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="#fc8213"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From - To"
+        android:id="@+id/route"
+        android:textSize="16dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/vehicleName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival:"
+        android:id="@+id/arrival"
+        android:textSize="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/route"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departure:"
+        android:id="@+id/departure"
+        android:paddingBottom="5dp"
+        android:textSize="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/arrival"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:id="@+id/vipfare"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/departure"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:id="@+id/economicfare"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/vipfare"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="organization ID:"
+        android:id="@+id/organization"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/economicfare"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle ID:"
+        android:id="@+id/vehicleid"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/organization"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Class Apply:"
+        android:id="@+id/firstclassapply"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/vehicleid"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
