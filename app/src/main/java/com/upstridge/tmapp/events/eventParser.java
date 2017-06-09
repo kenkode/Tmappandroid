@@ -1,4 +1,4 @@
-package com.upstridge.tmapp;
+package com.upstridge.tmapp.events;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.upstridge.tmapp.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,39 +21,32 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by Wango on 12/11/2016.
+ * Created by Wango-PC on 6/8/2017.
  */
-public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
+
+public class eventParser  extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
     ListView lv;
     String data;
     //String date;
-    String time;
-    String destination;
-    String origin;
-    String type;
-    String capacity;
+    String date;
+    String slots;
     String vipprice;
     String ecprice;
-    String arr;
-    String dep;
+    String children;
     SearchView searchView;
 
-    ArrayList<Vehicles> veh = new ArrayList<>();
+    ArrayList<Event> ev = new ArrayList<>();
 
-    CustomVehicleAdapter adapter;
+    CustomEventAdapter adapter;
 
     ProgressDialog pd;
 
-    public VehicleParser(Context c, String data, ListView lv, String time, String destination, String origin, SearchView searchView) {
+    public eventParser(Context c, String data, ListView lv, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
-        //this.date = date;
-        this.time = time;
-        this.destination = destination;
-        this.origin = origin;
         this.searchView = searchView;
     }
 
@@ -78,7 +73,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
         //Toast.makeText(c,integer,Toast.LENGTH_SHORT).show();
 
         if(integer == 1){
-            adapter = new CustomVehicleAdapter(c,veh);
+            adapter = new CustomEventAdapter(c,ev);
             /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,veh){
 
                 @Override
@@ -104,15 +99,15 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     int textlength = newText.length();
-                    ArrayList<Vehicles> tempArrayList = new ArrayList<Vehicles>();
-                    for(Vehicles c: veh){
+                    ArrayList<Event> tempArrayList = new ArrayList<Event>();
+                    for(Event c: ev){
                         if (textlength <= c.getName().length()) {
                             if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                 tempArrayList.add(c);
                             }
                         }
                     }
-                    adapter = new CustomVehicleAdapter(c, tempArrayList);
+                    adapter = new CustomEventAdapter(c, tempArrayList);
                     lv.setAdapter(adapter);
                     //adapter.getFilter().filter(newText);
                     return false;
@@ -122,38 +117,24 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String vehicle =((TextView)view.findViewById(R.id.vehicleName)).getText().toString();
-                    String arrival =((TextView)view.findViewById(R.id.location)).getText().toString();
-                    String departure =((TextView)view.findViewById(R.id.contact)).getText().toString();
-                    String vip =((TextView)view.findViewById(R.id.vipfare)).getText().toString();
-                    String economic =((TextView)view.findViewById(R.id.economicfare)).getText().toString();
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
-                    String vid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
-                    String firstclassapply =((TextView)view.findViewById(R.id.firstclassapply)).getText().toString();
+                    String eventid =((TextView)view.findViewById(R.id.eventid)).getText().toString();
 
-                    Intent i = new Intent(c, SeatSelectionActivityNew.class);
+                    Intent i = new Intent(c, NumberOfClients.class);
                     Bundle b = new Bundle();
-                    b.putString("destination", destination);
-                    //b.putString("date", date);
-                    b.putString("time", time);
-                    b.putString("vehicle", vehicle);
-                    b.putString("origin",origin);
-                    b.putString("arrival", arr);
-                    b.putString("departure", dep);
                     b.putString("vip", vipprice);
                     b.putString("economic", ecprice);
-                    b.putString("type",type);
-                    b.putString("capacity",capacity);
+                    b.putString("children",children);
+                    b.putString("slots",slots);
                     b.putString("organization", organization);
-                    b.putString("vid", vid);
-                    b.putString("firstclassapply", firstclassapply);
+                    b.putString("eventid", eventid);
                     i.putExtras(b);
                     c.startActivity(i);
                 }
             });
 
         }else{
-            Toast.makeText(c,"No vehicles available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(c,"No events available",Toast.LENGTH_SHORT).show();
         }
 
         pd.dismiss();
@@ -166,44 +147,47 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
             JSONArray ja = new JSONArray(data);
             JSONObject jo = null;
 
-            veh.clear();
+            ev.clear();
 
-            Vehicles vehicle;
+            Event event;
 
             for (int i = 0; i < ja.length(); i++) {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("logo");
-                String route = jo.getString("oname") +" to "+ jo.getString("dname");
-                String arrival = "Arrival : "+jo.getString("arrival");
-                String departure = "Departure : "+jo.getString("departure");
-                arr = jo.getString("arrival");
-                dep = jo.getString("departure");
-                type = jo.getString("type");
-                capacity = jo.getString("capacity");
-                String vipfare = "Vip Fare : KES "+jo.getString("firstclass");
-                String economicfare = "Economic Fare : KES "+jo.getString("economic");
-                vipprice = jo.getString("firstclass");
-                ecprice = jo.getString("economic");
+                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("image");
+                String remaininglots = "Remaining Slots : "+jo.getString("slots");
+                String description = "Description : "+jo.getString("description");
+                String contact = "Contact : "+jo.getString("contact");
+                String address = "Address : "+jo.getString("address");
+                String dt = "Date : "+jo.getString("date");
+                date = jo.getString("date");
+                String vip = "Vip Entrance : KES "+jo.getString("vip");
+                String normal = "Normal Entrance : KES "+jo.getString("normal");
+                String child = "Children Entrance : KES "+jo.getString("children");
+                vipprice = jo.getString("vip");
+                slots = jo.getString("slots");
+                ecprice = jo.getString("normal");
+                children = jo.getString("children");
                 String organization = jo.getString("organization_id");
-                String vehicleid = jo.getString("vehicle_id");
-                String firsclassapply = jo.getString("firstclass_apply");
+                String Evid = jo.getString("id");
 
                 //String price = "VIP : KES "+jo.getString("firstclass") + " Economic : KES "+jo.getString("economic");
 
-                vehicle = new Vehicles();
-                vehicle.setName(name);
-                vehicle.setImageUrl(imageUrl);
-                vehicle.setRoute(route);
-                vehicle.setArrival(arrival);
-                vehicle.setDeparture(departure);
-                vehicle.setVipprice(vipfare);
-                vehicle.setEconomicfare(economicfare);
-                vehicle.setOrganization(organization);
-                vehicle.setVehicleid(vehicleid);
-                vehicle.setFirstclassapply(firsclassapply);
-                veh.add(vehicle);
+                event = new Event();
+                event.setName(name);
+                event.setImageUrl(imageUrl);
+                event.setDescription(description);
+                event.setSlots(remaininglots);
+                event.setContact(contact);
+                event.setAddress(address);
+                event.setDate(dt);
+                event.setVipprice(vip);
+                event.setEconomic(normal);
+                event.setChildren(child);
+                event.setOrganizationId(organization);
+                event.setEventid(Evid);
+                ev.add(event);
             }
             return 1;
         } catch (JSONException e) {
@@ -213,3 +197,4 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
     }
 
 }
+

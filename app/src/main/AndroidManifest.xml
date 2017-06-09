@@ -71,7 +71,16 @@
             android:label="@string/title_activity_sgr_detail" />
         <activity
             android:name=".sgr.SgrBooking"
-            android:label="@string/title_activity_sgr_booking"></activity>
+            android:label="@string/title_activity_sgr_booking" />
+        <activity
+            android:name=".events.events"
+            android:label="@string/title_activity_events" />
+        <activity
+            android:name=".events.NumberOfClients"
+            android:label="@string/title_activity_number_of_clients" />
+        <activity
+            android:name=".events.eventBooking"
+            android:label="@string/title_activity_event_booking"></activity>
     </application>
 
 </manifest>

@@ -26,6 +26,9 @@
     <string name="title_activity_sgr_detail">SgrDetailActivity</string>
     <string name="title_activity_model">model</string>
     <string name="title_activity_sgr_booking">SgrBooking</string>
+    <string name="title_activity_events">events</string>
+    <string name="title_activity_number_of_clients">NumberOfClients</string>
+    <string name="title_activity_event_booking">eventBooking</string>
 
 
 </resources>

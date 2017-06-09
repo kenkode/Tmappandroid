@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.upstridge.tmapp.events.events;
 import com.upstridge.tmapp.sgr.SgrActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProvinceActivity.class).putExtra("mode", "events"));
+                startActivity(new Intent(getApplicationContext(), events.class).putExtra("mode", "events"));
             }
         });
 

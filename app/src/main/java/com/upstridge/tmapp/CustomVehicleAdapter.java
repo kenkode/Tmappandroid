@@ -56,10 +56,10 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         }
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.vehicleName);
-        ImageView logo = (ImageView) convertView.findViewById(R.id.vehicleImage);
-        TextView route = (TextView) convertView.findViewById(R.id.route);
-        TextView arrival = (TextView) convertView.findViewById(R.id.arrival);
-        TextView departure = (TextView) convertView.findViewById(R.id.departure);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.eventImage);
+        TextView route = (TextView) convertView.findViewById(R.id.description);
+        TextView arrival = (TextView) convertView.findViewById(R.id.location);
+        TextView departure = (TextView) convertView.findViewById(R.id.contact);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.vipfare);
         TextView economic = (TextView) convertView.findViewById(R.id.economicfare);

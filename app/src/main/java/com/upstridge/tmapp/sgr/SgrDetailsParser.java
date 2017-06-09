@@ -126,8 +126,8 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.vehicleName)).getText().toString();
-                    String arrival =((TextView)view.findViewById(R.id.arrival)).getText().toString();
-                    String departure =((TextView)view.findViewById(R.id.departure)).getText().toString();
+                    String arrival =((TextView)view.findViewById(R.id.location)).getText().toString();
+                    String departure =((TextView)view.findViewById(R.id.contact)).getText().toString();
                     String vip =((TextView)view.findViewById(R.id.vipfare)).getText().toString();
                     String economic =((TextView)view.findViewById(R.id.economicfare)).getText().toString();
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();

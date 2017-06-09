@@ -29,7 +29,7 @@ public class SgrDetailActivity extends Activity {
 
         //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
 
-        final ListView lv = (ListView) findViewById(R.id.vehicleList);
+        final ListView lv = (ListView) findViewById(R.id.trainList);
         final SgrData v = new SgrData(this, url, lv, time, destination, origin, searchBar);
 
         v.execute();
