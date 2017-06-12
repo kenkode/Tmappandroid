@@ -9,12 +9,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ebooking">
+        android:id="@+id/booking">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/firstevent"
+            android:id="@+id/first"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
@@ -155,6 +155,7 @@
                 android:hint="Identity No / Passport No"
                 android:inputType="textPersonName" />
 
+
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
@@ -184,8 +185,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lastevent"
-            android:layout_below="@+id/firstevent">
+            android:id="@+id/last"
+            android:layout_below="@+id/first">
 
             <TextView
                 android:id="@+id/textView21"

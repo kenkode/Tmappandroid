@@ -29,12 +29,12 @@ public class Sender extends AsyncTask<Void,Void,String>{
     //EditText firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt ;
     ArrayList<String> firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,amounttxt;
     Spinner fare,mode;
-    String firstname,lastname,email,phone,idno,price,paymentmode;
-    int slots;
+    String firstname,lastname,email,phone,idno,price,paymentmode,vip, economic, children;
+    int slots,adults, child;
 
     ProgressDialog pd;
 
-    public Sender(Context c, String urlAddress, String organization, String eventid, ArrayList<String>amounttxt, Spinner mode, int slots, ArrayList<String>firstnametxt, ArrayList<String>lastnametxt, ArrayList<String>emailtxt, ArrayList<String>phonetxt, ArrayList<String>idnotxt) {
+    public Sender(Context c, String urlAddress, String organization, String eventid, ArrayList<String>amounttxt, Spinner mode, int slots, String vip, String economic, String children, int adults, int child, ArrayList<String>firstnametxt, ArrayList<String>lastnametxt, ArrayList<String>emailtxt, ArrayList<String>phonetxt, ArrayList<String>idnotxt) {
         this.c = c;
         this.urlAddress = urlAddress;
         this.organization = organization;
@@ -42,6 +42,11 @@ public class Sender extends AsyncTask<Void,Void,String>{
         //this.fare = fare;
         this.mode = mode;
         this.slots = slots;
+        this.vip = vip;
+        this.economic = economic;
+        this.children = children;
+        this.adults = adults;
+        this.child = child;
 
         this.firstnametxt = firstnametxt;
         this.lastnametxt = lastnametxt;
@@ -101,7 +106,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         try{
             OutputStream os = con.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
-            bw.write(new DataPackage(firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,amounttxt,paymentmode,organization,eventid,slots).packData());
+            bw.write(new DataPackage(firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,amounttxt,paymentmode,organization,eventid,slots, vip, economic, children, adults, child).packData());
 
             bw.flush();
             bw.close();

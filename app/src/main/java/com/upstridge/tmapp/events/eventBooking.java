@@ -46,17 +46,19 @@ public class eventBooking extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking);
+        setContentView(R.layout.activity_event_booking);
 
         Bundle bundle = getIntent().getExtras();
         final String organization = bundle.getString("organization");
         final String eventid = bundle.getString("eventid");
         final String vip = bundle.getString("vip");
         final String economic = bundle.getString("economic");
-        String children = bundle.getString("children");
-        slots =  bundle.getInt("slots");
+        final String children = bundle.getString("children");
+        final int adults = bundle.getInt("adults");
+        final int child = bundle.getInt("child")-1;
+        slots =  adults + child;
 
-        String[] faretypes=new String[]{"VIP Entrance Fee","Economic Entrance Fee", "Children Entrance Fee"};
+        String[] faretypes=new String[]{"VIP Entrance Fee : KES "+vip,"Economic Entrance Fee : KES "+economic, "Children Entrance Fee : KES "+children};
 
         String[] modes=new String[]{"Mpesa","Airtel Money","VISA"};
 
@@ -81,8 +83,8 @@ public class eventBooking extends Activity {
 
         if(slots > 1) {
 
-            RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.ebooking);
-            RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.lastevent);
+            RelativeLayout rootLayout = (RelativeLayout)findViewById(R.id.booking);
+            RelativeLayout bottomLayout = (RelativeLayout)findViewById(R.id.last);
             RelativeLayout[] relativeLayout = new RelativeLayout[slots-1];
             fnametxt = new EditText[slots-1];
             lnametxt = new EditText[slots-1];
@@ -102,7 +104,7 @@ public class eventBooking extends Activity {
                         RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                param.addRule(RelativeLayout.BELOW,R.id.firstevent);
+                param.addRule(RelativeLayout.BELOW,R.id.first);
                 param.setMargins(0, 60, 0, 30);
                 relativeLayout[i].setLayoutParams(param);
 
@@ -435,7 +437,7 @@ public class eventBooking extends Activity {
                         //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
 
 
-                            Sender s = new Sender(eventBooking.this, urlAddress, organization, eventid, farevalues, mode, slots, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                            Sender s = new Sender(eventBooking.this, urlAddress, organization, eventid, farevalues, mode, slots, vip, economic, children, adults, child, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
                             s.execute();
 
                     }

@@ -17,7 +17,8 @@ public class NumberOfClients extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_of_clients);
 
-        final EditText numcust = (EditText) findViewById(R.id.numcust);
+        final EditText adults = (EditText) findViewById(R.id.numadults);
+        final EditText child = (EditText) findViewById(R.id.numadults);
         Button customers = (Button) findViewById(R.id.customers);
 
         Bundle bundle = getIntent().getExtras();
@@ -31,13 +32,14 @@ public class NumberOfClients extends Activity {
         customers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(numcust.getText().toString().trim().equals("")){
-                    numcust.setError("Please insert number of customers your booking for!");
+                if(adults.getText().toString().trim().equals("") || child.getText().toString().trim().equals("")){
+                    Toast.makeText(NumberOfClients.this,"Please insert atleast one person",Toast.LENGTH_SHORT).show();
                 }else {
                     Intent i = new Intent(getApplicationContext(), eventBooking.class);
                     Bundle b = new Bundle();
                     b.putString("eventid", eventid);
-                    b.putInt("slots", Integer.parseInt(numcust.getText().toString()));
+                    b.putInt("adults", Integer.parseInt(adults.getText().toString()));
+                    b.putInt("child", Integer.parseInt(child.getText().toString()));
                     b.putString("vip", vip);
                     b.putString("economic", economic);
                     b.putString("children", children);

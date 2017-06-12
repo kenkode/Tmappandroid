@@ -17,11 +17,11 @@ import static com.upstridge.tmapp.R.id.seats;
 public class DataPackage {
     ArrayList<String> firstname,lastname,email,phone,idno,fare;
 
-    String paymentmode,organization,eventid;
+    String paymentmode,organization,eventid,vip,economic,children;
 
-    int slots;
+    int slots,adults,child;
 
-    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, String organization, String eventid, int slots) {
+    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, String organization, String eventid, int slots, String vip, String economic, String children, int adults, int child) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -32,6 +32,11 @@ public class DataPackage {
         this.slots = slots;
         this.organization = organization;
         this.eventid = eventid;
+        this.vip = vip;
+        this.economic = economic;
+        this.children = children;
+        this.adults = adults;
+        this.child = child;
 
     }
 
@@ -51,6 +56,11 @@ public class DataPackage {
             jo.put("slots", slots);
             jo.put("organization", organization);
             jo.put("event", eventid);
+            jo.put("vip", vip);
+            jo.put("economic", economic);
+            jo.put("children", children);
+            jo.put("adults", adults);
+            jo.put("child", child);
 
 
             Boolean firstValue = true;
