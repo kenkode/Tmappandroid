@@ -1,5 +1,4 @@
-
-package com.upstridge.tmapp;
+package com.upstridge.tmapp.airline;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -7,15 +6,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class SelectPeriod extends Activity {
+import com.upstridge.tmapp.*;
+
+public class AirlineActivity extends Activity {
 
     String url = "http://10.0.2.2/tmapp/android/destination.php";
     //String url = "http://admin.upstridge.co.ke/android/destination.php";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_period);
+        setContentView(R.layout.activity_airline);
 
         String[] t=new String[]{"Morning","Afternoon","Evening","Night"};
         Spinner time = (Spinner) findViewById(R.id.time);
@@ -23,7 +23,7 @@ public class SelectPeriod extends Activity {
         Spinner to = (Spinner) findViewById(R.id.to);
         Button search = (Button) findViewById(R.id.button);
 
-        ArrayAdapter<String> timeArray= new ArrayAdapter<String>(SelectPeriod.this,android.R.layout.simple_spinner_item, t);
+        ArrayAdapter<String> timeArray= new ArrayAdapter<String>(AirlineActivity.this,android.R.layout.simple_spinner_item, t);
         timeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         time.setAdapter(timeArray);
 

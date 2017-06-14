@@ -29,6 +29,11 @@
     <string name="title_activity_events">events</string>
     <string name="title_activity_number_of_clients">NumberOfClients</string>
     <string name="title_activity_event_booking">eventBooking</string>
+    <string name="title_activity_airline">AirlineActivity</string>
+    <string name="title_activity_airplanes">Airplanes</string>
+    <string name="title_activity_airline_booking">AirlineBooking</string>
+    <string name="title_activity_period">PeriodActivity</string>
+    <string name="title_activity_taxi_booking">TaxiBooking</string>
 
 
 </resources>

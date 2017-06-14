@@ -80,7 +80,28 @@
             android:label="@string/title_activity_number_of_clients" />
         <activity
             android:name=".events.eventBooking"
-            android:label="@string/title_activity_event_booking"></activity>
+            android:label="@string/title_activity_event_booking" />
+        <activity
+            android:name=".airline.AirlineActivity"
+            android:label="@string/title_activity_airline" />
+        <activity
+            android:name=".airline.Airplanes"
+            android:label="@string/title_activity_airplanes" />
+        <activity
+            android:name=".airline.SeatSelectionActivityNew"
+            android:label="Select Seat" />
+        <activity
+            android:name=".airline.AirlineBooking"
+            android:label="@string/title_activity_airline_booking" />
+        <activity
+            android:name=".taxi.PeriodActivity"
+            android:label="@string/title_activity_period" />
+        <activity
+            android:name=".taxi.TaxiActivity"
+            android:label="@string/title_activity_taxi" />
+        <activity
+            android:name=".taxi.TaxiBooking"
+            android:label="@string/title_activity_taxi_booking"></activity>
     </application>
 
 </manifest>

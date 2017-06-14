@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/vehicleImage"
         android:padding="10dp"
-        android:src="@drawable/events_calendar"/>
+        android:src="@drawable/aeroplane"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Event Name"
-        android:id="@+id/eventName"
+        android:text="Vehicle Name"
+        android:id="@+id/vehicleName"
         android:textSize="16dp"
         android:paddingTop="15dp"
         android:paddingBottom="5dp"
@@ -25,89 +25,78 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:text="From - To"
         android:id="@+id/description"
         android:textSize="16dp"
         android:paddingBottom="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
-        android:layout_below="@id/eventName"/>
+        android:layout_below="@id/vehicleName"/>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival:"
         android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/description"
-        android:layout_toRightOf="@id/vehicleImage"
-        android:text="Location:"
+        android:textSize="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/description"/>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departure:"
         android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/location"
-        android:layout_toRightOf="@id/vehicleImage"
         android:paddingBottom="5dp"
-        android:text="Contact:"
+        android:textSize="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contact"
         android:layout_toRightOf="@id/vehicleImage"
-        android:paddingBottom="5dp"
-        android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/slots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/date"
-        android:layout_toRightOf="@id/vehicleImage"
-        android:paddingBottom="5dp"
-        android:text="Slots:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+        android:layout_below="@id/location"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
-        android:id="@+id/vip"
+        android:id="@+id/vipfare"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
-        android:layout_below="@id/slots"/>
+        android:layout_below="@id/contact"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
-        android:id="@+id/economic"
+        android:id="@+id/businessfare"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
-        android:layout_below="@id/vip"/>
+        android:layout_below="@id/vipfare"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
-        android:id="@+id/children"
+        android:id="@+id/economicfare"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
-        android:layout_below="@id/economic"/>
+        android:layout_below="@id/businessfare"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:id="@+id/childrenfare"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/economicfare"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,19 +107,32 @@
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
-        android:layout_below="@id/children"
+        android:layout_below="@id/economicfare"
         android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Event ID:"
-        android:id="@+id/eventid"
+        android:text="Vehicle ID:"
+        android:id="@+id/vehicleid"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/organization"
         android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Class Apply:"
+        android:id="@+id/firstclassapply"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/vehicleImage"
+        android:layout_below="@id/vehicleid"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>

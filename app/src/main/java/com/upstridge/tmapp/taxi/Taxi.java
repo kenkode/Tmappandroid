@@ -1,4 +1,4 @@
-package com.upstridge.tmapp;
+package com.upstridge.tmapp.taxi;
 
 /**
  * Created by Wango-PC on 5/6/2017.
@@ -23,5 +23,6 @@ public class Taxi {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 
 }

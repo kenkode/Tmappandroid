@@ -1,4 +1,4 @@
-package com.upstridge.tmapp;
+package com.upstridge.tmapp.taxi;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.upstridge.tmapp.PicassoClient;
+import com.upstridge.tmapp.R;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,14 @@
-package com.upstridge.tmapp.sgr;
+package com.upstridge.tmapp.airline;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,10 +23,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by Wango-PC on 6/8/2017.
+ * Created by Wango-PC on 5/4/2017.
  */
 
-public class SgrDownloader extends AsyncTask<String, Integer, String> {
+public class PeriodDownloader extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
     Spinner time;
@@ -31,7 +35,7 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
     Button search;
     ProgressDialog pd;
 
-    public SgrDownloader(Context c, String address,Spinner time, Spinner from, Spinner to, Button search){
+    public PeriodDownloader(Context c, String address,Spinner time, Spinner from, Spinner to, Button search){
         this.c = c;
         this.address = address;
         this.time = time;
@@ -66,7 +70,7 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
         pd.dismiss();
         // Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            SgrParser p = new SgrParser(c, s, time, from, to, search);
+            PeriodParser p = new PeriodParser(c, s, time, from, to, search);
             p.execute();
         }/*else{
             Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
@@ -91,7 +95,7 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
 
             OutputStream outputStream = con.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode("SGR","UTF-8");
+            String post_data = URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode("Airline","UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
@@ -140,4 +144,3 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
         return null;
     }
 }
-

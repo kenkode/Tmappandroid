@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/eventImage"
+        android:id="@+id/vehicleImage"
         android:padding="10dp"
         android:src="@drawable/default_train"/>
 
@@ -20,7 +20,7 @@
         android:paddingBottom="5dp"
         android:textColor="#fc8213"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"/>
+        android:layout_toRightOf="@id/vehicleImage"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
         android:textSize="16dp"
         android:paddingBottom="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/vehicleName"/>
 
     <TextView
@@ -40,7 +40,7 @@
         android:id="@+id/location"
         android:textSize="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/description"/>
 
     <TextView
@@ -51,7 +51,7 @@
         android:paddingBottom="5dp"
         android:textSize="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/location"/>
 
     <TextView
@@ -62,7 +62,7 @@
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/contact"/>
 
     <TextView
@@ -73,7 +73,7 @@
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/vipfare"/>
 
     <TextView
@@ -84,7 +84,7 @@
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/economicfare"
         android:visibility="invisible"/>
 
@@ -96,7 +96,7 @@
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/organization"
         android:visibility="invisible"/>
 
@@ -108,7 +108,7 @@
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/eventImage"
+        android:layout_toRightOf="@id/vehicleImage"
         android:layout_below="@id/vehicleid"
         android:visibility="invisible"/>
 

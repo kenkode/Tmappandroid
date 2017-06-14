@@ -1,10 +1,11 @@
-package com.upstridge.tmapp.sgr;
+package com.upstridge.tmapp.airline;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,25 +20,29 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by Wango-PC on 6/8/2017.
+ * Created by Wango on 12/11/2016.
  */
+public class AirlineData extends AsyncTask<String, Integer, String> {
 
-public class SgrDownloader extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
-    Spinner time;
-    Spinner from;
-    Spinner to;
-    Button search;
+    ListView lv;
+    //String date;
+    String time;
+    String destination;
+    String origin;
+    SearchView searchView;
     ProgressDialog pd;
 
-    public SgrDownloader(Context c, String address,Spinner time, Spinner from, Spinner to, Button search){
+    public AirlineData(Context c, String address, ListView lv, String time, String destination, String origin, SearchView searchView){
         this.c = c;
         this.address = address;
+        this.lv = lv;
+        //this.date = date;
         this.time = time;
-        this.from = from;
-        this.to = to;
-        this.search = search;
+        this.destination = destination;
+        this.origin = origin;
+        this.searchView = searchView;
     }
 
 
@@ -64,22 +69,20 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
         super.onPostExecute(s);
 
         pd.dismiss();
-        // Toast.makeText(c, s, Toast.LENGTH_LONG).show();
+
+        //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            SgrParser p = new SgrParser(c, s, time, from, to, search);
+            AirlineParser p = new AirlineParser(c, s, lv, time, destination, origin, searchView);
             p.execute();
-        }/*else{
-            Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();
-        }*/
+        }else{
+            Toast.makeText(c, "No aeroplanes available", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String downloadData(){
         InputStream Is = null;
         String line = null;
         String prov = "";
-
-
-
 
         try{
 
@@ -90,8 +93,9 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
             con.setDoInput(true);
 
             OutputStream outputStream = con.getOutputStream();
+
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode("SGR","UTF-8");
+            String post_data = URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
@@ -109,7 +113,7 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
 
             StringBuffer sb = new StringBuffer();
 
-            if(bufferedReader != null){
+            if(bufferedWriter != null){
                 while((line = bufferedReader.readLine()) != null){
                     sb.append(line+"\n");
                 }
@@ -120,6 +124,7 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
             bufferedReader.close();
             inputStream.close();
             con.disconnect();
+
 
 
             return sb.toString();
@@ -140,4 +145,3 @@ public class SgrDownloader extends AsyncTask<String, Integer, String> {
         return null;
     }
 }
-

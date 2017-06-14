@@ -1,4 +1,4 @@
-package com.upstridge.tmapp.sgr;
+package com.upstridge.tmapp.airline;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,21 +16,21 @@ import com.upstridge.tmapp.R;
 import java.util.ArrayList;
 
 /**
- * Created by Wango-PC on 6/8/2017.
+ * Created by Wango-PC on 5/6/2017.
  */
 
-public class CustomTrainAdapter extends BaseAdapter implements Filterable {
+public class CustomAeroplaneAdapter extends BaseAdapter implements Filterable{
 
     Context c;
-    ArrayList<Trains> trains;
-    ArrayList<Trains> trainsFiltered;
-    private TrainFilter trainFilter;
+    ArrayList<Aeroplanes> aeroplanes;
+    ArrayList<Aeroplanes> aeroplanesFiltered;
+    private AeroplaneFilter aeroplaneFilter;
 
     LayoutInflater inflater;
-    public CustomTrainAdapter(Context c, ArrayList<Trains> trains){
+    public CustomAeroplaneAdapter(Context c, ArrayList<Aeroplanes> aeroplanes){
         this.c = c;
-        this.trains = trains;
-        this.trainsFiltered = trains;
+        this.aeroplanes = aeroplanes;
+        this.aeroplanesFiltered = aeroplanes;
 
         inflater =(LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -39,12 +39,12 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public int getCount() {
-        return trainsFiltered.size();
+        return aeroplanesFiltered.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return trainsFiltered.get(position);
+        return aeroplanesFiltered.get(position);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.model,parent,false);
+            convertView = inflater.inflate(R.layout.airplane_model,parent,false);
         }
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.vehicleName);
@@ -65,48 +65,52 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         TextView departure = (TextView) convertView.findViewById(R.id.contact);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.vipfare);
+        TextView business = (TextView) convertView.findViewById(R.id.businessfare);
         TextView economic = (TextView) convertView.findViewById(R.id.economicfare);
+        TextView children = (TextView) convertView.findViewById(R.id.childrenfare);
         TextView organization = (TextView) convertView.findViewById(R.id.organization);
         TextView vehicleid = (TextView) convertView.findViewById(R.id.vehicleid);
         TextView firstclassapply = (TextView) convertView.findViewById(R.id.firstclassapply);
 
-        Trains train = trains.get(position);
-        nametxt.setText(train.getName());
-        route.setText(train.getRoute());
-        arrival.setText(train.getArrival());
-        departure.setText(train.getDeparture());
+        Aeroplanes aeroplane = aeroplanes.get(position);
+        nametxt.setText(aeroplane.getName());
+        route.setText(aeroplane.getRoute());
+        arrival.setText(aeroplane.getArrival());
+        departure.setText(aeroplane.getDeparture());
         //price.setText(vehicle.getPrice());
-        vip.setText(train.getVipprice());
-        economic.setText(train.getEconomicfare());
-        organization.setText(train.getOrganization());
-        vehicleid.setText(train.getVehicleid());
-        firstclassapply.setText(train.getFirstclassapply());
+        vip.setText(aeroplane.getVipprice());
+        business.setText(aeroplane.getBusinessfare());
+        economic.setText(aeroplane.getEconomicfare());
+        children.setText(aeroplane.getChildrenfare());
+        organization.setText(aeroplane.getOrganization());
+        vehicleid.setText(aeroplane.getVehicleid());
+        firstclassapply.setText(aeroplane.getFirstclassapply());
 
-        PicassoClient.downloadImage(c,train.getImageUrl(), "train", logo);
+        PicassoClient.downloadImage(c,aeroplane.getImageUrl(), "aeroplane", logo);
 
         return convertView;
     }
 
     @Override
     public Filter getFilter() {
-        if(trainFilter == null){
-            trainFilter = new TrainFilter();
+        if(aeroplaneFilter == null){
+            aeroplaneFilter = new AeroplaneFilter();
         }
-        return trainFilter;
+        return aeroplaneFilter;
     }
 
-    private class TrainFilter extends Filter{
+    private class AeroplaneFilter extends Filter{
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults filterResults = new FilterResults();
             if(constraint!=null && constraint.length()>0){
-                ArrayList<Trains> tempList = new ArrayList<Trains>();
+                ArrayList<Aeroplanes> tempList = new ArrayList<Aeroplanes>();
 
                 tempList.clear();
-                for (Trains train : trains){
-                    if(train.getName().toLowerCase().contains(constraint.toString().toLowerCase())) {
-                        tempList.add(train);
+                for (Aeroplanes aeroplane : aeroplanes){
+                    if(aeroplane.getName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        tempList.add(aeroplane);
                     }
                 }
 
@@ -114,8 +118,8 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
                 filterResults.values = tempList;
 
             }else{
-                filterResults.count = trains.size();
-                filterResults.values = trains;
+                filterResults.count = aeroplanes.size();
+                filterResults.values = aeroplanes;
             }
             return filterResults;
         }
@@ -123,7 +127,7 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            trainsFiltered = (ArrayList<Trains>)results.values;
+            aeroplanesFiltered = (ArrayList<Aeroplanes>)results.values;
             notifyDataSetChanged();
         }
     }

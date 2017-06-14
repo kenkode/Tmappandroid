@@ -20,6 +20,8 @@ public class PicassoClient {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_train).into(img);
             }else if(type == "event") {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.events_calendar).into(img);
+            }else if(type == "aeroplane") {
+                Picasso.with(c).load(imageUrl).placeholder(R.drawable.aeroplane).into(img);
             }
         }else {
             if(type == "bus"){
@@ -30,6 +32,8 @@ public class PicassoClient {
                 Picasso.with(c).load(R.drawable.default_train).into(img);
             }else if(type == "event") {
                 Picasso.with(c).load(R.drawable.events_calendar).into(img);
+            }else if(type == "aeroplane") {
+                Picasso.with(c).load(R.drawable.aeroplane).into(img);
             }
         }
     }

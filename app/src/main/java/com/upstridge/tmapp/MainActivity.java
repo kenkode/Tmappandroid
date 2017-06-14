@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.upstridge.tmapp.airline.AirlineActivity;
 import com.upstridge.tmapp.events.events;
 import com.upstridge.tmapp.sgr.SgrActivity;
+import com.upstridge.tmapp.taxi.TaxiActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProvinceActivity.class).putExtra("mode", "airline"));
+                startActivity(new Intent(getApplicationContext(), AirlineActivity.class).putExtra("mode", "airline"));
             }
         });
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProvinceActivity.class).putExtra("mode", "taxi"));
+                startActivity(new Intent(getApplicationContext(),TaxiActivity.class).putExtra("mode", "taxi"));
             }
         });
 
