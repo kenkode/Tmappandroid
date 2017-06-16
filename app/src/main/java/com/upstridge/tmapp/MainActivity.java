@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import com.upstridge.tmapp.airline.AirlineActivity;
 import com.upstridge.tmapp.events.events;
+import com.upstridge.tmapp.hotel.CheckTimeActivity;
 import com.upstridge.tmapp.sgr.SgrActivity;
 import com.upstridge.tmapp.taxi.TaxiActivity;
 
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProvinceActivity.class).putExtra("mode", "hotel"));
+                startActivity(new Intent(getApplicationContext(),CheckTimeActivity.class).putExtra("mode", "hotel"));
             }
         });
 

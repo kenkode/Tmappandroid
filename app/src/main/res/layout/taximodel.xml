@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/vehicleImage"
+        android:id="@+id/hotelImage"
         android:padding="10dp"
         android:src="@drawable/default_taxi"/>
 
@@ -14,13 +14,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vehicle Name"
-        android:id="@+id/vehicleName"
+        android:id="@+id/hotelName"
         android:textSize="24dp"
         android:paddingTop="30dp"
         android:paddingBottom="5dp"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/vehicleImage"/>
+        android:layout_toRightOf="@id/hotelImage"/>
 
 
 

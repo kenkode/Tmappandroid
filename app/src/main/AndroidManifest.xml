@@ -101,7 +101,13 @@
             android:label="@string/title_activity_taxi" />
         <activity
             android:name=".taxi.TaxiBooking"
-            android:label="@string/title_activity_taxi_booking"></activity>
+            android:label="@string/title_activity_taxi_booking" />
+        <activity
+            android:name=".hotel.CheckTimeActivity"
+            android:label="@string/title_activity_check_time" />
+        <activity
+            android:name=".hotel.HotelActivity"
+            android:label="@string/title_activity_hotel"></activity>
     </application>
 
 </manifest>

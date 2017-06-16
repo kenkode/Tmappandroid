@@ -7,13 +7,10 @@ package com.upstridge.tmapp.taxi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -117,7 +114,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String vehicle =((TextView)view.findViewById(R.id.vehicleName)).getText().toString();
+                    String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
 
                     Intent i = new Intent(c, PeriodActivity.class);
                     Bundle b = new Bundle();

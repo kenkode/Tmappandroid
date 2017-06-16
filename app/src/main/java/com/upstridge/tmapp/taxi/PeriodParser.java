@@ -41,14 +41,14 @@ public class PeriodParser extends AsyncTask<Void,Integer,Integer> {
     String arrival;
     String departure;
     String economic;
-    String capacity;
+    EditText capacity;
     String organization;
     String vid;
     String vehicle;
     ArrayList<String> origins = new ArrayList<>();
     ProgressDialog pd;
 
-    public PeriodParser(Context c, String data, Spinner from, Spinner to, Button search, String economic, String capacity, String vehicle, String vid, String organization){
+    public PeriodParser(Context c, String data, Spinner from, Spinner to, Button search, String economic, EditText capacity, String vehicle, String vid, String organization){
         this.c = c;
         this.data = data;
         this.from = from;
@@ -115,11 +115,11 @@ public class PeriodParser extends AsyncTask<Void,Integer,Integer> {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(c, TaxiActivity.class);
+                    Intent i = new Intent(c, TaxiBooking.class);
                     Bundle b = new Bundle();
                     b.putString("vehicle", vehicle);
                     b.putString("economic", economic);
-                    b.putInt("capacity",Integer.parseInt(capacity));
+                    b.putInt("capacity",Integer.parseInt(capacity.getText().toString()));
                     b.putString("organization", organization);
                     b.putString("vid", vid);
                     b.putString("from", frm_txt);

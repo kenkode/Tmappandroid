@@ -34,6 +34,8 @@
     <string name="title_activity_airline_booking">AirlineBooking</string>
     <string name="title_activity_period">PeriodActivity</string>
     <string name="title_activity_taxi_booking">TaxiBooking</string>
+    <string name="title_activity_check_time">CheckTimeActivity</string>
+    <string name="title_activity_hotel">HotelActivity</string>
 
 
 </resources>

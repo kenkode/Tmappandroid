@@ -122,7 +122,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String vehicle =((TextView)view.findViewById(R.id.vehicleName)).getText().toString();
+                    String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
                     String arrival =((TextView)view.findViewById(R.id.location)).getText().toString();
                     String departure =((TextView)view.findViewById(R.id.contact)).getText().toString();
                     String vip =((TextView)view.findViewById(R.id.vipfare)).getText().toString();

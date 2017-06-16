@@ -6,7 +6,7 @@
     >
 
     <android.support.v4.widget.CircleImageView
-        android:id="@+id/vehicleImage"
+        android:id="@+id/hotelImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -20,7 +20,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/vehicleImage"
+        android:layout_toRightOf="@+id/hotelImage"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:text="Taxis"
@@ -31,7 +31,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/vehicleImage"
+        android:layout_toRightOf="@+id/hotelImage"
         android:layout_below="@+id/title"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"

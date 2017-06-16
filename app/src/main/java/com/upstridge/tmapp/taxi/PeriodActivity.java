@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.upstridge.tmapp.R;
@@ -28,10 +29,11 @@ public class PeriodActivity extends Activity {
 
         Spinner from = (Spinner) findViewById(R.id.from);
         Spinner to = (Spinner) findViewById(R.id.to);
+        EditText nop = (EditText)findViewById(R.id.nop);
         Button search = (Button) findViewById(R.id.button);
 
 
-        final PeriodDownloader d = new PeriodDownloader(this, url, from, to, search,economic,capacity,vehicle,vid,organization);
+        final PeriodDownloader d = new PeriodDownloader(this, url, from, to, search,economic,nop,vehicle,vid,organization);
         d.execute();
     }
 

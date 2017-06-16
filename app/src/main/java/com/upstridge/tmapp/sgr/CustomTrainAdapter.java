@@ -58,8 +58,8 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
             convertView = inflater.inflate(R.layout.model,parent,false);
         }
 
-        TextView nametxt = (TextView) convertView.findViewById(R.id.vehicleName);
-        ImageView logo = (ImageView) convertView.findViewById(R.id.vehicleImage);
+        TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
         TextView route = (TextView) convertView.findViewById(R.id.description);
         TextView arrival = (TextView) convertView.findViewById(R.id.location);
         TextView departure = (TextView) convertView.findViewById(R.id.contact);

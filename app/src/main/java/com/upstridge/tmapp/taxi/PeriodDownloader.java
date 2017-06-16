@@ -34,12 +34,12 @@ public class PeriodDownloader extends AsyncTask<String, Integer, String> {
     Button search;
     ProgressDialog pd;
     String economic;
-    String capacity;
+    EditText capacity;
     String organization;
     String vid;
     String vehicle;
 
-    public PeriodDownloader(Context c, String address, Spinner from, Spinner to, Button search, String economic, String capacity, String vehicle, String vid, String organization){
+    public PeriodDownloader(Context c, String address, Spinner from, Spinner to, Button search, String economic, EditText capacity, String vehicle, String vid, String organization){
         this.c = c;
         this.address = address;
         this.from = from;

@@ -58,8 +58,8 @@ public class CustomTaxiAdapter extends BaseAdapter implements Filterable{
             convertView = inflater.inflate(R.layout.taximodel,parent,false);
         }
 
-        TextView nametxt = (TextView) convertView.findViewById(R.id.vehicleName);
-        ImageView logo = (ImageView) convertView.findViewById(R.id.vehicleImage);
+        TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
 
         Taxi taxi = taxis.get(position);
         nametxt.setText(taxi.getName());
