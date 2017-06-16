@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="From - To"
-            android:id="@+id/description"
+            android:id="@+id/roomtype"
             android:textSize="16dp"
             android:paddingBottom="5dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -37,33 +37,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arrival:"
-            android:id="@+id/location"
+            android:id="@+id/adults"
             android:textSize="16dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toRightOf="@id/hotelImage"
-            android:layout_below="@id/description"/>
+            android:layout_below="@id/roomtype"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Departure:"
-            android:id="@+id/contact"
+            android:id="@+id/children"
             android:paddingBottom="5dp"
             android:textSize="16dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toRightOf="@id/hotelImage"
-            android:layout_below="@id/location"/>
+            android:layout_below="@id/adults"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price:"
-            android:id="@+id/vipfare"
+            android:id="@+id/availability"
             android:textSize="16dp"
             android:textColor="#68ae00"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toRightOf="@id/hotelImage"
-            android:layout_below="@id/contact"/>
+            android:layout_below="@id/children"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
             android:textColor="#68ae00"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toRightOf="@id/hotelImage"
-            android:layout_below="@id/vipfare"/>
+            android:layout_below="@id/availability"/>
 
         <TextView
             android:layout_width="wrap_content"

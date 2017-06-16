@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context="com.upstridge.tmapp.hotel.HotelActivity">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Hotel"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlue"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp" />
 
+    <SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView8"
+        android:hint="Search"
+        android:queryHint="Search Vehicle...."/>
+
+
+    <ListView
+        android:id="@+id/hotelList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorWhite"
+        android:layout_below="@+id/searchBar" />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.upstridge.tmapp.sgr;
+package com.upstridge.tmapp.hotel;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,49 +12,46 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.upstridge.tmapp.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.upstridge.tmapp.R;
+
 
 import java.util.ArrayList;
 
 /**
- * Created by Wango-PC on 6/8/2017.
+ * Created by Wango on 12/11/2016.
  */
-
-public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
+public class HomeParser  extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
     ListView lv;
     String data;
-    //String date;
+    String area;
     String time;
-    String destination;
-    String origin;
     String type;
     String capacity;
-    String vipprice;
-    String ecprice;
-    String arr;
-    String dep;
+    String price;
+    String adults;
+    String children;
+    String branch;
+    String branchid;
+    String hotelid;
     SearchView searchView;
 
-    ArrayList<Trains> veh = new ArrayList<>();
+    ArrayList<Hotels> hot = new ArrayList<>();
 
-    CustomTrainAdapter adapter;
+    CustomHotelAdapter adapter;
 
     ProgressDialog pd;
 
-    public SgrDetailsParser(Context c, String data, ListView lv, String time, String destination, String origin, SearchView searchView) {
+    public HomeParser(Context c, String data, ListView lv, String time, String area, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
-        //this.date = date;
+        this.area = area;
         this.time = time;
-        this.destination = destination;
-        this.origin = origin;
         this.searchView = searchView;
     }
 
@@ -81,7 +78,7 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
         //Toast.makeText(c,integer,Toast.LENGTH_SHORT).show();
 
         if(integer == 1){
-            adapter = new CustomTrainAdapter(c,veh);
+            adapter = new CustomHotelAdapter(c,hot);
             /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,veh){
 
                 @Override
@@ -107,15 +104,15 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     int textlength = newText.length();
-                    ArrayList<Trains> tempArrayList = new ArrayList<Trains>();
-                    for(Trains c: veh){
+                    ArrayList<Hotels> tempArrayList = new ArrayList<Hotels>();
+                    for(Hotels c: hot){
                         if (textlength <= c.getName().length()) {
                             if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                 tempArrayList.add(c);
                             }
                         }
                     }
-                    adapter = new CustomTrainAdapter(c, tempArrayList);
+                    adapter = new CustomHotelAdapter(c, tempArrayList);
                     lv.setAdapter(adapter);
                     //adapter.getFilter().filter(newText);
                     return false;
@@ -125,38 +122,30 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
-                    String arrival =((TextView)view.findViewById(R.id.adults)).getText().toString();
-                    String departure =((TextView)view.findViewById(R.id.children)).getText().toString();
-                    String vip =((TextView)view.findViewById(R.id.availability)).getText().toString();
-                    String economic =((TextView)view.findViewById(R.id.economicfare)).getText().toString();
+                    String hotel =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
-                    String vid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
-                    String firstclassapply =((TextView)view.findViewById(R.id.firstclassapply)).getText().toString();
 
-                    Intent i = new Intent(c, SgrSeats.class);
+                    Intent i = new Intent(c, Customers.class);
                     Bundle b = new Bundle();
-                    b.putString("destination", destination);
-                    //b.putString("date", date);
+                    b.putString("area", area);
                     b.putString("time", time);
-                    b.putString("vehicle", vehicle);
-                    b.putString("origin",origin);
-                    b.putString("arrival", arr);
-                    b.putString("departure", dep);
-                    b.putString("vip", vipprice);
-                    b.putString("economic", ecprice);
+                    b.putString("hotel", hotel);
                     b.putString("type",type);
-                    b.putString("capacity",capacity);
+                    b.putString("price", price);
+                    b.putString("capacity", capacity);
+                    b.putString("adults", adults);
+                    b.putString("children", children);
                     b.putString("organization", organization);
-                    b.putString("vid", vid);
-                    b.putString("firstclassapply", firstclassapply);
+                    b.putString("hid", hotelid);
+                    b.putString("branch", branch);
+                    b.putString("branchid", branchid);
                     i.putExtras(b);
                     c.startActivity(i);
                 }
             });
 
         }else{
-            Toast.makeText(c,"No trains available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(c,"No hotels available",Toast.LENGTH_SHORT).show();
         }
 
         pd.dismiss();
@@ -169,44 +158,44 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
             JSONArray ja = new JSONArray(data);
             JSONObject jo = null;
 
-            veh.clear();
+            hot.clear();
 
-            Trains train;
+            Hotels hotel;
 
             for (int i = 0; i < ja.length(); i++) {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("logo");
-                String route = jo.getString("oname") +" to "+ jo.getString("dname");
-                String arrival = "Arrival : "+jo.getString("arrival");
-                String departure = "Departure : "+jo.getString("departure");
-                arr = jo.getString("arrival");
-                dep = jo.getString("departure");
+                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String hotelbranch = "Branch : "+jo.getString("branch");
+                String roomtype = "Room Type : "+jo.getString("type");
+                String roomcapacity = "Departure : "+jo.getString("room_count");
+                String hotadults = "Number of adults : "+jo.getString("adults");
+                String hotchildren = "Number of children : "+jo.getString("children");
+                adults = jo.getString("adults");
+                children = jo.getString("children");
                 type = jo.getString("type");
-                capacity = jo.getString("capacity");
-                String vipfare = "Vip Fare : KES "+jo.getString("firstclass");
-                String economicfare = "Economic Fare : KES "+jo.getString("economic");
-                vipprice = jo.getString("firstclass");
-                ecprice = jo.getString("economic");
+                capacity = jo.getString("room_count");
+                branch = jo.getString("branch");
+                branchid = jo.getString("branch_id");
+                String hotelprice = "Price : KES "+jo.getString("price");
+                price = jo.getString("price");
                 String organization = jo.getString("organization_id");
-                String vehicleid = jo.getString("vehicle_id");
-                String firsclassapply = jo.getString("firstclass_apply");
+                hotelid = jo.getString("id");
 
                 //String price = "VIP : KES "+jo.getString("firstclass") + " Economic : KES "+jo.getString("economic");
 
-                train = new Trains();
-                train.setName(name);
-                train.setImageUrl(imageUrl);
-                train.setRoute(route);
-                train.setArrival(arrival);
-                train.setDeparture(departure);
-                train.setVipprice(vipfare);
-                train.setEconomicfare(economicfare);
-                train.setOrganization(organization);
-                train.setVehicleid(vehicleid);
-                train.setFirstclassapply(firsclassapply);
-                veh.add(train);
+                hotel = new Hotels();
+                hotel.setName(name);
+                hotel.setImageUrl(imageUrl);
+                hotel.setType(roomtype);
+                hotel.setAvailability(roomcapacity);
+                hotel.setAdults(hotadults);
+                hotel.setChildren(hotchildren);
+                hotel.setBranch(hotelbranch);
+                hotel.setOrganization(organization);
+                hotel.setPrice(hotelprice);
+                hot.add(hotel);
             }
             return 1;
         } catch (JSONException e) {
@@ -216,4 +205,3 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
     }
 
 }
-

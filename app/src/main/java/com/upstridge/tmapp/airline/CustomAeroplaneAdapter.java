@@ -60,11 +60,11 @@ public class CustomAeroplaneAdapter extends BaseAdapter implements Filterable{
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
-        TextView route = (TextView) convertView.findViewById(R.id.description);
-        TextView arrival = (TextView) convertView.findViewById(R.id.location);
-        TextView departure = (TextView) convertView.findViewById(R.id.contact);
+        TextView route = (TextView) convertView.findViewById(R.id.roomtype);
+        TextView arrival = (TextView) convertView.findViewById(R.id.adults);
+        TextView departure = (TextView) convertView.findViewById(R.id.children);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
-        TextView vip = (TextView) convertView.findViewById(R.id.vipfare);
+        TextView vip = (TextView) convertView.findViewById(R.id.availability);
         TextView business = (TextView) convertView.findViewById(R.id.businessfare);
         TextView economic = (TextView) convertView.findViewById(R.id.economicfare);
         TextView children = (TextView) convertView.findViewById(R.id.childrenfare);

@@ -60,9 +60,9 @@ public class CustomEventAdapter extends BaseAdapter implements Filterable {
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.eventName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
-        TextView description = (TextView) convertView.findViewById(R.id.description);
-        TextView location = (TextView) convertView.findViewById(R.id.location);
-        TextView contact = (TextView) convertView.findViewById(R.id.contact);
+        TextView description = (TextView) convertView.findViewById(R.id.roomtype);
+        TextView location = (TextView) convertView.findViewById(R.id.adults);
+        TextView contact = (TextView) convertView.findViewById(R.id.children);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.vip);
         TextView economic = (TextView) convertView.findViewById(R.id.economic);

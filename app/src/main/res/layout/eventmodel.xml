@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:id="@+id/description"
+        android:id="@+id/roomtype"
         android:textSize="16dp"
         android:paddingBottom="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -34,20 +34,20 @@
         android:layout_below="@id/eventName"/>
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/adults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/description"
+        android:layout_below="@id/roomtype"
         android:layout_toRightOf="@id/hotelImage"
         android:text="Location:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
     <TextView
-        android:id="@+id/contact"
+        android:id="@+id/children"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/location"
+        android:layout_below="@id/adults"
         android:layout_toRightOf="@id/hotelImage"
         android:paddingBottom="5dp"
         android:text="Contact:"
@@ -58,7 +58,7 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/contact"
+        android:layout_below="@id/children"
         android:layout_toRightOf="@id/hotelImage"
         android:paddingBottom="5dp"
         android:text="Date:"

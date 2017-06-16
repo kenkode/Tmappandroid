@@ -107,7 +107,10 @@
             android:label="@string/title_activity_check_time" />
         <activity
             android:name=".hotel.HotelActivity"
-            android:label="@string/title_activity_hotel"></activity>
+            android:label="@string/title_activity_hotel" />
+        <activity
+            android:name=".hotel.Customers"
+            android:label="@string/title_activity_customers"></activity>
     </application>
 
 </manifest>

@@ -13,8 +13,8 @@ import com.upstridge.tmapp.R;
 
 public class CheckTimeActivity extends Activity {
 
-    String time_txt = "";
-    //String url = "http://admin.upstridge.co.ke/android/destination.php";
+    String url = "http://10.0.2.2/tmapp/android/branches.php";
+    //String url = "http://admin.upstridge.co.ke/android/branches.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +23,15 @@ public class CheckTimeActivity extends Activity {
 
         String[] t=new String[]{"Morning","Afternoon","Evening","Night"};
         final Spinner time = (Spinner) findViewById(R.id.time);
+        final Spinner area = (Spinner) findViewById(R.id.area);
         Button search = (Button) findViewById(R.id.customers);
 
         ArrayAdapter<String> timeArray= new ArrayAdapter<String>(CheckTimeActivity.this,android.R.layout.simple_spinner_item, t);
         timeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         time.setAdapter(timeArray);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                time_txt = time.getSelectedItem().toString();
-                Intent i = new Intent(CheckTimeActivity.this, HotelActivity.class);
-                Bundle b = new Bundle();
-                b.putString("time", time_txt);
-                i.putExtras(b);
-                CheckTimeActivity.this.startActivity(i);
-            }
-        });
+        final BranchDownloader d = new BranchDownloader(this, url, time, area, search);
+        d.execute();
     }
 
 }

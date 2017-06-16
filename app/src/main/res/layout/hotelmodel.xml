@@ -23,58 +23,70 @@
         android:textSize="16dp" />
 
     <TextView
+        android:id="@+id/branch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="From - To"
-        android:id="@+id/description"
-        android:textSize="16dp"
-        android:paddingBottom="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@id/hotelName"
         android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/hotelName"/>
+        android:paddingBottom="5dp"
+        android:text="Branch"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
 
     <TextView
+        android:id="@+id/roomtype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Arrival:"
-        android:id="@+id/location"
-        android:textSize="16dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@id/branch"
         android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/description"/>
+        android:paddingBottom="5dp"
+        android:text="Room Type"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
 
     <TextView
+        android:id="@+id/adults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Departure:"
-        android:id="@+id/contact"
-        android:paddingBottom="5dp"
-        android:textSize="16dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@id/roomtype"
         android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/location"/>
+        android:text="Adult"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/children"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adults"
+        android:layout_toRightOf="@id/hotelImage"
+        android:paddingBottom="5dp"
+        android:text="Children"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/children"
+        android:layout_toEndOf="@+id/hotelImage"
+        android:layout_toRightOf="@+id/hotelImage"
+        android:text="Availability"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorAccent"
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
-        android:id="@+id/vipfare"
+        android:id="@+id/price"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/contact"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/economicfare"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/vipfare"/>
+        android:layout_below="@id/availability"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,8 +103,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicle ID:"
-        android:id="@+id/vehicleid"
+        android:text="Hotel ID:"
+        android:id="@+id/hotelid"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -109,7 +121,7 @@
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/vehicleid"
+        android:layout_below="@id/hotelid"
         android:visibility="invisible"/>
 
 
