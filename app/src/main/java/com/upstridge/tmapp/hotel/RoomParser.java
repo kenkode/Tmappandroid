@@ -124,7 +124,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    
+
                         String roomtype = ((TextView) view.findViewById(R.id.roomName)).getText().toString();
 
                         Intent i = new Intent(c, Customers.class);
