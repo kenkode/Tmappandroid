@@ -32,22 +32,25 @@ import java.util.ArrayList;
 public class BranchParser extends AsyncTask<Void,Integer,Integer> {
 
     Context c;
-    Spinner time;
     String data;
     Spinner area;
     Button search;
+    String date_txt;
     String time_txt;
     String area_txt;
     String arrival;
     String departure;
     String hotel;
+    EditText btnpick;
+    EditText timepick;
     ArrayList<String> branches = new ArrayList<>();
     ProgressDialog pd;
 
-    public BranchParser(Context c, String data, Spinner time, Spinner area, Button search){
+    public BranchParser(Context c, String data, EditText btnpick, EditText timepick, Spinner area, Button search){
         this.c = c;
         this.data = data;
-        this.time = time;
+        this.btnpick = btnpick;
+        this.timepick = timepick;
         this.area = area;
         this.search = search;
     }
@@ -94,14 +97,13 @@ public class BranchParser extends AsyncTask<Void,Integer,Integer> {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    time_txt = time.getSelectedItem().toString();
+                    date_txt = btnpick.getText().toString();
+                    time_txt = timepick.getText().toString();
                     Intent i = new Intent(c, HotelActivity.class);
                     Bundle b = new Bundle();
                     b.putString("area", area_txt);
+                    b.putString("date", date_txt);
                     b.putString("time", time_txt);
-                    b.putString("arrival", arrival);
-                    b.putString("departure", departure);
-                    b.putString("hotel", hotel);
                     i.putExtras(b);
                     c.startActivity(i);
                 }

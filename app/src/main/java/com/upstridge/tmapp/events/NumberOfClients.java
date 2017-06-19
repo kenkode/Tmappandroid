@@ -18,7 +18,7 @@ public class NumberOfClients extends Activity {
         setContentView(R.layout.activity_number_of_clients);
 
         final EditText adults = (EditText) findViewById(R.id.numadults);
-        final EditText child = (EditText) findViewById(R.id.numadults);
+        final EditText child = (EditText) findViewById(R.id.numchildren);
         Button customers = (Button) findViewById(R.id.customers);
 
         Bundle bundle = getIntent().getExtras();

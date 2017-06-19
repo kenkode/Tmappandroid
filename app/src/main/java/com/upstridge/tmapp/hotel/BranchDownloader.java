@@ -31,13 +31,16 @@ public class BranchDownloader extends AsyncTask<String, Integer, String> {
     String address;
     Spinner time;
     Spinner area;
+    EditText btnpick;
+    EditText timepick;
     Button search;
     ProgressDialog pd;
 
-    public BranchDownloader(Context c, String address,Spinner time, Spinner area, Button search){
+    public BranchDownloader(Context c, String address, EditText btnpick, EditText timepick, Spinner area, Button search){
         this.c = c;
         this.address = address;
-        this.time = time;
+        this.btnpick = btnpick;
+        this.timepick = timepick;
         this.area = area;
         this.search = search;
     }
@@ -68,7 +71,7 @@ public class BranchDownloader extends AsyncTask<String, Integer, String> {
         pd.dismiss();
         // Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            BranchParser p = new BranchParser(c, s, time, area, search);
+            BranchParser p = new BranchParser(c, s, btnpick, timepick, area, search);
             p.execute();
         }/*else{
             Toast.makeText(c, "Data is not Available", Toast.LENGTH_SHORT).show();

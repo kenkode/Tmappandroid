@@ -110,6 +110,30 @@
                         android:textSize="12.0sp" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/vipImageLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/selectedImageLayout" >
+
+                    <ImageView
+                        android:id="@+id/vipImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10.0dip"
+                        android:rotation="90.0"
+                        android:src="@drawable/seat_layout_tab_nor_lad_avl" />
+
+                    <TextView
+                        android:id="@+id/vipText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_toRightOf="@+id/vipImage"
+                        android:text="VIP"
+                        android:textSize="12.0sp" />
+                </RelativeLayout>
 
             </RelativeLayout>
 

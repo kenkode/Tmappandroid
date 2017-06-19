@@ -1,4 +1,4 @@
-package com.upstridge.tmapp.events;
+package com.upstridge.tmapp.hotel;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,41 +24,44 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class eventBooking extends Activity {
+public class hotelBooking extends Activity {
 
-    String urlAddress = "http://192.168.2.101/tmapp/android/eventbooking.php";
+    String urlAddress = "http://192.168.2.101/tmapp/android/hotelbooking.php";
     //String urlAddress = "http://admin.upstridge.co.ke/android/eventbooking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;
     EditText [] fnametxt,lnametxt,emailtxt,phonetxt,idtxt;
-    Spinner[] amounttxt;
-    Spinner fare,mode;
+    Spinner mode;
     Button book;
-    String eventname = "";
+    String type = "";
+    String price = "";
     int slots= 0;
     ArrayList<String> fnamevalues = new ArrayList<>();
     ArrayList<String> lnamevalues = new ArrayList<>();
     ArrayList<String> phonevalues = new ArrayList<>();
     ArrayList<String> emailvalues = new ArrayList<>();
-    ArrayList<String> farevalues = new ArrayList<>();
     ArrayList<String> idnovalues = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_booking);
+        setContentView(R.layout.activity_hotel_booking);
 
         Bundle bundle = getIntent().getExtras();
         final String organization = bundle.getString("organization");
-        final String eventid = bundle.getString("eventid");
-        final String vip = bundle.getString("vip");
-        final String economic = bundle.getString("economic");
-        final String children = bundle.getString("children");
+        final String hotelid = bundle.getString("hotel");
+        final String type = bundle.getString("type");
+        price = bundle.getString("price");
+        final String branchid = bundle.getString("branchid");
+        final String date = bundle.getString("date");
+        final String time = bundle.getString("time");
         final int adults = bundle.getInt("adults");
         final int child = bundle.getInt("child");
         slots =  adults + child;
+        double totalprice = slots * Double.parseDouble(price);
 
-        String[] faretypes=new String[]{"VIP Entrance Fee : KES "+vip,"Economic Entrance Fee : KES "+economic, "Children Entrance Fee : KES "+children};
+        TextView tp = (TextView)findViewById(R.id.price);
+        tp.setText(Double.toString(totalprice));
 
         String[] modes=new String[]{"Mpesa","Airtel Money","VISA"};
 
@@ -69,13 +72,8 @@ public class eventBooking extends Activity {
         idno = (EditText)findViewById(R.id.idno);
         final String em = email.getText().toString();
 
-        fare=(Spinner) findViewById(R.id.fare);
-        ArrayAdapter<String> fareArray= new ArrayAdapter<String>(eventBooking.this,android.R.layout.simple_spinner_item, faretypes);
-        fareArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fare.setAdapter(fareArray);
-
         mode=(Spinner) findViewById(R.id.mode);
-        ArrayAdapter<String> modeArray= new ArrayAdapter<String>(eventBooking.this,android.R.layout.simple_spinner_item, modes);
+        ArrayAdapter<String> modeArray= new ArrayAdapter<String>(hotelBooking.this,android.R.layout.simple_spinner_item, modes);
         modeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mode.setAdapter(modeArray);
 
@@ -90,7 +88,6 @@ public class eventBooking extends Activity {
             lnametxt = new EditText[slots-1];
             phonetxt = new EditText[slots-1];
             emailtxt = new EditText[slots-1];
-            amounttxt = new Spinner[slots-1];
             idtxt = new EditText[slots-1];
             //RelativeLayout relativeLayout = new RelativeLayout(this);
             LinearLayout lp = new LinearLayout(this);
@@ -287,37 +284,6 @@ public class eventBooking extends Activity {
                 idtxt[i].setLayoutParams(param);
                 relativeLayout[i].addView(idtxt[i]);
 
-                param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                // Creating a new TextView
-                TextView amount = new TextView(this);
-                amount.setId(R.id.amount);
-                amount.setText("Select Fee:");
-                amount.setTextSize(15);
-                param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-                param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
-                param.addRule(RelativeLayout.BELOW, idnumber.getId());
-                param.setMargins(30, 0, 0, 30);
-                amount.setLayoutParams(param);
-                relativeLayout[i].addView(amount);
-
-                param = new RelativeLayout.LayoutParams(
-                        490,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-                amounttxt[i] = new Spinner(this);
-                amounttxt[i].setId(R.id.amounttxt);
-                param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-                param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
-                param.addRule(RelativeLayout.ALIGN_BASELINE,
-                        amount.getId());
-                param.addRule(RelativeLayout.ALIGN_BOTTOM,
-                        amount.getId());
-                amounttxt[i].setLayoutParams(param);
-                amounttxt[i].setAdapter(fareArray);
-                relativeLayout[i].addView(amounttxt[i]);
-
                 if(i == 0 ){
                     param = new RelativeLayout.LayoutParams(
                             RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -349,98 +315,95 @@ public class eventBooking extends Activity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fnamevalues.clear();
-                    lnamevalues.clear();
-                    emailvalues.clear();
-                    phonevalues.clear();
-                    idnovalues.clear();
-                    farevalues.clear();
+                fnamevalues.clear();
+                lnamevalues.clear();
+                emailvalues.clear();
+                phonevalues.clear();
+                idnovalues.clear();
 
-                    if (firstname.getText().toString().trim().equals("")) {
-                        firstname.setError("Please insert your first name");
-                    } else if (lastname.getText().toString().trim().equals("")) {
-                        lastname.setError("Please insert your last name");
-                    } else if (phone.getText().toString().trim().equals("")) {
-                        phone.setError("Please insert your phone number");
-                    } else if (email.getText().toString().trim().equals("")) {
-                        email.setError("Please insert your email");
-                    } else if (!email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                        email.setError("Please insert a valid email address");
-                    } else if (idno.getText().toString().trim().equals("")) {
-                        idno.setError("Please insert your national identity number");
-                    } else if (idno.getText().toString().trim().equals("")) {
-                        idno.setError("Please insert your national identity number / Passport number");
-                    } else if (isfnameEdited() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (fnametxt[i].getText().toString().trim().equals("")) {
-                                fnametxt[i].setError("Please insert " + (i + 2) + " person`s first name");
-                            }
+                if (firstname.getText().toString().trim().equals("")) {
+                    firstname.setError("Please insert your first name");
+                } else if (lastname.getText().toString().trim().equals("")) {
+                    lastname.setError("Please insert your last name");
+                } else if (phone.getText().toString().trim().equals("")) {
+                    phone.setError("Please insert your phone number");
+                } else if (email.getText().toString().trim().equals("")) {
+                    email.setError("Please insert your email");
+                } else if (!email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                    email.setError("Please insert a valid email address");
+                } else if (idno.getText().toString().trim().equals("")) {
+                    idno.setError("Please insert your national identity number");
+                } else if (idno.getText().toString().trim().equals("")) {
+                    idno.setError("Please insert your national identity number / Passport number");
+                } else if (isfnameEdited() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (fnametxt[i].getText().toString().trim().equals("")) {
+                            fnametxt[i].setError("Please insert " + (i + 2) + " person`s first name");
                         }
-                    } else if (islnameEdited() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (lnametxt[i].getText().toString().trim().equals("")) {
-                                lnametxt[i].setError("Please insert " + (i + 2) + " person`s last name");
-                            }
-                        }
-                    } else if (isphoneEdited() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (phonetxt[i].getText().toString().trim().equals("")) {
-                                phonetxt[i].setError("Please insert " + (i + 2) + " person`s phone number");
-                            }
-                        }
-                    } else if (isemailEdited() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (emailtxt[i].getText().toString().trim().equals("")) {
-                                emailtxt[i].setError("Please insert " + (i + 2) + " person`s email");
-                            }
-                        }
-                    } else if (isemailValid() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                                emailtxt[i].setError("Please insert a valid email address for " + (i + 2) + " person");
-                            }
-                        }
-                    } else if (isidnoEdited() == false) {
-                        for (int i = 0; i < slots-1; i++) {
-                            if (idtxt[i].getText().toString().trim().equals("")) {
-                                idtxt[i].setError("Please insert " + (i + 2) + " person`s national identity number / Passport number");
-                            }
-                        }
-                    } else {
-                        fnamevalues.add(firstname.getText().toString());
-                        lnamevalues.add(lastname.getText().toString());
-                        phonevalues.add(phone.getText().toString());
-                        emailvalues.add(email.getText().toString());
-                        idnovalues.add(idno.getText().toString());
-                        farevalues.add(fare.getSelectedItem().toString());
-
-                        for (int i = 0; i < slots-1; i++) {
-                            if (!fnametxt[i].getText().toString().trim().equals("")) {
-                                fnamevalues.add(fnametxt[i].getText().toString());
-                            }
-                            if (!lnametxt[i].getText().toString().trim().equals("")) {
-                                lnamevalues.add(lnametxt[i].getText().toString());
-                            }
-                            if (!phonetxt[i].getText().toString().trim().equals("")) {
-                                phonevalues.add(phonetxt[i].getText().toString());
-                            }
-                            if (!emailtxt[i].getText().toString().trim().equals("") && emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                                emailvalues.add(emailtxt[i].getText().toString());
-                            }
-                            if (!idtxt[i].getText().toString().trim().equals("")) {
-                                idnovalues.add(idtxt[i].getText().toString());
-                            }
-                            farevalues.add(amounttxt[i].getSelectedItem().toString());
-                        }
-
-
-                        //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
-
-
-                            Sender s = new Sender(eventBooking.this, urlAddress, organization, eventid, farevalues, mode, slots, vip, economic, children, adults, child, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
-                            s.execute();
-
                     }
+                } else if (islnameEdited() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (lnametxt[i].getText().toString().trim().equals("")) {
+                            lnametxt[i].setError("Please insert " + (i + 2) + " person`s last name");
+                        }
+                    }
+                } else if (isphoneEdited() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (phonetxt[i].getText().toString().trim().equals("")) {
+                            phonetxt[i].setError("Please insert " + (i + 2) + " person`s phone number");
+                        }
+                    }
+                } else if (isemailEdited() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (emailtxt[i].getText().toString().trim().equals("")) {
+                            emailtxt[i].setError("Please insert " + (i + 2) + " person`s email");
+                        }
+                    }
+                } else if (isemailValid() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (!emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                            emailtxt[i].setError("Please insert a valid email address for " + (i + 2) + " person");
+                        }
+                    }
+                } else if (isidnoEdited() == false) {
+                    for (int i = 0; i < slots-1; i++) {
+                        if (idtxt[i].getText().toString().trim().equals("")) {
+                            idtxt[i].setError("Please insert " + (i + 2) + " person`s national identity number / Passport number");
+                        }
+                    }
+                } else {
+                    fnamevalues.add(firstname.getText().toString());
+                    lnamevalues.add(lastname.getText().toString());
+                    phonevalues.add(phone.getText().toString());
+                    emailvalues.add(email.getText().toString());
+                    idnovalues.add(idno.getText().toString());
+
+                    for (int i = 0; i < slots-1; i++) {
+                        if (!fnametxt[i].getText().toString().trim().equals("")) {
+                            fnamevalues.add(fnametxt[i].getText().toString());
+                        }
+                        if (!lnametxt[i].getText().toString().trim().equals("")) {
+                            lnamevalues.add(lnametxt[i].getText().toString());
+                        }
+                        if (!phonetxt[i].getText().toString().trim().equals("")) {
+                            phonevalues.add(phonetxt[i].getText().toString());
+                        }
+                        if (!emailtxt[i].getText().toString().trim().equals("") && emailtxt[i].getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+                            emailvalues.add(emailtxt[i].getText().toString());
+                        }
+                        if (!idtxt[i].getText().toString().trim().equals("")) {
+                            idnovalues.add(idtxt[i].getText().toString());
+                        }
+                    }
+
+
+                    //Toast.makeText(BookingActivity.this, builder, Toast.LENGTH_LONG).show();
+
+
+                    Sender s = new Sender(hotelBooking.this, urlAddress, organization, hotelid, price, mode, slots, type, date, time, branchid, adults, child, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                    s.execute();
+
+                }
             }
         });
     }
@@ -550,13 +513,13 @@ public class eventBooking extends Activity {
         String strDate = sdf.format(c.getTime());
 
         String message = "Hi "+firstname.getText().toString()+" "+lastname.getText().toString()+",\n\n"
-                + "This is a confirmation that you have successfully booked "+eventname+" on "+strDate+"\n\n"
+                + "This is a confirmation that you have successfully booked "+type+" on "+strDate+"\n\n"
                 + "Your booking details are:\n"
                 + "1. First Name           : "+firstname.getText().toString()+"\n"
                 + "2. Last Name            : "+lastname.getText().toString()+"\n"
                 + "3. Phone Number         : "+phone.getText().toString()+"\n"
                 + "4. ID / Passport Number : "+idno.getText().toString()+"\n"
-                + "5. Amount               : "+fare.getSelectedItem().toString()+"\n"
+                + "5. Amount               : "+price+"\n"
                 + "6. Payment Mode         : "+mode.getSelectedItem().toString()+"\n";
 
         //Creating SendMail object

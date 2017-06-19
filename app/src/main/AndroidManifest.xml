@@ -110,7 +110,10 @@
             android:label="@string/title_activity_hotel" />
         <activity
             android:name=".hotel.Customers"
-            android:label="@string/title_activity_customers"></activity>
+            android:label="@string/title_activity_customers" />
+        <activity
+            android:name=".hotel.hotelBooking"
+            android:label="@string/title_activity_hotel_booking"></activity>
     </application>
 
 </manifest>

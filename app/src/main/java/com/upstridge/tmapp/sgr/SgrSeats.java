@@ -103,6 +103,10 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
 
     public void totalSeat(int n)
     {
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(driverIcon,"driver" ));
         for (int i = 1; i <= n; ++i)
         {
             gridArray.add(new Item(seatIcon, "seat " + i));

@@ -27,17 +27,17 @@ public class HotelData extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
     ListView lv;
-    //String date;
+    String date;
     String time;
     String area;
     SearchView searchView;
     ProgressDialog pd;
 
-    public HotelData(Context c, String address, ListView lv, String time,String area, SearchView searchView){
+    public HotelData(Context c, String address, ListView lv, String date, String time, String area, SearchView searchView){
         this.c = c;
         this.address = address;
         this.lv = lv;
-        //this.date = date;
+        this.date = date;
         this.time = time;
         this.area = area;
         this.searchView = searchView;
@@ -70,7 +70,7 @@ public class HotelData extends AsyncTask<String, Integer, String> {
 
         //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            HomeParser p = new HomeParser(c, s, lv, time,area, searchView);
+            HotelParser p = new HotelParser(c, s, lv, date, time, area, searchView);
             p.execute();
         }else{
             Toast.makeText(c, "No hotels available", Toast.LENGTH_SHORT).show();

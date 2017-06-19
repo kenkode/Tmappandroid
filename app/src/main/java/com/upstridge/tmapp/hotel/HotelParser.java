@@ -23,12 +23,13 @@ import java.util.ArrayList;
 /**
  * Created by Wango on 12/11/2016.
  */
-public class HomeParser  extends AsyncTask<Void, Integer, Integer> {
+public class HotelParser extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
     ListView lv;
     String data;
     String area;
+    String date;
     String time;
     String type;
     String capacity;
@@ -46,12 +47,13 @@ public class HomeParser  extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public HomeParser(Context c, String data, ListView lv, String time, String area, SearchView searchView) {
+    public HotelParser(Context c, String data, ListView lv, String date, String time, String area, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
         this.area = area;
         this.time = time;
+        this.date = date;
         this.searchView = searchView;
     }
 
@@ -128,6 +130,7 @@ public class HomeParser  extends AsyncTask<Void, Integer, Integer> {
                     Intent i = new Intent(c, Customers.class);
                     Bundle b = new Bundle();
                     b.putString("area", area);
+                    b.putString("date", date);
                     b.putString("time", time);
                     b.putString("hotel", hotel);
                     b.putString("type",type);
@@ -169,7 +172,7 @@ public class HomeParser  extends AsyncTask<Void, Integer, Integer> {
                 String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String hotelbranch = "Branch : "+jo.getString("branch");
                 String roomtype = "Room Type : "+jo.getString("type");
-                String roomcapacity = "Departure : "+jo.getString("room_count");
+                String roomcapacity = "Rooms Available : "+jo.getString("room_count");
                 String hotadults = "Number of adults : "+jo.getString("adults");
                 String hotchildren = "Number of children : "+jo.getString("children");
                 adults = jo.getString("adults");

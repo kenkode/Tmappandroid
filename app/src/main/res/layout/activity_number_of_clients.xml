@@ -19,38 +19,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:id="@+id/numadults"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Number of adults"
-        android:inputType="number"
-        android:layout_below="@+id/textView25"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/customers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBlue"
-        android:text="Done"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView26"
-        android:layout_alignStart="@+id/textView26" />
-
-    <EditText
-        android:id="@+id/numchildren"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView26"
-        android:ems="10"
-        android:hint="Number of children"
-        android:inputType="textPersonName" />
-
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
@@ -61,6 +29,17 @@
         android:textSize="16dp"
         android:textColor="@color/colorWhite"
         android:layout_below="@+id/textView24"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/numadults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Number of adults"
+        android:inputType="number"
+        android:layout_below="@+id/textView25"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -76,5 +55,26 @@
         android:layout_below="@+id/numadults"
         android:layout_marginTop="16dp"
         android:text="Number of children" />
+
+    <EditText
+        android:id="@+id/numchildren"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView26"
+        android:ems="10"
+        android:hint="Number of children"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/customers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlue"
+        android:text="Done"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textView26"
+        android:layout_alignStart="@+id/textView26" />
 
 </RelativeLayout>

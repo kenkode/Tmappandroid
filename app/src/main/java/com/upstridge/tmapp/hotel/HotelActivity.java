@@ -20,7 +20,7 @@ public class HotelActivity extends Activity {
         setContentView(R.layout.activity_hotel);
 
         Bundle bundle = getIntent().getExtras();
-        //String date = bundle.getString("date");
+        String date = bundle.getString("date");
         String time = bundle.getString("time");
         String area = bundle.getString("area");
 
@@ -29,7 +29,7 @@ public class HotelActivity extends Activity {
         //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
 
         final ListView lv = (ListView) findViewById(R.id.hotelList);
-        final HotelData v = new HotelData(this, url, lv, time, area, searchBar);
+        final HotelData v = new HotelData(this, url, lv, date, time, area, searchBar);
         v.execute();
     }
 

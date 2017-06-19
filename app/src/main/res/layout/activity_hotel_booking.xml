@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.upstridge.tmapp.events.eventBooking">
+    tools:context="com.upstridge.tmapp.hotel.hotelBooking">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/colorBlue"
                 android:textAlignment="center"
-                android:text="Book Event"
+                android:text="Book Hotel"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -156,28 +156,6 @@
                 android:inputType="textPersonName" />
 
 
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView18"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="14dp"
-                android:textSize="16sp"
-                android:text="Select Fee:" />
-
-            <Spinner
-                android:id="@+id/fare"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView20"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-
         </RelativeLayout>
 
 
@@ -189,6 +167,30 @@
             android:layout_below="@+id/first">
 
             <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="16sp"
+                android:text="Price (KES):" />
+
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView20"
+                android:textSize="16sp"
+                android:textColor="#68ae00"
+                android:text="Price:" />
+
+            <TextView
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -197,6 +199,7 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="14dp"
+                android:layout_below="@id/textView20"
                 android:textSize="16sp"
                 android:text="Payment Mode:" />
 

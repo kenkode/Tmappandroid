@@ -37,6 +37,7 @@
     <string name="title_activity_check_time">CheckTimeActivity</string>
     <string name="title_activity_hotel">HotelActivity</string>
     <string name="title_activity_customers">Customers</string>
+    <string name="title_activity_hotel_booking">hotelBooking</string>
 
 
 </resources>
