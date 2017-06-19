@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/hotelImage"
         android:padding="10dp"
         android:src="@drawable/hotel_default"/>
@@ -33,60 +33,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/roomtype"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/branch"
-        android:layout_toRightOf="@id/hotelImage"
-        android:paddingBottom="5dp"
-        android:text="Room Type"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/adults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/roomtype"
-        android:layout_toRightOf="@id/hotelImage"
-        android:text="Adult"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/children"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adults"
-        android:layout_toRightOf="@id/hotelImage"
-        android:paddingBottom="5dp"
-        android:text="Children"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/availability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/children"
-        android:layout_toEndOf="@+id/hotelImage"
-        android:layout_toRightOf="@+id/hotelImage"
-        android:text="Availability"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorAccent"
-        android:textSize="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/price"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/availability"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,18 +56,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_toRightOf="@id/hotelImage"
         android:layout_below="@id/organization"
-        android:visibility="invisible"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Class Apply:"
-        android:id="@+id/firstclassapply"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/hotelid"
         android:visibility="invisible"/>
 
 

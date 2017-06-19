@@ -33,7 +33,6 @@ public class HotelParser extends AsyncTask<Void, Integer, Integer> {
     String time;
     String type;
     String capacity;
-    String price;
     String adults;
     String children;
     String branch;
@@ -127,19 +126,13 @@ public class HotelParser extends AsyncTask<Void, Integer, Integer> {
                     String hotel =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
 
-                    Intent i = new Intent(c, Customers.class);
+                    Intent i = new Intent(c, rooms.class);
                     Bundle b = new Bundle();
                     b.putString("area", area);
                     b.putString("date", date);
                     b.putString("time", time);
                     b.putString("hotel", hotel);
-                    b.putString("type",type);
-                    b.putString("price", price);
-                    b.putString("capacity", capacity);
-                    b.putString("adults", adults);
-                    b.putString("children", children);
                     b.putString("organization", organization);
-                    b.putString("hid", hotelid);
                     b.putString("branch", branch);
                     b.putString("branchid", branchid);
                     i.putExtras(b);
@@ -171,33 +164,19 @@ public class HotelParser extends AsyncTask<Void, Integer, Integer> {
                 String name = jo.getString("name");
                 String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String hotelbranch = "Branch : "+jo.getString("branch");
-                String roomtype = "Room Type : "+jo.getString("type");
-                String roomcapacity = "Rooms Available : "+jo.getString("room_count");
-                String hotadults = "Number of adults : "+jo.getString("adults");
-                String hotchildren = "Number of children : "+jo.getString("children");
-                adults = jo.getString("adults");
-                children = jo.getString("children");
-                type = jo.getString("type");
-                capacity = jo.getString("room_count");
                 branch = jo.getString("branch");
-                branchid = jo.getString("branch_id");
-                String hotelprice = "Price : KES "+jo.getString("price");
-                price = jo.getString("price");
+                branchid = jo.getString("id");
+                //String hotelprice = "Price : KES "+jo.getString("price");
+                //price = jo.getString("price");
                 String organization = jo.getString("organization_id");
-                hotelid = jo.getString("id");
 
                 //String price = "VIP : KES "+jo.getString("firstclass") + " Economic : KES "+jo.getString("economic");
 
                 hotel = new Hotels();
                 hotel.setName(name);
                 hotel.setImageUrl(imageUrl);
-                hotel.setType(roomtype);
-                hotel.setAvailability(roomcapacity);
-                hotel.setAdults(hotadults);
-                hotel.setChildren(hotchildren);
                 hotel.setBranch(hotelbranch);
                 hotel.setOrganization(organization);
-                hotel.setPrice(hotelprice);
                 hot.add(hotel);
             }
             return 1;

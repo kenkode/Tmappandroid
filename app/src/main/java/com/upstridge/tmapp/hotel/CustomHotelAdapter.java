@@ -60,22 +60,12 @@ public class CustomHotelAdapter extends BaseAdapter implements Filterable{
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
-        TextView type = (TextView) convertView.findViewById(R.id.roomtype);
-        TextView adults = (TextView) convertView.findViewById(R.id.adults);
-        TextView children = (TextView) convertView.findViewById(R.id.children);
-        TextView branch = (TextView) convertView.findViewById(R.id.branch);
-        TextView availability = (TextView) convertView.findViewById(R.id.availability);
-        TextView price = (TextView) convertView.findViewById(R.id.price);
+         TextView branch = (TextView) convertView.findViewById(R.id.branch);
         TextView organization = (TextView) convertView.findViewById(R.id.organization);
 
         Hotels hotel = hotels.get(position);
         nametxt.setText(hotel.getName());
         branch.setText(hotel.getBranch());
-        type.setText(hotel.getType());
-        adults.setText(hotel.getAdults());
-        price.setText(hotel.getPrice());
-        children.setText(hotel.getChildren());
-        availability.setText(hotel.getAvailability());
         organization.setText(hotel.getOrganization());
 
         PicassoClient.downloadImage(c,hotel.getImageUrl(), "hotel", logo);

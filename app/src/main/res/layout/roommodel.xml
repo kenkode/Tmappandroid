@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/roomImage"
+        android:padding="10dp"
+        android:src="@drawable/room"/>
+
+    <TextView
+        android:id="@+id/roomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/roomImage"
+        android:paddingBottom="5dp"
+        android:paddingTop="15dp"
+        android:text="Room Type"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#fc8213"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roomName"
+        android:layout_toRightOf="@id/roomImage"
+        android:paddingBottom="5dp"
+        android:text="Availability"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/adults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/availability"
+        android:layout_toRightOf="@id/roomImage"
+        android:paddingBottom="5dp"
+        android:text="Number of adults"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/children"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adults"
+        android:layout_toRightOf="@id/roomImage"
+        android:paddingBottom="5dp"
+        android:text="Number of children"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/children"
+        android:layout_toRightOf="@id/roomImage"
+        android:paddingBottom="5dp"
+        android:textColor="#68ae00"
+        android:text="Price"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ROOM ID:"
+        android:id="@+id/roomid"
+        android:textSize="16dp"
+        android:textColor="#68ae00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@id/hotelImage"
+        android:layout_below="@id/organization"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

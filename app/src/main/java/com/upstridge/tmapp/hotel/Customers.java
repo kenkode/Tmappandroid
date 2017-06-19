@@ -23,11 +23,10 @@ public class Customers extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         final String organization = bundle.getString("organization");
-        final String hid = bundle.getString("hid");
+        final String roomid = bundle.getString("roomid");
         final String price = bundle.getString("price");
         final String type = bundle.getString("type");
         final String adultno = bundle.getString("adults");
-        final String area = bundle.getString("area");
         final String date = bundle.getString("date");
         final String time = bundle.getString("time");
         final String branchid = bundle.getString("branchid");
@@ -46,13 +45,12 @@ public class Customers extends Activity {
                 }else {
                     Intent i = new Intent(getApplicationContext(), hotelBooking.class);
                     Bundle b = new Bundle();
-                    b.putString("hoteltid", hid);
+                    b.putString("roomid", roomid);
                     b.putInt("adults", Integer.parseInt(adults.getText().toString()));
                     b.putInt("child", Integer.parseInt(child.getText().toString()));
                     b.putString("price", price);
                     b.putString("type", type);
                     b.putString("adultno", adultno);
-                    b.putString("area", area);
                     b.putString("branchid", branchid);
                     b.putString("children", children);
                     b.putString("time", time);
