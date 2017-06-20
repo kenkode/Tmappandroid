@@ -7,12 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo1"
-        android:label="@string/app_name"
+        android:label="Tuwende"
         android:roundIcon="@drawable/logo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".StartActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -58,7 +58,7 @@
             android:name=".TaxiActivity"
             android:label="@string/title_activity_taxi" />
         <activity
-            android:name=".sgr.SgrActivity"
+            android:name=".sgr.SgrActivity1"
             android:label="@string/title_activity_sgr" />
         <activity
             android:name=".sgr.SgrDetailActivity"
@@ -116,7 +116,16 @@
             android:label="@string/title_activity_hotel_booking" />
         <activity
             android:name=".hotel.rooms"
-            android:label="@string/title_activity_rooms"></activity>
+            android:label="@string/title_activity_rooms" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_start" />
+        <activity
+            android:name=".sgr.SgrHomeActivity"
+            android:label="@string/title_activity_sgr_home" />
+        <activity
+            android:name=".airline.PlaneHomeActivity"
+            android:label="@string/title_activity_plane_home"></activity>
     </application>
 
 </manifest>

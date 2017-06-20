@@ -51,7 +51,7 @@ public class BookingActivity extends Activity {
         final String vehicle = bundle.getString("vid");
         vehiclename = bundle.getString("vehicle");
         final String destination = bundle.getString("destination");
-        //final String date = bundle.getString("date");
+        final String date = bundle.getString("date");
         final String time = bundle.getString("time");
         final String origin = bundle.getString("origin");
         final String arrival = bundle.getString("arrival");
@@ -555,7 +555,7 @@ public class BookingActivity extends Activity {
                                 }
                             }
                         } else {
-                            Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                            Sender s = new Sender(BookingActivity.this, urlAddress, organization, vehicle, destination, origin,date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
                             s.execute();
                         }
                     }

@@ -125,6 +125,24 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                    TextView pricetextview = (TextView) view.findViewById(R.id.price);
+                    price = pricetextview.getText().toString().replace("Price : KES ","");
+                    TextView typetextview = (TextView) view.findViewById(R.id.roomName);
+                    type = typetextview.getText().toString();
+                    TextView adultstextview = (TextView) view.findViewById(R.id.adults);
+                    adults = adultstextview.getText().toString().replace("Number of adults : ","");
+                    TextView childrentextview = (TextView) view.findViewById(R.id.children);
+                    children = childrentextview.getText().toString().replace("Number of children : ","");
+                    TextView capacitytextview = (TextView) view.findViewById(R.id.availability);
+                    capacity = capacitytextview.getText().toString().replace("Rooms available : ","");
+                    TextView roomtextview = (TextView) view.findViewById(R.id.roomid);
+                    roomid = roomtextview.getText().toString();
+
+                    //Toast.makeText(c,price+"-"+type+"-"+adults+"-"+children+"-"+capacity+"-"+roomid,Toast.LENGTH_LONG).show();
+
+                    if(price.equals("Price : Undefined")){
+                        Toast.makeText(c,"This room can`t be selected because its price hasn`t been set",Toast.LENGTH_LONG).show();
+                    }else {
                         String roomtype = ((TextView) view.findViewById(R.id.roomName)).getText().toString();
 
                         Intent i = new Intent(c, Customers.class);
@@ -142,7 +160,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         b.putString("roomtype", roomtype);
                         i.putExtras(b);
                         c.startActivity(i);
-
+                    }
                 }
             });
 
@@ -176,7 +194,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("sun");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("sun");
+                        hotelprice = jo.getString("sun");
                         price = jo.getString("sun");
                     }
                 }else if(day == Calendar.MONDAY){
@@ -184,7 +202,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("mon");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("mon");
+                        hotelprice = jo.getString("mon");
                         price = jo.getString("mon");
                     }
                 }else if(day == Calendar.TUESDAY){
@@ -192,7 +210,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("tue");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("tue");
+                        hotelprice = jo.getString("tue");
                         price = jo.getString("tue");
                     }
                 }else if(day == Calendar.WEDNESDAY){
@@ -200,7 +218,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("wen");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("wen");
+                        hotelprice = jo.getString("wen");
                         price = jo.getString("wen");
                     }
                 }else if(day == Calendar.THURSDAY){
@@ -208,7 +226,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("thur");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("thur");
+                        hotelprice = jo.getString("thur");
                         price = jo.getString("thur");
                     }
                 }else if(day == Calendar.FRIDAY){
@@ -216,7 +234,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("fri");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("fri");
+                        hotelprice = jo.getString("fri");
                         price = jo.getString("fri");
                     }
                 }else if(day == Calendar.SATURDAY){
@@ -224,16 +242,16 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         hotelprice = "Price : Undefined";
                         price = jo.getString("sat");
                     }else {
-                        hotelprice = "Price : KES " + jo.getString("sat");
+                        hotelprice = jo.getString("sat");
                         price = jo.getString("sat");
                     }
                 }
 
                 String name = jo.getString("name");
                 String imageUrl = "http://10.0.2.2/tmapp/public/uploads/hotel/rooms/"+jo.getString("image");
-                String availability = "Rooms available : "+jo.getString("room_count");
-                String adultno = "Number of adults : "+jo.getString("adults");
-                String childno = "Number of children : "+jo.getString("children");
+                String availability = jo.getString("room_count");
+                String adultno = jo.getString("adults");
+                String childno = jo.getString("children");
                 type = jo.getString("name");
                 roomid = jo.getString("id");
                 capacity = jo.getString("room_count");
@@ -251,6 +269,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                 room.setAdults(adultno);
                 room.setChildren(childno);
                 room.setAvailability(availability);
+                room.setRoomid(roomid);
                 rm.add(room);
             }
             return 1;

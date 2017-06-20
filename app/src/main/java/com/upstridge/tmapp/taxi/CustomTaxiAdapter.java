@@ -59,10 +59,16 @@ public class CustomTaxiAdapter extends BaseAdapter implements Filterable{
         }
 
         TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
+        TextView ecprice = (TextView) convertView.findViewById(R.id.ecprice);
+        TextView vehicleid = (TextView) convertView.findViewById(R.id.vehicleid);
+        TextView capacity = (TextView) convertView.findViewById(R.id.capacity);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
 
         Taxi taxi = taxis.get(position);
         nametxt.setText(taxi.getName());
+        ecprice.setText(taxi.getEcprice());
+        capacity.setText(taxi.getCapacity());
+        vehicleid.setText(taxi.getVehicleid());
 
         PicassoClient.downloadImage(c,taxi.getImageUrl(), "taxi" ,logo);
 

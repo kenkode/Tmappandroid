@@ -115,6 +115,12 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
+                    String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
+                    ecprice =((TextView)view.findViewById(R.id.ecprice)).getText().toString();
+                    capacity =((TextView)view.findViewById(R.id.capacity)).getText().toString();
+                    vehicleid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
+
+                    //Toast.makeText(c,ecprice+"-"+vehicleid+"-"+capacity,Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(c, PeriodActivity.class);
                     Bundle b = new Bundle();
@@ -160,6 +166,9 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 tx = new Taxi();
                 tx.setName(name);
                 tx.setImageUrl(imageUrl);
+                tx.setEcprice(ecprice);
+                tx.setCapacity(capacity);
+                tx.setVehicleid(vehicleid);
                 taxi.add(tx);
             }
             return 1;

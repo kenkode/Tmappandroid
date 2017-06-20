@@ -38,11 +38,10 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
     Button search;
     String frm_txt;
     String to_txt;
-    String arrival;
-    String departure;
-    String vehicle;
     EditText btnpick;
     EditText timepick;
+    String date_txt;
+    String time_txt;
     ArrayList<String> origins = new ArrayList<>();
     ProgressDialog pd;
 
@@ -110,21 +109,22 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    date_txt = btnpick.getText().toString();
+                    time_txt = timepick.getText().toString();
                     Intent i = new Intent(c, VehicleActivity.class);
                     Bundle b = new Bundle();
                     b.putString("from", frm_txt);
                     b.putString("to", to_txt);
-                    b.putString("arrival", arrival);
-                    b.putString("departure", departure);
-                    b.putString("vehicle", vehicle);
+                    b.putString("date", date_txt);
+                    b.putString("time", time_txt);
                     i.putExtras(b);
                     c.startActivity(i);
                 }
             });
 
-        }/*else{
+        }else{
             Toast.makeText(c,"Unable to parse data...Please try again later",Toast.LENGTH_SHORT).show();
-        }*/
+        }
         pd.dismiss();
     }
 

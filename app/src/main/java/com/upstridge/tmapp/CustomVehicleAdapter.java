@@ -66,6 +66,8 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         TextView organization = (TextView) convertView.findViewById(R.id.organization);
         TextView vehicleid = (TextView) convertView.findViewById(R.id.vehicleid);
         TextView firstclassapply = (TextView) convertView.findViewById(R.id.firstclassapply);
+        TextView type = (TextView) convertView.findViewById(R.id.type);
+        TextView capacity = (TextView) convertView.findViewById(R.id.capacity);
 
         Vehicles vehicle = vehicles.get(position);
         nametxt.setText(vehicle.getName());
@@ -78,6 +80,8 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         organization.setText(vehicle.getOrganization());
         vehicleid.setText(vehicle.getVehicleid());
         firstclassapply.setText(vehicle.getFirstclassapply());
+        type.setText(vehicle.getType());
+        capacity.setText(vehicle.getCapacity());
 
         PicassoClient.downloadImage(c,vehicle.getImageUrl(), "bus", logo);
 

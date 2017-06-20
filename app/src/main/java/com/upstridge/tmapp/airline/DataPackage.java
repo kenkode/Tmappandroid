@@ -17,9 +17,9 @@ import static com.upstridge.tmapp.R.id.seats;
 public class DataPackage {
     ArrayList<String> firstname,lastname,email,phone,idno,fare,selectedseat;
 
-    String paymentmode,organization,vehicle,destination,origin,time,arrival,departure;
+    String paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure;
 
-    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin,  String time, String arrival, String departure) {
+    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin,String date,  String time, String arrival, String departure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -32,7 +32,7 @@ public class DataPackage {
         this.vehicle = vehicle;
         this.destination = destination;
         this.origin = origin;
-        //this.date = date;
+        this.date = date;
         this.time = time;
         this.arrival = arrival;
         this.departure = departure;
@@ -58,7 +58,7 @@ public class DataPackage {
             jo.put("origin", origin);
             jo.put("arrival", arrival);
             jo.put("departure", departure);
-            //jo.put("date", date);
+            jo.put("date", date);
             jo.put("time", time);
 
             Boolean firstValue = true;

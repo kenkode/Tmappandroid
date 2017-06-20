@@ -119,6 +119,12 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
                     String eventid =((TextView)view.findViewById(R.id.eventid)).getText().toString();
+                    vipprice =((TextView)view.findViewById(R.id.vip)).getText().toString().replace("Vip Entrance : KES ","");
+                    ecprice =((TextView)view.findViewById(R.id.economic)).getText().toString().replace("Normal Entrance : KES ","");
+                    slots =((TextView)view.findViewById(R.id.slots)).getText().toString().replace("Remaining Slots : ","");
+                    children =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Children Entrance : KES ","");
+
+                    //Toast.makeText(c,vipprice+"-"+ecprice+"-"+slots+"-"+children,Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(c, NumberOfClients.class);
                     Bundle b = new Bundle();

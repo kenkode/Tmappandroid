@@ -16,6 +16,7 @@ public class Trains {
     String organization;
     String vehicleid;
     String firstclassapply;
+    String capacity;
 
     public String getName() {
         return name;
@@ -103,5 +104,13 @@ public class Trains {
 
     public void setFirstclassapply(String firstclassapply) {
         this.firstclassapply = firstclassapply;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
     }
 }

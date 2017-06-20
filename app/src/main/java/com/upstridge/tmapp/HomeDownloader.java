@@ -91,10 +91,18 @@ public class HomeDownloader extends AsyncTask<String, Integer, String> {
 
             URL url = new URL(address);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("POST");
             con.setDoOutput(true);
             con.setDoInput(true);
 
+            OutputStream outputStream = con.getOutputStream();
+
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            String post_data = URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode("travel","UTF-8");
+            bufferedWriter.write(post_data);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            outputStream.close();
             InputStream inputStream = con.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
             //String result = "";

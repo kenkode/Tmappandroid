@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.upstridge.tmapp.StartActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Select Mode"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textColor="#000066"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/airplane"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#872657"
+        android:src="@drawable/kq4" />
+
+    <ImageButton
+        android:id="@+id/travel"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="#872657"
+        android:src="@drawable/coastern"
+        android:layout_alignTop="@+id/airplane"
+        android:layout_toRightOf="@+id/airplane"
+        android:layout_toEndOf="@+id/airplane" />
+
+    <ImageButton
+        android:id="@+id/hotel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/travel"
+        android:backgroundTint="#872657"
+        android:src="@drawable/room2" />
+
+    <ImageButton
+        android:id="@+id/taxi"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:backgroundTint="#872657"
+        android:src="@drawable/taxi2"
+        android:layout_below="@+id/hotel" />
+
+    <ImageButton
+        android:id="@+id/train"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:backgroundTint="#872657"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/sgr"
+        android:layout_below="@+id/hotel"
+        android:layout_alignTop="@+id/taxi"
+        android:layout_toRightOf="@+id/taxi"
+        android:layout_toEndOf="@+id/taxi" />
+
+    <ImageButton
+        android:id="@+id/event"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/taxi"
+        android:backgroundTint="#872657"
+        android:src="@drawable/concert1" />
+
+     </RelativeLayout>
+</ScrollView>

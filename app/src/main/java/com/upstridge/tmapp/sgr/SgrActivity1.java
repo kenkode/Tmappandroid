@@ -8,7 +8,7 @@ import android.widget.Spinner;
 
 import com.upstridge.tmapp.R;
 
-public class SgrActivity extends Activity {
+public class SgrActivity1 extends Activity {
 
     String url = "http://10.0.2.2/tmapp/android/destination.php";
     //String url = "http://admin.upstridge.co.ke/android/destination.php";
@@ -24,7 +24,7 @@ public class SgrActivity extends Activity {
         Spinner to = (Spinner) findViewById(R.id.to);
         Button search = (Button) findViewById(R.id.button);
 
-        ArrayAdapter<String> timeArray= new ArrayAdapter<String>(SgrActivity.this,android.R.layout.simple_spinner_item, t);
+        ArrayAdapter<String> timeArray= new ArrayAdapter<String>(SgrActivity1.this,android.R.layout.simple_spinner_item, t);
         timeArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         time.setAdapter(timeArray);
 

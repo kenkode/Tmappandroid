@@ -31,6 +31,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
     CustomGridViewAdapter customGridAdapter;
     public Bitmap seatIcon,driverIcon,blankIcon;
     public Bitmap seatSelect;
+    private boolean[] arrGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +40,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
         setContentView(R.layout.activity_seats);
 
         driverIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.steering_icon);
-        blankIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.blank);
+        blankIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ras1);
 
         seatIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_tab_nor_avl);
         seatSelect = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_screen_nor_std);
@@ -48,7 +49,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
         final String vehicle = bundle.getString("vid");
         final String vehiclename = bundle.getString("vehicle");
         final String destination = bundle.getString("destination");
-        //final String date = bundle.getString("date");
+        final String date = bundle.getString("date");
         final String time = bundle.getString("time");
         final String origin = bundle.getString("origin");
         final String arrival = bundle.getString("arrival");
@@ -56,7 +57,6 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
         final String vip = bundle.getString("vip");
         final String economic = bundle.getString("economic");
         final String firstclassapply = bundle.getString("firstclassapply");
-        type = bundle.getString("type");
         final String capacity = bundle.getString("capacity");
         final String organization = bundle.getString("organization");
 
@@ -80,7 +80,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                     Intent i = new Intent(getApplicationContext(), SgrBooking.class);
                     Bundle b = new Bundle();
                     b.putString("destination", destination);
-                    //b.putString("date", date);
+                    b.putString("date", date);
                     b.putString("time", time);
                     b.putString("vehicle", vehiclename);
                     b.putString("origin", origin);
@@ -88,7 +88,6 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                     b.putString("departure", departure);
                     b.putString("vip", vip);
                     b.putString("economic", economic);
-                    b.putString("type", type);
                     b.putString("capacity", capacity);
                     b.putString("organization", organization);
                     b.putString("vid", vehicle);

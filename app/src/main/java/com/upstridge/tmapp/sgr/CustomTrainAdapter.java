@@ -63,6 +63,7 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         TextView route = (TextView) convertView.findViewById(R.id.roomtype);
         TextView arrival = (TextView) convertView.findViewById(R.id.adults);
         TextView departure = (TextView) convertView.findViewById(R.id.children);
+        TextView capacity = (TextView) convertView.findViewById(R.id.capacity);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.availability);
         TextView economic = (TextView) convertView.findViewById(R.id.economicfare);
@@ -81,6 +82,7 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         organization.setText(train.getOrganization());
         vehicleid.setText(train.getVehicleid());
         firstclassapply.setText(train.getFirstclassapply());
+        capacity.setText(train.getCapacity());
 
         PicassoClient.downloadImage(c,train.getImageUrl(), "train", logo);
 

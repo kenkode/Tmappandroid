@@ -64,13 +64,15 @@ public class CustomRoomAdapter extends BaseAdapter implements Filterable{
         TextView children = (TextView) convertView.findViewById(R.id.children);
         TextView availabilty = (TextView) convertView.findViewById(R.id.availability);
         TextView price = (TextView) convertView.findViewById(R.id.price);
+        TextView roomid = (TextView) convertView.findViewById(R.id.roomid);
 
         Room room = rooms.get(position);
         nametxt.setText(room.getName());
-        adults.setText(room.getAdults());
-        children.setText(room.getChildren());
-        availabilty.setText(room.getAvailability());
-        price.setText(room.getPrice());
+        adults.setText("Number of adults : "+room.getAdults());
+        children.setText("Number of children : "+room.getChildren());
+        availabilty.setText("Rooms available : "+room.getAvailability());
+        price.setText("Price : KES " +room.getPrice());
+        roomid.setText(room.getRoomid());
 
         PicassoClient.downloadImage(c,room.getImageUrl(), "room", logo);
 

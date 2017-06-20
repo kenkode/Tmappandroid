@@ -71,6 +71,8 @@ public class CustomAeroplaneAdapter extends BaseAdapter implements Filterable{
         TextView organization = (TextView) convertView.findViewById(R.id.organization);
         TextView vehicleid = (TextView) convertView.findViewById(R.id.vehicleid);
         TextView firstclassapply = (TextView) convertView.findViewById(R.id.firstclassapply);
+        TextView capacity = (TextView) convertView.findViewById(R.id.capacity);
+
 
         Aeroplanes aeroplane = aeroplanes.get(position);
         nametxt.setText(aeroplane.getName());
@@ -85,6 +87,7 @@ public class CustomAeroplaneAdapter extends BaseAdapter implements Filterable{
         organization.setText(aeroplane.getOrganization());
         vehicleid.setText(aeroplane.getVehicleid());
         firstclassapply.setText(aeroplane.getFirstclassapply());
+        capacity.setText(aeroplane.getCapacity());
 
         PicassoClient.downloadImage(c,aeroplane.getImageUrl(), "aeroplane", logo);
 

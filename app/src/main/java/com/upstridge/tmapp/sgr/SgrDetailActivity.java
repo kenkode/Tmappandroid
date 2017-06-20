@@ -19,7 +19,7 @@ public class SgrDetailActivity extends Activity {
         setContentView(R.layout.activity_sgr_detail);
 
         Bundle bundle = getIntent().getExtras();
-        //String date = bundle.getString("date");
+        String date = bundle.getString("date");
         String time = bundle.getString("time");
         String destination = bundle.getString("to");
         String origin = bundle.getString("from");
@@ -30,7 +30,7 @@ public class SgrDetailActivity extends Activity {
         //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
 
         final ListView lv = (ListView) findViewById(R.id.trainList);
-        final SgrData v = new SgrData(this, url, lv, time, destination, origin, searchBar);
+        final SgrData v = new SgrData(this, url, lv,date, time, destination, origin, searchBar);
 
         v.execute();
     }

@@ -28,18 +28,18 @@ public class SgrData extends AsyncTask<String, Integer, String> {
     Context c;
     String address;
     ListView lv;
-    //String date;
+    String date;
     String time;
     String destination;
     String origin;
     SearchView searchView;
     ProgressDialog pd;
 
-    public SgrData(Context c, String address, ListView lv, String time, String destination, String origin, SearchView searchView){
+    public SgrData(Context c, String address, ListView lv, String date, String time, String destination, String origin, SearchView searchView){
         this.c = c;
         this.address = address;
         this.lv = lv;
-        //this.date = date;
+        this.date = date;
         this.time = time;
         this.destination = destination;
         this.origin = origin;
@@ -73,7 +73,7 @@ public class SgrData extends AsyncTask<String, Integer, String> {
 
         //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            SgrDetailsParser p = new SgrDetailsParser(c, s, lv, time, destination, origin, searchView);
+            SgrDetailsParser p = new SgrDetailsParser(c, s, lv, date, time, destination, origin, searchView);
             p.execute();
         }else{
             Toast.makeText(c, "No trains available", Toast.LENGTH_SHORT).show();

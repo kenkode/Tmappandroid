@@ -18,6 +18,7 @@ public class Aeroplanes {
     String organization;
     String vehicleid;
     String firstclassapply;
+    String capacity;
 
     public String getName() {
         return name;
@@ -121,5 +122,13 @@ public class Aeroplanes {
 
     public void setBusinessfare(String businessfare) {
         this.businessfare = businessfare;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
     }
 }

@@ -38,7 +38,7 @@ public class SeatSelectionActivityNew extends Activity implements AdapterView.On
         setContentView(R.layout.activity_seats);
 
         driverIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.steering_icon);
-        blankIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.blank);
+        blankIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ras1);
 
         seatIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_tab_nor_avl);
         seatSelect = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_screen_nor_std);
@@ -47,7 +47,7 @@ public class SeatSelectionActivityNew extends Activity implements AdapterView.On
         final String vehicle = bundle.getString("vid");
         final String vehiclename = bundle.getString("vehicle");
         final String destination = bundle.getString("destination");
-        //final String date = bundle.getString("date");
+        final String date = bundle.getString("date");
         final String time = bundle.getString("time");
         final String origin = bundle.getString("origin");
         final String arrival = bundle.getString("arrival");
@@ -81,7 +81,7 @@ public class SeatSelectionActivityNew extends Activity implements AdapterView.On
                     Intent i = new Intent(getApplicationContext(), AirlineBooking.class);
                     Bundle b = new Bundle();
                     b.putString("destination", destination);
-                    //b.putString("date", date);
+                    b.putString("date", date);
                     b.putString("time", time);
                     b.putString("vehicle", vehiclename);
                     b.putString("origin", origin);
@@ -106,6 +106,10 @@ public class SeatSelectionActivityNew extends Activity implements AdapterView.On
 
     public void totalSeat(int n)
     {
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(blankIcon,"" ));
+        gridArray.add(new Item(driverIcon,"driver" ));
         for (int i = 1; i <= n; ++i)
         {
             gridArray.add(new Item(seatIcon, "seat " + i));

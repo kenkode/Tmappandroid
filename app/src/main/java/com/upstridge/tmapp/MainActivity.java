@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import com.upstridge.tmapp.airline.AirlineActivity;
 import com.upstridge.tmapp.events.events;
 import com.upstridge.tmapp.hotel.CheckTimeActivity;
-import com.upstridge.tmapp.sgr.SgrActivity;
+import com.upstridge.tmapp.sgr.SgrHomeActivity;
 import com.upstridge.tmapp.taxi.TaxiActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        train.setOnClickListener(new View.OnClickListener() {
+        /*train.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SgrActivity.class).putExtra("mode", "train"));
+                startActivity(new Intent(getApplicationContext(), SgrHomeActivity.class).putExtra("mode", "train"));
             }
-        });
+        });*/
 
         taxi.setOnClickListener(new View.OnClickListener() {
 

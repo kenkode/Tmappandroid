@@ -20,7 +20,7 @@ public class Airplanes extends Activity {
         setContentView(R.layout.activity_airplanes);
 
         Bundle bundle = getIntent().getExtras();
-        //String date = bundle.getString("date");
+        String date = bundle.getString("date");
         String time = bundle.getString("time");
         String destination = bundle.getString("to");
         String origin = bundle.getString("from");
@@ -31,7 +31,7 @@ public class Airplanes extends Activity {
         //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
 
         final ListView lv = (ListView) findViewById(R.id.vehicleList);
-        final AirlineData v = new AirlineData(this, url, lv, time, destination, origin, searchBar);
+        final AirlineData v = new AirlineData(this, url, lv,date, time, destination, origin, searchBar);
 
         v.execute();
     }

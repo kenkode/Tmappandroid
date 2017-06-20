@@ -26,7 +26,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
     Context c;
     ListView lv;
     String data;
-    //String date;
+    String date;
     String time;
     String destination;
     String origin;
@@ -44,11 +44,11 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public VehicleParser(Context c, String data, ListView lv, String time, String destination, String origin, SearchView searchView) {
+    public VehicleParser(Context c, String data, ListView lv, String date, String time, String destination, String origin, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
-        //this.date = date;
+        this.date = date;
         this.time = time;
         this.destination = destination;
         this.origin = origin;
@@ -123,18 +123,22 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
-                    String arrival =((TextView)view.findViewById(R.id.adults)).getText().toString();
-                    String departure =((TextView)view.findViewById(R.id.children)).getText().toString();
-                    String vip =((TextView)view.findViewById(R.id.availability)).getText().toString();
-                    String economic =((TextView)view.findViewById(R.id.economicfare)).getText().toString();
+                    arr =((TextView)view.findViewById(R.id.adults)).getText().toString().replace("Arrival : ","");
+                    dep =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Departure : ","");
+                    vipprice =((TextView)view.findViewById(R.id.availability)).getText().toString().replace("Vip Fare : KES ","");
+                    ecprice =((TextView)view.findViewById(R.id.economicfare)).getText().toString().replace("Economic Fare : KES ","");
+                    type =((TextView)view.findViewById(R.id.type)).getText().toString();
+                    capacity =((TextView)view.findViewById(R.id.capacity)).getText().toString();
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
                     String vid =((TextView)view.findViewById(R.id.vehicleid)).getText().toString();
                     String firstclassapply =((TextView)view.findViewById(R.id.firstclassapply)).getText().toString();
 
+                    //Toast.makeText(c,arr+"-"+dep+"-"+vipprice+"-"+ecprice+"-"+capacity+"-"+type,Toast.LENGTH_LONG).show();
+
                     Intent i = new Intent(c, SeatSelectionActivityNew.class);
                     Bundle b = new Bundle();
                     b.putString("destination", destination);
-                    //b.putString("date", date);
+                    b.putString("date", date);
                     b.putString("time", time);
                     b.putString("vehicle", vehicle);
                     b.putString("origin",origin);
@@ -203,6 +207,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 vehicle.setOrganization(organization);
                 vehicle.setVehicleid(vehicleid);
                 vehicle.setFirstclassapply(firsclassapply);
+                vehicle.setType(type);
+                vehicle.setCapacity(capacity);
                 veh.add(vehicle);
             }
             return 1;
