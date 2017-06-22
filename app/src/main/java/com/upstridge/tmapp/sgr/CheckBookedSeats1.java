@@ -23,27 +23,25 @@ import java.net.URLEncoder;
  * Created by Wango-PC on 6/8/2017.
  */
 
-public class SgrData extends AsyncTask<String, Integer, String> {
+public class CheckBookedSeats1 extends AsyncTask<String, Integer, String> {
 
     Context c;
     String address;
-    ListView lv;
     String date;
     String time;
     String destination;
     String origin;
-    SearchView searchView;
+    String type;
     ProgressDialog pd;
 
-    public SgrData(Context c, String address, ListView lv, String date, String time, String destination, String origin, SearchView searchView){
+    public CheckBookedSeats1(Context c, String address, String date, String time, String destination, String origin, String type){
         this.c = c;
         this.address = address;
-        this.lv = lv;
         this.date = date;
         this.time = time;
         this.destination = destination;
         this.origin = origin;
-        this.searchView = searchView;
+        this.type=type;
     }
 
 
@@ -73,10 +71,10 @@ public class SgrData extends AsyncTask<String, Integer, String> {
 
         //Toast.makeText(c, s, Toast.LENGTH_LONG).show();
         if(s != null){
-            SgrDetailsParser p = new SgrDetailsParser(c, s, lv, date, time, destination, origin, searchView);
+            SeatsParser p = new SeatsParser(c, s);
             p.execute();
         }else{
-            Toast.makeText(c, "No trains available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(c, "No seats available", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -96,7 +94,7 @@ public class SgrData extends AsyncTask<String, Integer, String> {
             OutputStream outputStream = con.getOutputStream();
 
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8");
+            String post_data = URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8")+"&"+URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode(type,"UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();

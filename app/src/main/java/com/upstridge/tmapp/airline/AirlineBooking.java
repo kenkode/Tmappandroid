@@ -64,6 +64,7 @@ public class AirlineBooking extends Activity {
         final String economic = bundle.getString("economic");
         final String business = bundle.getString("business");
         final String children = bundle.getString("children");
+        final String type = "Airline";
         String firstclassapply = bundle.getString("firstclassapply");
         seats=  getIntent().getStringArrayListExtra("seats");
 
@@ -555,7 +556,7 @@ public class AirlineBooking extends Activity {
                                 }
                             }
                         } else {
-                            Sender s = new Sender(AirlineBooking.this, urlAddress, organization, vehicle, destination, origin,date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                            Sender s = new Sender(AirlineBooking.this, urlAddress, organization, vehicle, destination, origin,date, time, arrival, departure,type, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
                             s.execute();
                         }
                 }

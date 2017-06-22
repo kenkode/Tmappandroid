@@ -62,6 +62,7 @@ public class SgrBooking extends Activity {
         final String departure = bundle.getString("departure");
         final String vip = bundle.getString("vip");
         final String economic = bundle.getString("economic");
+        final String type = "SGR";
         String firstclassapply = bundle.getString("firstclassapply");
         seats=  getIntent().getStringArrayListExtra("seats");
 
@@ -555,7 +556,7 @@ public class SgrBooking extends Activity {
                                 }
                             }
                         } else {
-                            Sender s = new Sender(SgrBooking.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
+                            Sender s = new Sender(SgrBooking.this, urlAddress, organization, vehicle, destination, origin, date, time, arrival, departure,type, farevalues, mode, seatvalues, fnamevalues, lnamevalues, emailvalues, phonevalues, idnovalues);
                             s.execute();
                         }
                     }

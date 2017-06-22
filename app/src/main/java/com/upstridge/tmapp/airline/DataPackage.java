@@ -17,9 +17,9 @@ import static com.upstridge.tmapp.R.id.seats;
 public class DataPackage {
     ArrayList<String> firstname,lastname,email,phone,idno,fare,selectedseat;
 
-    String paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure;
+    String paymentmode,organization,vehicle,destination,origin,date,time,arrival,departure,type;
 
-    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin,String date,  String time, String arrival, String departure) {
+    public DataPackage(ArrayList<String> firstname, ArrayList<String> lastname, ArrayList<String> email, ArrayList<String> phone, ArrayList<String> idno,ArrayList<String> fare, String paymentmode, ArrayList<String> selectedseat, String organization, String vehicle, String destination, String origin,String date,  String time, String arrival, String departure, String type) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -36,6 +36,7 @@ public class DataPackage {
         this.time = time;
         this.arrival = arrival;
         this.departure = departure;
+        this.type = type;
     }
 
     public String packData(){
@@ -60,7 +61,7 @@ public class DataPackage {
             jo.put("departure", departure);
             jo.put("date", date);
             jo.put("time", time);
-
+            jo.put("type", type);
             Boolean firstValue = true;
 
             Iterator it = jo.keys();

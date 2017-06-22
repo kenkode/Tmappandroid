@@ -195,7 +195,6 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 String organization = jo.getString("organization_id");
                 String vehicleid = jo.getString("vehicle_id");
                 String firsclassapply = jo.getString("firstclass_apply");
-
                 //String price = "VIP : KES "+jo.getString("firstclass") + " Economic : KES "+jo.getString("economic");
 
                 train = new Trains();

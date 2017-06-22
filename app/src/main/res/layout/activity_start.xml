@@ -7,9 +7,24 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     tools:context="com.upstridge.tmapp.StartActivity">
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -22,66 +37,80 @@
         android:textColor="#000066"
         android:textSize="20sp" />
 
-    <ImageButton
+    <ViewFlipper
         android:id="@+id/airplane"
         android:layout_width="190dp"
         android:layout_height="200dp"
         android:layout_below="@+id/textView"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#872657"
-        android:src="@drawable/kq4" />
+        android:backgroundTint="#872657">
 
-    <ImageButton
+
+    </ViewFlipper>
+
+    <ViewFlipper
         android:id="@+id/travel"
-        android:layout_width="190dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:backgroundTint="#872657"
-        android:src="@drawable/coastern"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignTop="@+id/airplane"
         android:layout_toRightOf="@+id/airplane"
-        android:layout_toEndOf="@+id/airplane" />
+        android:layout_toEndOf="@+id/airplane"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp">
 
-    <ImageButton
+
+    </ViewFlipper>
+
+    <ViewFlipper
         android:id="@+id/hotel"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_below="@+id/travel"
-        android:backgroundTint="#872657"
-        android:src="@drawable/room2" />
+        android:layout_below="@+id/airplane"
+        android:backgroundTint="#872657">
 
-    <ImageButton
+
+    </ViewFlipper>
+
+
+    <ViewFlipper
         android:id="@+id/taxi"
         android:layout_width="190dp"
         android:layout_height="200dp"
         android:backgroundTint="#872657"
-        android:src="@drawable/taxi2"
-        android:layout_below="@+id/hotel" />
+        android:layout_below="@+id/hotel">
 
-    <ImageButton
+
+    </ViewFlipper>
+
+
+    <ViewFlipper
         android:id="@+id/train"
-        android:layout_width="190dp"
+        android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:backgroundTint="#872657"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:src="@drawable/sgr"
         android:layout_below="@+id/hotel"
         android:layout_alignTop="@+id/taxi"
         android:layout_toRightOf="@+id/taxi"
-        android:layout_toEndOf="@+id/taxi" />
+        android:layout_toEndOf="@+id/taxi">
 
-    <ImageButton
+
+    </ViewFlipper>
+
+
+    <ViewFlipper
         android:id="@+id/event"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/taxi"
-        android:backgroundTint="#872657"
-        android:src="@drawable/concert1" />
+        android:backgroundTint="#872657">
+
+
+    </ViewFlipper>
 
      </RelativeLayout>
 </ScrollView>

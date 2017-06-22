@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Sender extends AsyncTask<Void,Void,String>{
 
     Context c;
-    String urlAddress,organization,vehicle,destination,origin,date,time,arrival,departure;
+    String urlAddress,organization,vehicle,destination,origin,date,time,arrival,departure,type;
     //EditText firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt ;
     ArrayList<String> firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,seattxt,amounttxt;
     Spinner fare,mode,seat;
@@ -33,7 +33,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
 
     ProgressDialog pd;
 
-    public Sender(Context c, String urlAddress, String organization, String vehicle,String destination,String origin,String date,String time,String arrival,String departure, ArrayList<String>amounttxt, Spinner mode, ArrayList<String>seattxt, ArrayList<String>firstnametxt, ArrayList<String>lastnametxt, ArrayList<String>emailtxt, ArrayList<String>phonetxt, ArrayList<String>idnotxt) {
+    public Sender(Context c, String urlAddress, String organization, String vehicle,String destination,String origin,String date,String time,String arrival,String departure,String type, ArrayList<String>amounttxt, Spinner mode, ArrayList<String>seattxt, ArrayList<String>firstnametxt, ArrayList<String>lastnametxt, ArrayList<String>emailtxt, ArrayList<String>phonetxt, ArrayList<String>idnotxt) {
         this.c = c;
         this.urlAddress = urlAddress;
         this.organization = organization;
@@ -44,7 +44,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         this.time = time;
         this.arrival = arrival;
         this.departure = departure;
-        //this.fare = fare;
+        this.type = type;
         this.mode = mode;
         //this.seat = seat;
 
@@ -107,7 +107,7 @@ public class Sender extends AsyncTask<Void,Void,String>{
         try{
             OutputStream os = con.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
-            bw.write(new DataPackage(firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,amounttxt,paymentmode,seattxt,organization,vehicle,destination,origin,date,time,arrival,departure).packData());
+            bw.write(new DataPackage(firstnametxt,lastnametxt,emailtxt,phonetxt,idnotxt,amounttxt,paymentmode,seattxt,organization,vehicle,destination,origin,date,time,arrival,departure,type).packData());
 
             bw.flush();
             bw.close();
