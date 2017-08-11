@@ -162,7 +162,7 @@ public class HotelParser extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String hotelbranch = "Branch : "+jo.getString("branch");
                 branch = jo.getString("branch");
                 branchid = jo.getString("id");

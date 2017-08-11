@@ -16,5 +16,7 @@
     <item type="id" name="idpasstxt"/>
     <item type="id" name="seattxt"/>
     <item type="id" name="amounttxt"/>
+    <item type="id" name="travel"/>
+    <item type="id" name="airplane"/>
     <item type="id" name="seatInvisibleError"/>
 </resources>

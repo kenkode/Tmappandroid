@@ -123,8 +123,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
-                    arr =((TextView)view.findViewById(R.id.adults)).getText().toString().replace("Arrival : ","");
-                    dep =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Departure : ","");
+                    //arr =((TextView)view.findViewById(R.id.adults)).getText().toString().replace("Arrival : ","");
+                    //dep =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Departure : ","");
                     vipprice =((TextView)view.findViewById(R.id.availability)).getText().toString().replace("Vip Fare : KES ","");
                     ecprice =((TextView)view.findViewById(R.id.economicfare)).getText().toString().replace("Economic Fare : KES ","");
                     type =((TextView)view.findViewById(R.id.type)).getText().toString();
@@ -142,8 +142,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                     b.putString("time", time);
                     b.putString("vehicle", vehicle);
                     b.putString("origin",origin);
-                    b.putString("arrival", arr);
-                    b.putString("departure", dep);
+                    //b.putString("arrival", arr);
+                    //b.putString("departure", dep);
                     b.putString("vip", vipprice);
                     b.putString("economic", ecprice);
                     b.putString("type",type);
@@ -178,12 +178,12 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String route = jo.getString("oname") +" to "+ jo.getString("dname");
-                String arrival = "Arrival : "+jo.getString("arrival");
-                String departure = "Departure : "+jo.getString("departure");
-                arr = jo.getString("arrival");
-                dep = jo.getString("departure");
+                //String arrival = "Arrival : "+jo.getString("arrival");
+                //String departure = "Departure : "+jo.getString("departure");
+                //arr = jo.getString("arrival");
+                //dep = jo.getString("departure");
                 type = jo.getString("type");
                 capacity = jo.getString("capacity");
                 String vipfare = "Vip Fare : KES "+jo.getString("firstclass");
@@ -200,8 +200,8 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 vehicle.setName(name);
                 vehicle.setImageUrl(imageUrl);
                 vehicle.setRoute(route);
-                vehicle.setArrival(arrival);
-                vehicle.setDeparture(departure);
+                //vehicle.setArrival(arrival);
+                //vehicle.setDeparture(departure);
                 vehicle.setVipprice(vipfare);
                 vehicle.setEconomicfare(economicfare);
                 vehicle.setOrganization(organization);

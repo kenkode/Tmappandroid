@@ -10,7 +10,9 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/rl">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -43,6 +45,7 @@
         android:layout_height="200dp"
         android:layout_below="@+id/textView"
         android:layout_marginTop="20dp"
+        android:layout_weight="0.5"
         android:backgroundTint="#872657">
 
 
@@ -51,7 +54,7 @@
     <ViewFlipper
         android:id="@+id/travel"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="200dp"
         android:layout_alignTop="@+id/airplane"
         android:layout_toRightOf="@+id/airplane"
         android:layout_toEndOf="@+id/airplane"

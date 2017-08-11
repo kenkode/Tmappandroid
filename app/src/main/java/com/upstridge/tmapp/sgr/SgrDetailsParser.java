@@ -126,8 +126,8 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
-                    arr =((TextView)view.findViewById(R.id.adults)).getText().toString().replace("Arrival : ","");
-                    dep =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Departure : ","");
+                    //arr =((TextView)view.findViewById(R.id.adults)).getText().toString().replace("Arrival : ","");
+                    //dep =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Departure : ","");
                     vipprice =((TextView)view.findViewById(R.id.availability)).getText().toString().replace("Vip Fare : KES ","");
                     ecprice =((TextView)view.findViewById(R.id.economicfare)).getText().toString().replace("Economic Fare : KES ","");
                     capacity =((TextView)view.findViewById(R.id.capacity)).getText().toString();
@@ -179,7 +179,7 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String route = jo.getString("oname") +" to "+ jo.getString("dname");
                 String arrival = "Arrival : "+jo.getString("arrival");
                 String departure = "Departure : "+jo.getString("departure");
@@ -201,8 +201,8 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                 train.setName(name);
                 train.setImageUrl(imageUrl);
                 train.setRoute(route);
-                train.setArrival(arrival);
-                train.setDeparture(departure);
+                //train.setArrival(arrival);
+                //train.setDeparture(departure);
                 train.setVipprice(vipfare);
                 train.setEconomicfare(economicfare);
                 train.setOrganization(organization);

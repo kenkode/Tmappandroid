@@ -58,8 +58,8 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
         TextView route = (TextView) convertView.findViewById(R.id.roomtype);
-        TextView arrival = (TextView) convertView.findViewById(R.id.adults);
-        TextView departure = (TextView) convertView.findViewById(R.id.children);
+        //TextView arrival = (TextView) convertView.findViewById(R.id.adults);
+        //TextView departure = (TextView) convertView.findViewById(R.id.children);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.availability);
         TextView economic = (TextView) convertView.findViewById(R.id.economicfare);
@@ -72,8 +72,8 @@ public class CustomVehicleAdapter extends BaseAdapter implements Filterable{
         Vehicles vehicle = vehicles.get(position);
         nametxt.setText(vehicle.getName());
         route.setText(vehicle.getRoute());
-        arrival.setText(vehicle.getArrival());
-        departure.setText(vehicle.getDeparture());
+        //arrival.setText(vehicle.getArrival());
+        //departure.setText(vehicle.getDeparture());
         //price.setText(vehicle.getPrice());
         vip.setText(vehicle.getVipprice());
         economic.setText(vehicle.getEconomicfare());

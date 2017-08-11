@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -38,14 +38,13 @@
     <Spinner
         android:id="@+id/from"
         android:layout_height="wrap_content"
-        android:layout_width="285dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toRightOf="@id/textView11" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -58,46 +57,42 @@
 
     <Spinner
         android:id="@+id/to"
-        android:layout_width="285dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="110dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/from"
-        android:layout_alignStart="@+id/from" />
+        android:layout_toRightOf="@id/textView13" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="350dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBlue"
         android:text="Search"
         android:textColor="@color/colorWhite"
-        android:layout_marginTop="142dp"
-        android:layout_below="@+id/textView13"
+        android:layout_below="@+id/textView27"
+        android:layout_marginTop="51dp"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView27"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView13"
         android:layout_alignStart="@+id/textView13"
         android:layout_below="@+id/textView13"
         android:layout_marginTop="40dp"
-        android:text="Number of People"
+        android:text="Number of People:"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/nop"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView27"
         android:layout_marginLeft="29dp"
         android:layout_marginStart="29dp"
-        android:layout_toEndOf="@+id/textView27"
-        android:layout_toRightOf="@+id/textView27"
+        android:layout_toRightOf="@id/textView27"
         android:ems="10"
         android:inputType="number" />
 

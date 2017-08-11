@@ -1,90 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardBackgroundColor="@color/colorWhite"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="10dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorWhite">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:id="@+id/hotelImage"
-        android:padding="10dp"
+        android:background="#99000000"
+        android:scaleType="fitXY"
         android:src="@drawable/events_calendar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Event Name"
-        android:id="@+id/eventName"
-        android:textSize="16dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="5dp"
-        android:textColor="#fc8213"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"/>
+            <TextView
+                android:id="@+id/eventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hotelImage"
+                android:fontFamily="serif-monospace"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Event Name"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#fc8213"
+                android:textSize="28dp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:id="@+id/roomtype"
-        android:textSize="16dp"
-        android:paddingBottom="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/eventName"/>
+            <TextView
+                android:id="@+id/roomtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventName"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:text="Description"
+                android:textAppearance="?android:attr/textAppearanceLarge"
 
-    <TextView
-        android:id="@+id/adults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/roomtype"
-        android:layout_toRightOf="@id/hotelImage"
-        android:text="Location:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adults"
-        android:layout_toRightOf="@id/hotelImage"
-        android:paddingBottom="5dp"
-        android:text="Contact:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+            <TextView
+                android:id="@+id/adults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/roomtype"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:text="Location:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contact"
-        android:layout_toRightOf="@id/hotelImage"
-        android:paddingBottom="5dp"
-        android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/adults"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:text="Contact:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/slots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/date"
-        android:layout_toRightOf="@id/hotelImage"
-        android:paddingBottom="5dp"
-        android:text="Slots:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16dp" />
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/contact"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:text="Date:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/slots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:text="Slots:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/vip"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textColor="#68ae00"
+        android:fontFamily="serif"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
+
         android:layout_below="@id/slots"/>
 
     <TextView
@@ -92,10 +124,11 @@
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/economic"
-        android:textSize="16dp"
+        android:fontFamily="serif"
+        android:textSize="18dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
+
         android:layout_below="@id/vip"/>
 
     <TextView
@@ -103,10 +136,10 @@
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/children"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
+        android:fontFamily="serif"
         android:layout_below="@id/economic"/>
 
     <TextView
@@ -114,6 +147,7 @@
         android:layout_height="wrap_content"
         android:text="organization ID:"
         android:id="@+id/organization"
+        android:fontFamily="serif"
         android:textSize="16dp"
         android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -134,3 +168,5 @@
         android:visibility="invisible"/>
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>
+    </LinearLayout>

@@ -161,7 +161,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://192.168.2.101/tmapp/public/uploads/logo/"+jo.getString("image");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("image");
                 String remaininglots = "Remaining Slots : "+jo.getString("slots");
                 String description = "Description : "+jo.getString("description");
                 String contact = "Contact : "+jo.getString("contact");

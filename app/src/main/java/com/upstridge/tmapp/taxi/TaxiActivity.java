@@ -9,7 +9,7 @@ import com.upstridge.tmapp.R;
 
 public class TaxiActivity extends Activity {
 
-    String url = "http://10.0.2.2/tmapp/android/searchTaxi.php";
+    String url = "http://10.0.2.2:81/tmapp/android/searchTaxi.php";
     SearchView searchBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

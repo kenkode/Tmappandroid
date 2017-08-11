@@ -61,8 +61,8 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         TextView nametxt = (TextView) convertView.findViewById(R.id.hotelName);
         ImageView logo = (ImageView) convertView.findViewById(R.id.hotelImage);
         TextView route = (TextView) convertView.findViewById(R.id.roomtype);
-        TextView arrival = (TextView) convertView.findViewById(R.id.adults);
-        TextView departure = (TextView) convertView.findViewById(R.id.children);
+        //TextView arrival = (TextView) convertView.findViewById(R.id.adults);
+        //TextView departure = (TextView) convertView.findViewById(R.id.children);
         TextView capacity = (TextView) convertView.findViewById(R.id.capacity);
         //TextView price = (TextView) convertView.findViewById(R.id.price);
         TextView vip = (TextView) convertView.findViewById(R.id.availability);
@@ -74,8 +74,8 @@ public class CustomTrainAdapter extends BaseAdapter implements Filterable {
         Trains train = trains.get(position);
         nametxt.setText(train.getName());
         route.setText(train.getRoute());
-        arrival.setText(train.getArrival());
-        departure.setText(train.getDeparture());
+        //arrival.setText(train.getArrival());
+        //departure.setText(train.getDeparture());
         //price.setText(vehicle.getPrice());
         vip.setText(train.getVipprice());
         economic.setText(train.getEconomicfare());

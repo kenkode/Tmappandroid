@@ -122,7 +122,7 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(title);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        350,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView fname = new TextView(this);
@@ -137,15 +137,16 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(fname);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 
 
                 fnametxt[i] = new HideHintEditText(this, "First name");
-                fnametxt[i].setWidth(490);
+                //fnametxt[i].setWidth(490);
                 fnametxt[i].setId(R.id.fnametxt);
                 fnametxt[i].setHint("First name");
+                param.addRule(RelativeLayout.RIGHT_OF,fname.getId());
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
@@ -156,7 +157,7 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(fnametxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        350,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView lname = new TextView(this);
@@ -171,13 +172,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(lname);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 lnametxt[i] = new HideHintEditText(this, "Last name");
-                lnametxt[i].setWidth(490);
+                //lnametxt[i].setWidth(490);
                 lnametxt[i].setId(R.id.lnametxt);
                 lnametxt[i].setHint("Last name");
+                param.addRule(RelativeLayout.RIGHT_OF,lname.getId());
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_BASELINE,
@@ -189,7 +191,7 @@ public class hotelBooking extends Activity {
 
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        350,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView phoneno = new TextView(this);
@@ -204,13 +206,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(phoneno);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 phonetxt[i] = new HideHintEditText(this, "Phone Number");
-                phonetxt[i].setWidth(490);
+                //phonetxt[i].setWidth(490);
                 phonetxt[i].setId(R.id.phonetxt);
                 phonetxt[i].setHint("Phone Number");
+                param.addRule(RelativeLayout.RIGHT_OF,phoneno.getId());
                 phonetxt[i].setInputType(InputType.TYPE_CLASS_PHONE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
@@ -222,7 +225,7 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(phonetxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        350,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView emailaddress = new TextView(this);
@@ -237,13 +240,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(emailaddress);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 emailtxt[i] = new HideHintEditText(this, "Email Address");
-                emailtxt[i].setWidth(490);
+                //emailtxt[i].setWidth(490);
                 emailtxt[i].setId(R.id.emailtxt);
                 emailtxt[i].setHint("Email Address");
+                param.addRule(RelativeLayout.RIGHT_OF,emailaddress.getId());
                 emailtxt[i].setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
@@ -255,7 +259,7 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(emailtxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        350,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView idnumber = new TextView(this);
@@ -270,13 +274,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(idnumber);
 
                 param = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 idtxt[i] = new HideHintEditText(this, "Identity No / Passport No");
-                idtxt[i].setWidth(490);
+                //idtxt[i].setWidth(490);
                 idtxt[i].setId(R.id.idpasstxt);
                 idtxt[i].setHint("Identity No / Passport No");
+                param.addRule(RelativeLayout.RIGHT_OF,idnumber.getId());
                 param.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_TOP,

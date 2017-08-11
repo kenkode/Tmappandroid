@@ -74,8 +74,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorBlue"
         android:text="Done"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView26"
-        android:layout_alignStart="@+id/textView26" />
+        android:layout_below="@+id/numchildren"
+        android:layout_marginTop="51dp" />
 
 </RelativeLayout>

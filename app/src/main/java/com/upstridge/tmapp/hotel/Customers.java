@@ -43,7 +43,7 @@ public class Customers extends Activity {
                 }else if(Integer.parseInt(child.getText().toString()) > Integer.parseInt(children)){
                     Toast.makeText(Customers.this,"Maximum children number is "+children,Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(Customers.this,price,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Customers.this,price,Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), hotelBooking.class);
                     Bundle b = new Bundle();
                     b.putString("roomid", roomid);

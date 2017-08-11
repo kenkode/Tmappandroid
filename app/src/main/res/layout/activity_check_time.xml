@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/date"
-        android:layout_width="300dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Select Travel Date"
@@ -49,7 +49,7 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -61,7 +61,7 @@
 
     <EditText
         android:id="@+id/time"
-        android:layout_width="300dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Select Travel Time"
@@ -76,7 +76,7 @@
 
     <TextView
         android:id="@+id/textView29"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -99,12 +99,12 @@
 
     <Button
         android:id="@+id/customers"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBlue"
         android:text="Search"
-        android:layout_marginTop="131dp"
-        android:layout_below="@+id/time"
+        android:layout_marginTop="51dp"
+        android:layout_below="@+id/textView29"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

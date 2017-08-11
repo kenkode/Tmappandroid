@@ -155,7 +155,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
                 vehicleid = jo.getString("id");
                 ecprice = jo.getString("economic");
                 capacity = jo.getString("capacity");

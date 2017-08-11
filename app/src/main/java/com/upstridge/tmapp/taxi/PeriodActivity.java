@@ -11,7 +11,7 @@ import com.upstridge.tmapp.R;
 
 public class PeriodActivity extends Activity {
 
-    String url = "http://10.0.2.2/tmapp/android/destination.php";
+    String url = "http://10.0.2.2:81/tmapp/android/destination.php";
     //String url = "http://admin.upstridge.co.ke/android/destination.php";
 
     @Override

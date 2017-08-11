@@ -31,7 +31,7 @@ public class CheckTimeActivity extends Activity {
     EditText timepick, t;
     static final int DIALOG_TID = 1;
     int hour, min;
-    String url = "http://10.0.2.2/tmapp/android/branches.php";
+    String url = "http://10.0.2.2:81/tmapp/android/branches.php";
     //String url = "http://admin.upstridge.co.ke/android/branches.php";
 
     @Override

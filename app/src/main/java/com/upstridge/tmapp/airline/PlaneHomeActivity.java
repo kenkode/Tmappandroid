@@ -29,7 +29,7 @@ public class PlaneHomeActivity extends Activity {
     EditText timepick, t;
     static final int DIALOG_TID = 1;
     int hour, min;
-    String url = "http://10.0.2.2/tmapp/android/destination.php";
+    String url = "http://10.0.2.2:81/tmapp/android/destination.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -68,7 +68,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
 
     List<String> seats = new ArrayList<String>();
 
-    String url = "http://192.168.2.101/tmapp/android/seats.php";
+    String url = "http://10.0.2.2:81/tmapp/android/seats.php";
     //String url = "http://admin.upstridge.co.ke/android/seats.php";
 
     @Override

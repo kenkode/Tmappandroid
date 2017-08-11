@@ -1,148 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/hotelImage"
-        android:padding="10dp"
-        android:src="@drawable/aeroplane"/>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vehicle Name"
-        android:id="@+id/hotelName"
-        android:textSize="16dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="5dp"
-        android:textColor="#fc8213"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"/>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="fill_parent"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                card_view:cardBackgroundColor="@color/colorWhite"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From - To"
-        android:id="@+id/roomtype"
-        android:textSize="16dp"
-        android:paddingBottom="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/hotelName"/>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorWhite">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/hotelImage"
+                        android:padding="10dp"
+                        android:src="@drawable/aeroplane"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Arrival:"
-        android:id="@+id/adults"
-        android:textSize="16dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/roomtype"/>
+                    <TextView
+                        android:id="@+id/hotelName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="monospace"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="15dp"
+                        android:text="Vehicle Name"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#fc8213"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Departure:"
-        android:id="@+id/children"
-        android:paddingBottom="5dp"
-        android:textSize="16dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/adults"/>
+                    <TextView
+                        android:id="@+id/roomtype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hotelName"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="serif"
+                        android:paddingBottom="5dp"
+                        android:text="From - To"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/availability"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/children"/>
+                    <!-- <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Arrival:"
+                         android:id="@+id/adults"
+                         android:textSize="16dp"
+                         android:textAppearance="?android:attr/textAppearanceLarge"
+                         android:layout_toRightOf="@id/hotelImage"
+                         android:layout_below="@id/roomtype"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/businessfare"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/availability"/>
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Departure:"
+                         android:id="@+id/children"
+                         android:paddingBottom="5dp"
+                         android:textSize="16dp"
+                         android:textAppearance="?android:attr/textAppearanceLarge"
+                         android:layout_toRightOf="@id/hotelImage"
+                         android:layout_below="@id/adults"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/economicfare"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/businessfare"/>
+                    <TextView
+                        android:id="@+id/availability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/roomtype"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="serif"
+                        android:text="Price:"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#68ae00"
+                        android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price:"
-        android:id="@+id/childrenfare"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/economicfare"/>
+                    <TextView
+                        android:id="@+id/businessfare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/availability"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="serif"
+                        android:text="Price:"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#68ae00"
+                        android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="organization ID:"
-        android:id="@+id/organization"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/economicfare"
-        android:visibility="invisible"/>
+                    <TextView
+                        android:id="@+id/economicfare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/businessfare"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="serif"
+                        android:text="Price:"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#68ae00"
+                        android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vehicle ID:"
-        android:id="@+id/vehicleid"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/organization"
-        android:visibility="invisible"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price:"
+                        android:id="@+id/childrenfare"
+                        android:textSize="18dp"
+                        android:textColor="#68ae00"
+                        android:fontFamily="serif"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:layout_below="@id/economicfare"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Class Apply:"
-        android:id="@+id/firstclassapply"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/vehicleid"
-        android:visibility="invisible"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Class Apply:"
-        android:id="@+id/capacity"
-        android:textSize="16dp"
-        android:textColor="#68ae00"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toRightOf="@id/hotelImage"
-        android:layout_below="@id/vehicleid"
-        android:visibility="invisible"/>
+                    <TextView
+                        android:id="@+id/organization"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/economicfare"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:fontFamily="serif"
+                        android:text="organization ID:"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#68ae00"
+                        android:textSize="18dp"
+                        android:visibility="invisible" />
 
-</RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vehicle ID:"
+                        android:id="@+id/vehicleid"
+                        android:textSize="16dp"
+                        android:textColor="#68ae00"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:layout_below="@id/organization"
+                        android:visibility="invisible"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Class Apply:"
+                        android:id="@+id/firstclassapply"
+                        android:textSize="16dp"
+                        android:textColor="#68ae00"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:layout_below="@id/vehicleid"
+                        android:visibility="invisible"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Class Apply:"
+                        android:id="@+id/capacity"
+                        android:textSize="16dp"
+                        android:textColor="#68ae00"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_toRightOf="@id/hotelImage"
+                        android:layout_below="@id/vehicleid"
+                        android:visibility="invisible"/>
+
+                </RelativeLayout>
+</android.support.v7.widget.CardView>
+    </LinearLayout>

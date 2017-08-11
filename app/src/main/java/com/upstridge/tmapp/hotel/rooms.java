@@ -9,7 +9,7 @@ import com.upstridge.tmapp.R;
 
 public class rooms extends Activity {
 
-    String url = "http://10.0.2.2/tmapp/android/searchRoom.php";
+    String url = "http://10.0.2.2:81/tmapp/android/searchRoom.php";
     //String url = "http://admin.upstridge.co.ke/android/searchHotel.php";
 
     SearchView searchBar;

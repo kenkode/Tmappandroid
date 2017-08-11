@@ -111,14 +111,21 @@ public class HomeParser extends AsyncTask<Void,Integer,Integer> {
                 public void onClick(View v) {
                     date_txt = btnpick.getText().toString();
                     time_txt = timepick.getText().toString();
-                    Intent i = new Intent(c, VehicleActivity.class);
-                    Bundle b = new Bundle();
-                    b.putString("from", frm_txt);
-                    b.putString("to", to_txt);
-                    b.putString("date", date_txt);
-                    b.putString("time", time_txt);
-                    i.putExtras(b);
-                    c.startActivity(i);
+                    if(date_txt.equals("")){
+                        Toast.makeText(c,"Please select travel date",Toast.LENGTH_SHORT).show();
+                    }else if(time_txt.equals("")){
+                        Toast.makeText(c,"Please select travel time",Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        Intent i = new Intent(c, VehicleActivity.class);
+                        Bundle b = new Bundle();
+                        b.putString("from", frm_txt);
+                        b.putString("to", to_txt);
+                        b.putString("date", date_txt);
+                        b.putString("time", time_txt);
+                        i.putExtras(b);
+                        c.startActivity(i);
+                    }
                 }
             });
 

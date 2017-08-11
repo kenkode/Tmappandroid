@@ -9,7 +9,7 @@ import com.upstridge.tmapp.R;
 
 public class events extends Activity {
 
-    String url = "http://10.0.2.2/tmapp/android/searchEvent.php";
+    String url = "http://10.0.2.2:81/tmapp/android/searchEvent.php";
     //String url = "http://admin.upstridge.co.ke/android/searchEvent.php";
 
     SearchView searchBar;

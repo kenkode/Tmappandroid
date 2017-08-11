@@ -9,7 +9,7 @@ import com.upstridge.tmapp.R;
 
 public class Airplanes extends Activity {
 
-    String url = "http://192.168.2.101/tmapp/android/searchAeroplane.php";
+    String url = "http://10.0.2.2:81/tmapp/android/searchAeroplane.php";
     //String url = "http://admin.upstridge.co.ke/android/searchAeroplane.php";
 
     SearchView searchBar;

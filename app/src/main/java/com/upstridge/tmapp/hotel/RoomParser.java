@@ -248,7 +248,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                 }
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/hotel/rooms/"+jo.getString("image");
+                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/hotel/rooms/"+jo.getString("image");
                 String availability = jo.getString("room_count");
                 String adultno = jo.getString("adults");
                 String childno = jo.getString("children");
