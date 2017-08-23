@@ -11,7 +11,9 @@ import android.graphics.Bitmap;
 public class Item
 {
 	public Bitmap image;
+	public Bitmap icon;
 	public String title;
+	public String name;
 	public boolean isSelected;
 	
 
@@ -55,4 +57,19 @@ public class Item
 		this.title = title;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Bitmap getIcon() {
+		return icon;
+	}
+
+	public void setIcon(Bitmap icon) {
+		this.icon = icon;
+	}
 }

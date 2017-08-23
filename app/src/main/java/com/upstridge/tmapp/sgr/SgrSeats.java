@@ -48,7 +48,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
     ArrayList<Item> gridArray = new ArrayList<Item>();
     ArrayList<String> selected = new ArrayList<String>();
     CustomGridViewAdapter customGridAdapter;
-    public Bitmap seatIcon,driverIcon,blankIcon,bookedIcon;
+    public Bitmap seatIcon,driverIcon,blankIcon,bookedIcon,vipIcon;
     public Bitmap seatSelect;
 
     String vehicle;
@@ -66,7 +66,10 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
     String organization;
     String traveltype;
 
-    List<String> seats = new ArrayList<String>();
+    String seatname = "";
+    List<String> vipArray = new ArrayList<String>();
+    List<String> businessArray = new ArrayList<String>();
+    List<String> economicArray = new ArrayList<String>();
 
     String url = "http://10.0.2.2:81/tmapp/android/seats.php";
     //String url = "http://admin.upstridge.co.ke/android/seats.php";
@@ -82,6 +85,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
 
         seatIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_tab_nor_avl);
         bookedIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_tab_nor_bkd);
+        vipIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_tab_nor_lad_avl);
         seatSelect = BitmapFactory.decodeResource(this.getResources(), R.drawable.seat_layout_screen_nor_std);
 
         Bundle bundle = getIntent().getExtras();
@@ -100,19 +104,23 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
         organization = bundle.getString("organization");
         traveltype = "SGR";
 
+        //Toast.makeText(this,organization,Toast.LENGTH_SHORT).show();
+
         final CheckBookedSeats v = new CheckBookedSeats(this, url, date, time, destination, origin, traveltype);
         v.execute();
 
-
     }
 
-    public void totalSeat(int n, List<String> seats)
+    /*public void totalSeat(int n, List<String> seats)
     {
         gridArray.add(new Item(blankIcon,"" ));
         gridArray.add(new Item(blankIcon,"" ));
         gridArray.add(new Item(blankIcon,"" ));
         gridArray.add(new Item(driverIcon,"driver" ));
 
+        //Toast.makeText(SgrSeats.this,"Vip Seats = "+String.valueOf(vipArray.size()),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SgrSeats.this,"Business Seats = "+String.valueOf(businessArray.size()),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SgrSeats.this,"Economy Seats = "+String.valueOf(economicArray.size()),Toast.LENGTH_SHORT).show();
 
         for (int i = 1; i <= n; ++i)
         {
@@ -123,24 +131,47 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                     gridArray.add(new Item(bookedIcon, "seat " + i));
                 }
             }
+            for(String vipseat : vipArray) {
+                if (vipseat.contains("seat " + i)) {
+                    gridArray.remove(i + 3);
+                    gridArray.add(new Item(vipIcon, "seat " + i));
+                }
+            }
         }
 
+    }*/
+
+    public String seatName(String title)
+    {
+        return title;
     }
 
     public void seatSelected(int pos)
     {
+        Item item = gridArray.get(pos);
+        //seatname = seatName(item.getTitle());
         gridArray.remove(pos);
         gridArray.add(pos, new Item(seatSelect, "select"));
 
         customGridAdapter.notifyDataSetChanged();
     }
 
-    public void seatDeselcted(int pos)
+    public void seatDeselcted(int pos, Bitmap seatcompare, String title)
     {
 
         gridArray.remove(pos);
         int i = pos + 1;
-        gridArray.add(pos, new Item(seatIcon, "seat" + i));
+        Item item = gridArray.get(i);
+        //Toast.makeText(SgrSeats.this,item.getName(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SgrSeats.this,String.valueOf(pos),Toast.LENGTH_SHORT).show();
+        //if(seatcompare == vipIcon){
+            gridArray.add(pos, new Item(item.getIcon(), "seat "+(i-4)));
+           // Toast.makeText(SgrSeats.this,"vip",Toast.LENGTH_SHORT).show();
+        /*}
+        if(seatcompare == seatIcon){
+            gridArray.add(pos, new Item(seatIcon, "seat "+(i-4)));
+            Toast.makeText(SgrSeats.this,"normal",Toast.LENGTH_SHORT).show();
+        }*/
         customGridAdapter.notifyDataSetChanged();
     }
 
@@ -149,25 +180,43 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
     {
 
         Item item = gridArray.get(position);
+        //item.setName(item.getTitle());
+        String title = item.getName();
+
+        //Toast.makeText(SgrSeats.this,title,Toast.LENGTH_SHORT).show();
         Bitmap seatcompare = item.getImage();
         if (seatcompare == seatIcon)
         {
+            item.setIcon(seatIcon);
+            //item.setName(seatIcon);
             seatSelected(position);
             selected.add(item.getTitle());
-        }else if (seatcompare == blankIcon)
+        }
+
+        else if (seatcompare == vipIcon)
+        {
+            item.setIcon(vipIcon);
+            seatSelected(position);
+            selected.add(item.getTitle());
+        }
+        else if (seatcompare == blankIcon)
         {
 
-        }else if (seatcompare == bookedIcon)
+        }
+        else if (seatcompare == bookedIcon)
         {
 
         }
         else
         {
-            seatDeselcted(position);
+            seatDeselcted(position, item.getIcon(), item.getName());
 
         }
 
+
     }
+
+
 
     public class CheckBookedSeats extends AsyncTask<String, Integer, String> {
 
@@ -240,7 +289,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                 OutputStream outputStream = con.getOutputStream();
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8")+"&"+URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode(type,"UTF-8");
+                String post_data = URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+URLEncoder.encode("destination","UTF-8")+"="+URLEncoder.encode(destination,"UTF-8")+"&"+URLEncoder.encode("origin", "UTF-8")+"="+URLEncoder.encode(origin,"UTF-8")+"&"+URLEncoder.encode("organization_id", "UTF-8")+"="+URLEncoder.encode(organization,"UTF-8")+"&"+URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode(traveltype,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -335,7 +384,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                 }
                 Toast.makeText(c, String.valueOf(seats.size()), Toast.LENGTH_LONG).show();*/
 
-                totalSeat(Integer.parseInt(capacity), seats);
+
 
                 done = (Button)findViewById(R.id.doneButton);
                 gridView = (GridView) findViewById(R.id.gridView1);
@@ -369,7 +418,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
                             b.putString("firstclassapply", firstclassapply);
                             b.putStringArrayList("seats", selected);
                             i.putExtras(b);
-                            startActivity(i);
+;                            startActivity(i);
                         }
                     }
                 });
@@ -384,20 +433,91 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
         private int parse() {
             try {
 
+                gridArray.add(new Item(blankIcon,"" ));
+                gridArray.add(new Item(blankIcon,"" ));
+                gridArray.add(new Item(blankIcon,"" ));
+                gridArray.add(new Item(driverIcon,"driver" ));
+
                 JSONArray ja = new JSONArray(data);
-                JSONObject jo = null;
+                //JSONObject jo = new JSONObject(data);
+                JSONObject seat = null;
+               // JSONObject booked = null;
 
-                for (int i = 0; i < ja.length(); i++) {
-                    jo = ja.getJSONObject(i);
+                //for (int i = 0; i < ja.length(); i++) {
+                //JSONArray seatArray = new JSONArray(jo.getString("seat"));
+                //JSONArray bookArray = new JSONArray(jo.getString("booked"));
+                    //seatArray = seatArray.replace("[","").replace("]","");
+                    //String sa = ja.getString("seat").replace("[","").replace("]","");
+                   /* for (int k = 0; k < seatArray.length(); k++) {
+                        seat = seatArray.getJSONObject(k);
 
-                    int total = jo.getInt("total");
+                        if(seat.getInt("vip") == 1){
+                            vipArray.add(seat.getString("seatno"));
+                        }
+                        if(seat.getInt("business") == 1){
+                            businessArray.add(seat.getString("seatno"));
+                        }
+                        if(seat.getInt("economy") == 1){
+                            economicArray.add(seat.getString("seatno"));
+                        }*/
 
-                    for (int j=1;j<=total;j++) {
+                       // int total = seat.getInt("total");
 
-                        seats.add(jo.getString("seatno" + (j)));
+                        //for (int j = 1; j <= total; j++) {
+
+                            //seats.add(seat.getString("seatno" + (j)));
+                        //}
+
+                    //}
+                    //JSONArray bookArray = new JSONArray("booked");
+                    for (int l = 0; l < ja.length(); l++) {
+                        seat = ja.getJSONObject(l);
+
+                        //totalSeat(Integer.parseInt(capacity), seats);
+                        String seatno = seat.getString("seatno");
+                        //seats.add(seatno);
+
+                        if(seat.getInt("vip") == 1){
+                            vipArray.add(seat.getString("seatno"));
+                        }
+                        if(seat.getInt("business") == 1){
+                            businessArray.add(seat.getString("seatno"));
+                        }
+                        if(seat.getInt("economy") == 1){
+                            economicArray.add(seat.getString("seatno"));
+                        }
+
+
+
+                        //Toast.makeText(SgrSeats.this,"Vip Seats = "+String.valueOf(vipArray.size()),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SgrSeats.this,"Business Seats = "+String.valueOf(businessArray.size()),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SgrSeats.this,"Economy Seats = "+String.valueOf(economicArray.size()),Toast.LENGTH_SHORT).show();
+
+                        //for (int i = 1; i <= ja.length(); ++i)
+                        //{
+                       // gridArray.add(new Item(seatIcon, seatno));
+                        if(seat.getString("status").equals("booked")){
+                            gridArray.add(new Item(bookedIcon, seatno));
+                        }else {
+                            if (seat.getInt("vip") == 1) {
+                               gridArray.add(new Item(vipIcon, seatno));
+                            } else if (seat.getInt("business") == 1) {
+                                gridArray.add(new Item(seatIcon, seatno));
+                            } else if (seat.getInt("economy") == 1) {
+                                gridArray.add(new Item(seatIcon, seatno));
+                            }
+                        }
+                        //}
+
+                        //int total = booked.getInt("total");
+
+                        //for (int j = 1; j <= total; j++) {
+
+                          //  seats.add(booked.getString("seatno" + (j)));
+                       // }
+
                     }
-
-                }
+              //  }
                 return 1;
             } catch (JSONException e) {
                 e.printStackTrace();

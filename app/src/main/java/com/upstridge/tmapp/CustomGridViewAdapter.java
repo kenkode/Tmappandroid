@@ -55,6 +55,9 @@ public class CustomGridViewAdapter extends ArrayAdapter<Item>
 			}
 
 			Item item = data.get(position);
+
+			item.setName(item.getTitle());
+			item.setIcon(item.getImage());
 			holder.txtTitle.setText(item.getTitle());
 			holder.imageItem.setImageBitmap(item.getImage());
 		} catch (Exception e)
