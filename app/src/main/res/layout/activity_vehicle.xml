@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@drawable/bg"
     tools:context="com.upstridge.tmapp.VehicleActivity">
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Vehicle"
-        android:textSize="18sp"
-        android:textColor="@color/colorBlue"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp" />
 
     <SearchView
         android:id="@+id/searchBar"
@@ -30,7 +20,6 @@
         android:id="@+id/vehicleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorWhite"
         android:layout_below="@+id/searchBar" />
 
 </RelativeLayout>

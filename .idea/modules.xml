@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tmapp.iml" filepath="$PROJECT_DIR$/Tmapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tmappandroid.iml" filepath="$PROJECT_DIR$/Tmappandroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Tuwende.iml" filepath="$PROJECT_DIR$/Tuwende.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

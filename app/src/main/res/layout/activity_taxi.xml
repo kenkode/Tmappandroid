@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context="com.upstridge.tmapp.TaxiActivity">
 
 
@@ -18,7 +17,6 @@
         android:layout_marginTop="16dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorBlue"
         android:text="Select Taxi" />
 
     <SearchView

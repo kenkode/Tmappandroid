@@ -2,15 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/seats"
-    android:background="@color/colorBackground">
+    android:background="@color/charcoal"
+    android:id="@+id/seats">
 
 
     <View
         android:id="@+id/seatSelectionHeaderMargin"
         android:layout_width="fill_parent"
         android:layout_height="1.0dip"
-        android:background="@color/colorBackground" />
+        android:background="@color/charcoal" />
 
     <RelativeLayout
         android:id="@+id/seatLayoutScroll"
@@ -18,12 +18,13 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottomBarSeatSelection"
         android:layout_below="@+id/seatSelectionHeaderMargin"
-        android:background="@color/colorBackground" >
+        android:background="@color/charcoal" >
 
         <RelativeLayout
             android:id="@+id/scrollableLayout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            >
 
             <RelativeLayout
                 android:id="@+id/seatLegendLayout"
@@ -55,7 +56,9 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_toRightOf="@+id/availableImage"
                         android:text="Available"
-                        android:textSize="12.0sp" />
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:textColor="#fff"
+                        android:textSize="16.0sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -82,7 +85,9 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_toRightOf="@+id/bookedImage"
                         android:text="Booked"
-                        android:textSize="12.0sp" />
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:textColor="#fff"
+                        android:textSize="16.0sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -107,7 +112,9 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_toRightOf="@+id/selectedImage"
                         android:text="Selected"
-                        android:textSize="12.0sp" />
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:textColor="#fff"
+                        android:textSize="16.0sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -132,7 +139,9 @@
                         android:layout_marginLeft="5.0dip"
                         android:layout_toRightOf="@+id/vipImage"
                         android:text="VIP"
-                        android:textSize="12.0sp" />
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:textColor="#fff"
+                        android:textSize="16.0sp" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -144,7 +153,7 @@
                 android:layout_below="@+id/seatLegendLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10.0dip"
-                android:background="@color/colorBackground"
+                android:background="@color/charcoal"
                 android:paddingBottom="5.0dp"
                 android:paddingRight="5.0dp" >
 
@@ -186,9 +195,10 @@
             android:layout_width="match_parent"
             android:layout_height="48.0dip"
             android:layout_marginTop="1.0dip"
-            android:background="@color/colorBlue"
             android:text="Done"
-            android:textColor="@color/colorWhite"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="#fff"
+            android:background="#660000"
             android:textSize="18.0sp" />
 
 

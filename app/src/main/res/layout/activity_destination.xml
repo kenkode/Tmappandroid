@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context="com.upstridge.tmapp.DestinationActivity">
 
     <TextView
@@ -13,7 +12,6 @@
         android:layout_height="wrap_content"
         android:text="Where you going?"
         android:textSize="20sp"
-        android:textColor="@color/colorBlue"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />
 
@@ -29,7 +27,6 @@
         android:id="@+id/destinationList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorWhite"
         android:layout_below="@+id/searchBar" />
 
 </RelativeLayout>

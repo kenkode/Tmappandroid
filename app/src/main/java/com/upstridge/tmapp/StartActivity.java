@@ -34,8 +34,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         int bus[]={R.drawable.coastern,R.drawable.oxygen,R.drawable.north_rift,
                 R.drawable.services_oxygen
@@ -55,7 +55,7 @@ public class StartActivity extends AppCompatActivity {
         };
 
         int evts[]={R.drawable.concert1,R.drawable.livemusic,R.drawable.action,R.drawable.eventimg,R.drawable.eventimg2
-                ,R.drawable.eventimg3, R.drawable.aud
+                ,R.drawable.eventimg3
         };
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

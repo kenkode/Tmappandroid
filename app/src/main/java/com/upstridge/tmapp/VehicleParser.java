@@ -178,7 +178,7 @@ public class VehicleParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("logo");
                 String route = jo.getString("oname") +" to "+ jo.getString("dname");
                 //String arrival = "Arrival : "+jo.getString("arrival");
                 //String departure = "Departure : "+jo.getString("departure");

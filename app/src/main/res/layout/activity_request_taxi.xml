@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context="com.upstridge.tmapp.RequestTaxiActivity">
 
     <TextView
@@ -17,7 +16,6 @@
         android:layout_marginTop="15dp"
         android:textSize="20dp"
         android:textAlignment="center"
-        android:textColor="@color/colorWhite"
         android:text="Do you want a taxi on arrival?" />
 
     <RadioGroup
@@ -54,7 +52,6 @@
         android:layout_alignStart="@+id/radioGroup"
         android:layout_below="@+id/radioGroup"
         android:layout_marginTop="31dp"
-        android:background="@color/colorBlue"
         android:text="Select" />
 
 

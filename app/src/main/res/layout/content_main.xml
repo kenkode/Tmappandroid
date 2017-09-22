@@ -20,7 +20,6 @@
         android:layout_alignParentTop="true"
         android:text="Select Mode"
         android:textAlignment="center"
-        android:textColor="@color/colorBlue"
         android:textSize="20sp" />
 
     <ImageButton
@@ -38,7 +37,6 @@
         android:layout_height="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:backgroundTint="@color/colorYellow"
         app:srcCompat="@drawable/bus1"
         android:layout_alignTop="@+id/airplane"
         android:layout_toRightOf="@+id/airplane"
@@ -50,7 +48,6 @@
         android:layout_height="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:backgroundTint="@color/colorYellow"
         app:srcCompat="@drawable/taxi"
         android:layout_alignTop="@+id/travel"
         android:layout_toRightOf="@+id/travel"
@@ -60,7 +57,6 @@
         android:id="@+id/train"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:backgroundTint="@color/colorYellow"
         app:srcCompat="@drawable/railtransportion"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
@@ -74,7 +70,6 @@
         android:layout_alignLeft="@+id/travel"
         android:layout_alignStart="@+id/travel"
         android:layout_alignTop="@+id/train"
-        android:backgroundTint="@color/colorYellow"
         app:srcCompat="@drawable/building" />
 
     <ImageButton
@@ -84,13 +79,11 @@
         android:layout_alignLeft="@+id/taxi"
         android:layout_alignStart="@+id/taxi"
         android:layout_alignTop="@+id/hotel"
-        android:backgroundTint="@color/colorYellow"
         app:srcCompat="@drawable/calendar1" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="80dp"
-        android:textColor="@color/colorWhite"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -102,7 +95,6 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="80dp"
-        android:textColor="@color/colorWhite"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignLeft="@+id/travel"
@@ -114,7 +106,6 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="80dp"
-        android:textColor="@color/colorWhite"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignLeft="@+id/taxi"
@@ -126,7 +117,6 @@
     <TextView
         android:id="@+id/textView5"
         android:layout_width="80dp"
-        android:textColor="@color/colorWhite"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -138,7 +128,6 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="80dp"
-        android:textColor="@color/colorWhite"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView5"
         android:layout_alignLeft="@+id/hotel"
@@ -149,7 +138,6 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:textColor="@color/colorWhite"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView6"
