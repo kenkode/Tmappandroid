@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:elevation="4dp"
+        android:elevation="10dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="5dp"
         card_view:cardCornerRadius="1dp">

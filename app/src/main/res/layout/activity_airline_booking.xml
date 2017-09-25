@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context="com.upstridge.tmapp.airline.AirlineBooking">
 
     <RelativeLayout
@@ -23,7 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:textSize="20sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="28sp"
                 android:textAlignment="center"
                 android:text="Book Vehicle"
                 android:layout_alignParentTop="true"
@@ -40,7 +42,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="First Name:" />
 
             <EditText
@@ -66,7 +69,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Last Name:" />
 
             <EditText
@@ -92,7 +96,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Phone No:" />
 
             <EditText
@@ -144,7 +149,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Identity No /\nPassport No:" />
 
             <EditText
@@ -169,7 +175,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Select Seat:" />
 
             <Spinner
@@ -191,7 +198,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Select Fare:" />
 
             <Spinner
@@ -223,7 +231,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="20sp"
                 android:text="Payment Mode:" />
 
             <Spinner
@@ -238,7 +247,10 @@
             <Button
                 android:id="@+id/book"
                 android:layout_width="fill_parent"
-                android:background="#ffce00"
+                android:textColor="#f7f7f7"
+                android:background="#990000"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="18dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"

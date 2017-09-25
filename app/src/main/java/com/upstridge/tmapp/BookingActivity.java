@@ -26,7 +26,7 @@ import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 
 public class BookingActivity extends Activity {
 
-    String urlAddress = "http://10.0.2.2/tmapp/android/booking.php";
+    String urlAddress = "http://192.168.2.108/tmapp/android/booking.php";
     //String urlAddress = "http://admin.upstridge.co.ke/android/booking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;

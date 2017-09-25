@@ -6,16 +6,9 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.upstridge.tmapp.ProvinceActivity"
+    android:background="@drawable/bg"
     tools:showIn="@layout/activity_province">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Province you are in"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp" />
 
     <SearchView
         android:id="@+id/searchBar"

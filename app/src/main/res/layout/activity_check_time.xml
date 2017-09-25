@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/bg"
     tools:context="com.upstridge.tmapp.hotel.CheckTimeActivity">
 
     <TextView
@@ -12,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Booking Time"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-smallcaps"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -27,7 +30,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="60dp"
         android:text="Check-In Date : "
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-smallcaps"/>
 
     <EditText
         android:id="@+id/date"
@@ -51,8 +55,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="115dp"
         android:text="Check-In Time : "
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp" />
 
     <EditText
@@ -77,8 +82,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView15"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:textSize="20dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Area" />
 
     <Spinner
@@ -97,7 +103,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:layout_marginTop="51dp"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:background="#660000"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/textView29"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
