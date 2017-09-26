@@ -6,10 +6,13 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.hotel.RoomData;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 public class rooms extends Activity {
 
-    String url = "http://10.0.2.2:81/tmapp/android/searchRoom.php";
+    String url = BASE_URL + "android/searchRoom.php";
     //String url = "http://admin.upstridge.co.ke/android/searchHotel.php";
 
     SearchView searchBar;

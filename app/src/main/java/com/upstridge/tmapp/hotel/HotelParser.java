@@ -16,9 +16,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.adapters.CustomHotelAdapter;
+import com.upstridge.tmapp.models.Hotels;
 
 
 import java.util.ArrayList;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 /**
  * Created by Wango on 12/11/2016.
@@ -162,7 +166,7 @@ public class HotelParser extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = BASE_URL + "public/uploads/logo/"+jo.getString("logo");
                 String hotelbranch = "Branch : "+jo.getString("branch");
                 branch = jo.getString("branch");
                 branchid = jo.getString("id");

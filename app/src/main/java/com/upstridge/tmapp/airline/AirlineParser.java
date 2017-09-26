@@ -13,12 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.adapters.CustomAeroplaneAdapter;
+import com.upstridge.tmapp.models.Aeroplanes;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 /**
  * Created by Wango on 12/11/2016.
@@ -183,7 +187,7 @@ public class AirlineParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = BASE_URL + "public/uploads/logo/"+jo.getString("logo");
                 String route = jo.getString("oname") +" to "+ jo.getString("dname");
                 String arrival = "Arrival : "+jo.getString("arrival");
                 String departure = "Departure : "+jo.getString("departure");

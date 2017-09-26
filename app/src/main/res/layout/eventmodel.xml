@@ -6,13 +6,14 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/cardview"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
-        card_view:cardCornerRadius="2dp"
-        card_view:contentPadding="10dp">
+        android:elevation="10dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="10dp"
+        card_view:cardCornerRadius="1dp">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -31,14 +32,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hotelImage"
-                android:fontFamily="serif-monospace"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:paddingTop="15dp"
                 android:text="Event Name"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fc8213"
-                android:textSize="28dp"
+                android:textColor="#660000"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/eventName"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Description"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -57,22 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/roomtype"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Location:"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/adults"
-                android:fontFamily="serif"
-                android:paddingBottom="5dp"
-                android:text="Contact:"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/date"
@@ -80,21 +71,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/contact"
-                android:fontFamily="serif"
+                android:layout_below="@+id/adults"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Date:"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/slots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/date"
-                android:fontFamily="serif"
-                android:paddingBottom="5dp"
-                android:text="Slots:"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18dp" />
 
@@ -103,23 +83,23 @@
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/vip"
-        android:textSize="18dp"
-        android:textColor="#68ae00"
-        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:textColor="@color/charcoal"
         android:textAppearance="?android:attr/textAppearanceLarge"
-
-        android:layout_below="@id/slots"/>
+        android:textSize="18dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_below="@id/date"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/economic"
-        android:fontFamily="serif"
-        android:textSize="18dp"
-        android:textColor="#68ae00"
+        android:fontFamily="sans-serif-smallcaps"
         android:textAppearance="?android:attr/textAppearanceLarge"
-
+        android:textStyle="bold"
+        android:textColor="@color/charcoal"
+        android:textSize="18dp"
         android:layout_below="@id/vip"/>
 
     <TextView
@@ -127,10 +107,11 @@
         android:layout_height="wrap_content"
         android:text="Price:"
         android:id="@+id/children"
+        android:textStyle="bold"
+        android:textColor="@color/charcoal"
         android:textSize="18dp"
-        android:textColor="#68ae00"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:fontFamily="serif"
+        android:fontFamily="sans-serif-smallcaps"
         android:layout_below="@id/economic"/>
 
     <TextView

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context="com.upstridge.tmapp.taxi.TaxiBooking">
 
     <RelativeLayout
@@ -23,9 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:textSize="20sp"
+                android:textSize="28sp"
                 android:textAlignment="center"
                 android:text="Book Taxi"
+                android:fontFamily="sans-serif-smallcaps"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -40,7 +42,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="First Name:" />
 
             <EditText
@@ -66,7 +69,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Last Name:" />
 
             <EditText
@@ -92,7 +96,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Phone No:" />
 
             <EditText
@@ -118,7 +123,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Email:" />
 
             <EditText
@@ -144,7 +150,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Identity No /\nPassport No:" />
 
             <EditText
@@ -182,7 +189,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="14dp"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Payment Mode:" />
 
             <Spinner
@@ -197,11 +205,14 @@
             <Button
                 android:id="@+id/book"
                 android:layout_width="fill_parent"
-                android:background="#ffce00"
+                android:background="#660000"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:text="Book Now"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:fontFamily="sans-serif-smallcaps"
                 android:layout_below="@+id/mode"
                 android:layout_centerHorizontal="true" />
 

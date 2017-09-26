@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.upstridge.tmapp.ProvinceActivity"
+    tools:context="com.upstridge.tmapp.bus.ProvinceActivity"
     android:background="@drawable/bg"
     tools:showIn="@layout/activity_province">
 
@@ -14,7 +14,6 @@
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
         android:queryHint="Search Province...."
         >
 

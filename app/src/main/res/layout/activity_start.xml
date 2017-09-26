@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4c0000"
-    tools:context="com.upstridge.tmapp.StartActivity">
+    tools:context="com.upstridge.tmapp.bus.StartActivity">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -46,13 +46,19 @@
       android:textColor="#000066"
       android:textSize="20sp" />-->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:weightSum="2"
+        android:id="@+id/lin1"
+        android:layout_marginTop="40dp">
+
     <ViewFlipper
         android:id="@+id/airplane"
-        android:layout_width="190dp"
+        android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/textView"
-        android:layout_weight="0.5"
-        android:layout_marginTop="50dp"
+        android:layout_weight="1"
         android:backgroundTint="#872657">
 
 
@@ -62,6 +68,7 @@
         android:id="@+id/travel"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
+        android:layout_weight="1"
         android:layout_alignTop="@+id/airplane"
         android:layout_toRightOf="@+id/airplane"
         android:layout_toEndOf="@+id/airplane"
@@ -71,25 +78,31 @@
 
     </ViewFlipper>
 
+    </LinearLayout>
     <ViewFlipper
-        android:id="@+id/hotel"
+        android:id="@+id/carhire"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_below="@+id/airplane"
+        android:layout_below="@+id/lin1"
         android:backgroundTint="#872657">
 
 
     </ViewFlipper>
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:weightSum="2"
+        android:id="@+id/lin2"
+        android:layout_below="@+id/carhire">
     <ViewFlipper
         android:id="@+id/taxi"
-        android:layout_width="190dp"
+        android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:backgroundTint="#872657"
-        android:layout_below="@+id/hotel">
+        android:layout_weight="1"
+        android:backgroundTint="#872657">
 
 
     </ViewFlipper>
@@ -99,13 +112,34 @@
         android:id="@+id/train"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
+        android:layout_weight="1"
         android:backgroundTint="#872657"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:layout_below="@+id/hotel"
         android:layout_alignTop="@+id/taxi"
         android:layout_toRightOf="@+id/taxi"
         android:layout_toEndOf="@+id/taxi">
+
+
+    </ViewFlipper>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:weightSum="2"
+        android:id="@+id/lin3"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/lin2">
+
+    <ViewFlipper
+        android:id="@+id/hotel"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_weight="1"
+        android:backgroundTint="#872657"
+        android:layout_alignParentBottom="true">
+
 
 
     </ViewFlipper>
@@ -115,12 +149,19 @@
         android:id="@+id/event"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/taxi"
-        android:backgroundTint="#872657">
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_alignTop="@+id/hotel"
+        android:layout_toRightOf="@+id/hotel"
+        android:layout_toEndOf="@+id/hotel"
+        android:backgroundTint="#872657"
+        android:layout_alignParentBottom="true">
 
 
     </ViewFlipper>
+
+    </LinearLayout>
 
      </RelativeLayout>
 </ScrollView>

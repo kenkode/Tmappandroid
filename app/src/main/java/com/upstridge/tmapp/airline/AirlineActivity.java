@@ -8,9 +8,11 @@ import android.widget.Spinner;
 
 import com.upstridge.tmapp.*;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class AirlineActivity extends Activity {
 
-    String url = "http://10.0.2.2:81/tmapp/android/destination.php";
+    String url = BASE_URL + "android/destination.php";
     //String url = "http://admin.upstridge.co.ke/android/destination.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

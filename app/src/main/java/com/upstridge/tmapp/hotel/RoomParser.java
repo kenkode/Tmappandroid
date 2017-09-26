@@ -16,10 +16,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.adapters.CustomRoomAdapter;
+import com.upstridge.tmapp.models.Room;
 
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 /**
  * Created by Wango on 12/11/2016.
@@ -248,7 +252,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                 }
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/hotel/rooms/"+jo.getString("image");
+                String imageUrl = BASE_URL + "public/uploads/hotel/rooms/"+jo.getString("image");
                 String availability = jo.getString("room_count");
                 String adultno = jo.getString("adults");
                 String childno = jo.getString("children");

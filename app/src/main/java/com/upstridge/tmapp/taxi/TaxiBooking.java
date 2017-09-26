@@ -14,9 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.upstridge.tmapp.HideHintEditText;
+import com.upstridge.tmapp.bus.HideHintEditText;
 import com.upstridge.tmapp.R;
-import com.upstridge.tmapp.SendMail;
+import com.upstridge.tmapp.bus.SendMail;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,9 +24,11 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class TaxiBooking extends Activity {
 
-    String urlAddress = "http://10.0.2.2/tmapp/android/taxibooking.php";
+    String urlAddress = BASE_URL + "android/taxibooking.php";
     //String urlAddress = "http://admin.upstridge.co.ke/android/eventbooking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;

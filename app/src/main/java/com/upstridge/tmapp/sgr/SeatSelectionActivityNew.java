@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.upstridge.tmapp.BookingActivity;
-import com.upstridge.tmapp.CustomGridViewAdapter;
-import com.upstridge.tmapp.Item;
+import com.upstridge.tmapp.bus.BookingActivity;
+import com.upstridge.tmapp.adapters.CustomGridViewAdapter;
+import com.upstridge.tmapp.models.Item;
 import com.upstridge.tmapp.R;
 
 import java.util.ArrayList;

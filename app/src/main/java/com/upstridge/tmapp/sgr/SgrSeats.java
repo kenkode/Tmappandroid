@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.upstridge.tmapp.CustomGridViewAdapter;
-import com.upstridge.tmapp.Item;
+import com.upstridge.tmapp.adapters.CustomGridViewAdapter;
+import com.upstridge.tmapp.models.Item;
 import com.upstridge.tmapp.R;
 
 import org.json.JSONArray;
@@ -35,6 +35,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 /**
  * Created by Wango-PC on 6/8/2017.
@@ -71,7 +73,7 @@ public class SgrSeats extends Activity implements AdapterView.OnItemClickListene
     List<String> businessArray = new ArrayList<String>();
     List<String> economicArray = new ArrayList<String>();
 
-    String url = "http://10.0.2.2:81/tmapp/android/seats.php";
+    String url = BASE_URL + "android/seats.php";
     //String url = "http://admin.upstridge.co.ke/android/seats.php";
 
     @Override

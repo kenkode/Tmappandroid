@@ -1,6 +1,5 @@
 package com.upstridge.tmapp.airline;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -21,13 +20,15 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.upstridge.tmapp.HideHintEditText;
+import com.upstridge.tmapp.bus.HideHintEditText;
 import com.upstridge.tmapp.R;
-import com.upstridge.tmapp.SendMail;
+import com.upstridge.tmapp.bus.SendMail;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 public class AirlineBooking extends Activity {
 
-    String urlAddress = "http://10.0.2.2:81/tmapp/android/booking.php";
+    String urlAddress = BASE_URL + "android/booking.php";
     //String urlAddress = "http://admin.upstridge.co.ke/android/booking.php";
     TextView seaterror [];
     EditText firstname,lastname,email,phone,idno;

@@ -24,6 +24,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
@@ -155,7 +157,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2:81/tmapp/public/uploads/logo/"+jo.getString("logo");
+                String imageUrl = BASE_URL + "public/uploads/logo/"+jo.getString("logo");
                 vehicleid = jo.getString("id");
                 ecprice = jo.getString("economic");
                 capacity = jo.getString("capacity");

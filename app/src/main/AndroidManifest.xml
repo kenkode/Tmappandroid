@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StartActivity"
+            android:name=".bus.StartActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Design.NoActionBar"
             >
@@ -25,40 +25,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProvinceActivity"
+            android:name=".bus.ProvinceActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".OriginActivity"
+            android:name=".bus.OriginActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".DestinationActivity"
+            android:name=".bus.DestinationActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".VehicleActivity"
+            android:name=".bus.VehicleActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".TravellersActivity"
+            android:name=".bus.TravellersActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".bus.HomeActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".bus.BookingActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".SeatsActivity"
+            android:name=".bus.SeatsActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".SeatSelectionActivityNew"
+            android:name=".bus.SeatSelectionActivityNew"
             android:label="@string/app_name" />
         <activity
-            android:name=".SelectPeriod"
+            android:name=".bus.SelectPeriod"
             android:label="@string/app_name" />
         <activity
-            android:name=".RequestTaxiActivity"
+            android:name=".bus.RequestTaxiActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".TaxiActivity"
+            android:name=".bus.TaxiActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".sgr.SgrActivity1"
@@ -121,7 +121,7 @@
             android:name=".hotel.rooms"
             android:label="@string/app_name" />
         <activity
-            android:name=".MainActivity"
+            android:name=".bus.MainActivity"
             android:label="@string/app_name" />
         <activity
             android:name=".sgr.SgrHomeActivity"

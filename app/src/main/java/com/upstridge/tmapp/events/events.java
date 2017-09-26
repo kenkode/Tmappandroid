@@ -7,9 +7,11 @@ import android.widget.SearchView;
 
 import com.upstridge.tmapp.R;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class events extends Activity {
 
-    String url = "http://10.0.2.2/tmapp/android/searchEvent.php";
+    String url = BASE_URL + "android/searchEvent.php";
     //String url = "http://admin.upstridge.co.ke/android/searchEvent.php";
 
     SearchView searchBar;

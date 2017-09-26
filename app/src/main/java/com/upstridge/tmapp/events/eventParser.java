@@ -13,12 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.adapters.CustomEventAdapter;
+import com.upstridge.tmapp.models.Event;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
 /**
  * Created by Wango-PC on 6/8/2017.
@@ -121,7 +125,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                     String eventid =((TextView)view.findViewById(R.id.eventid)).getText().toString();
                     vipprice =((TextView)view.findViewById(R.id.vip)).getText().toString().replace("Vip Entrance : KES ","");
                     ecprice =((TextView)view.findViewById(R.id.economic)).getText().toString().replace("Normal Entrance : KES ","");
-                    slots =((TextView)view.findViewById(R.id.slots)).getText().toString().replace("Remaining Slots : ","");
+                    //slots =((TextView)view.findViewById(R.id.slots)).getText().toString().replace("Remaining Slots : ","");
                     children =((TextView)view.findViewById(R.id.children)).getText().toString().replace("Children Entrance : KES ","");
 
                     //Toast.makeText(c,vipprice+"-"+ecprice+"-"+slots+"-"+children,Toast.LENGTH_LONG).show();
@@ -161,7 +165,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                 jo = ja.getJSONObject(i);
 
                 String name = jo.getString("name");
-                String imageUrl = "http://10.0.2.2/tmapp/public/uploads/logo/"+jo.getString("image");
+                String imageUrl = BASE_URL + "public/uploads/logo/"+jo.getString("image");
                 String remaininglots = "Remaining Slots : "+jo.getString("slots");
                 String description = "Description : "+jo.getString("description");
                 String contact = "Contact : "+jo.getString("contact");

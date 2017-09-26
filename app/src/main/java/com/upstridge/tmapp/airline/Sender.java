@@ -3,12 +3,10 @@ package com.upstridge.tmapp.airline;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.speech.tts.Voice;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.upstridge.tmapp.Connector;
+import com.upstridge.tmapp.bus.Connector;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

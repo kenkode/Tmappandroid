@@ -7,9 +7,11 @@ import android.widget.SearchView;
 
 import com.upstridge.tmapp.R;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class TaxiActivity extends Activity {
 
-    String url = "http://10.0.2.2:81/tmapp/android/searchTaxi.php";
+    String url = BASE_URL + "android/searchTaxi.php";
     SearchView searchBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

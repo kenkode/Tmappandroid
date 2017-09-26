@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="com.upstridge.tmapp.BookingActivity">
+    tools:context="com.upstridge.tmapp.bus.BookingActivity">
 
 <RelativeLayout
     android:layout_width="match_parent"

@@ -12,6 +12,8 @@
         android:layout_height="220dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
+        android:elevation="10dp"
+        card_view:cardElevation="10dp"
         card_view:cardCornerRadius="2dp"
         card_view:contentPadding="10dp">
 
@@ -30,13 +32,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/roomImage"
-                android:fontFamily="monospace"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:paddingTop="15dp"
                 android:text="Room Type"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fc8213"
-                android:textSize="24dp"
+                android:textColor="#660000"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/roomName"
                 android:layout_toRightOf="@id/roomImage"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Availability"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -57,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/availability"
                 android:layout_toRightOf="@id/roomImage"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Number of adults"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -69,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/adults"
                 android:layout_toRightOf="@id/roomImage"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Number of children"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -81,11 +83,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/children"
                 android:layout_toRightOf="@id/roomImage"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:text="Price"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#68ae00"
+                android:textColor="@color/charcoal"
+                android:textStyle="bold"
                 android:textSize="18dp" />
 
 

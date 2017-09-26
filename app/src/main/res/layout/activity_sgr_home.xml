@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/bg"
     tools:context="com.upstridge.tmapp.sgr.SgrHomeActivity">
 
     <TextView
@@ -13,7 +15,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-smallcaps"
         android:textAlignment="center"
         android:text="Select Destination" />
 
@@ -26,6 +29,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="60dp"
         android:text="Travel Date : "
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp" />
 
     <EditText
@@ -50,8 +54,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="115dp"
         android:text="Travel Time : "
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp" />
 
     <EditText
@@ -77,8 +82,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/textView10"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="170dp"
         android:text="From : "
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp" />
 
     <Spinner
@@ -96,8 +102,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="230dp"
         android:text="To : "
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"/>
 
     <Spinner
@@ -113,8 +120,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Search"
+        android:background="#660000"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:fontFamily="sans-serif-smallcaps"
         android:layout_below="@+id/textView13"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:layout_marginTop="70dp" />
 
 </RelativeLayout>

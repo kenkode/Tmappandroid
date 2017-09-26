@@ -7,9 +7,11 @@ import android.widget.SearchView;
 
 import com.upstridge.tmapp.R;
 
+import static com.upstridge.tmapp.config.Constants.BASE_URL;
+
 public class HotelActivity extends Activity {
 
-    String url = "http://10.0.2.2:81/tmapp/android/searchHotel.php";
+    String url = BASE_URL + "android/searchHotel.php";
     //String url = "http://admin.upstridge.co.ke/android/searchHotel.php";
 
     SearchView searchBar;

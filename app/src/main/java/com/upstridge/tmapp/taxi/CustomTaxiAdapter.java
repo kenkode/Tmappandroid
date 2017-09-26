@@ -10,7 +10,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.upstridge.tmapp.PicassoClient;
+import com.upstridge.tmapp.models.PicassoClient;
 import com.upstridge.tmapp.R;
 
 import java.util.ArrayList;

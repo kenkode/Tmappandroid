@@ -12,7 +12,9 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
-        card_view:cardCornerRadius="2dp"
+        android:elevation="10dp"
+        card_view:cardElevation="10dp"
+        card_view:cardCornerRadius="1dp"
         card_view:contentPadding="10dp">
 
         <RelativeLayout
@@ -30,10 +32,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/hotelImage"
-                android:fontFamily="monospace"
+                android:fontFamily="sans-serif-smallcaps"
                 android:paddingBottom="5dp"
                 android:paddingTop="30dp"
                 android:text="Vehicle Name"
+                android:textColor="#660000"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="24dp" />
 

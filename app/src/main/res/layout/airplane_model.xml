@@ -6,14 +6,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_view"
-                android:layout_width="fill_parent"
-                android:layout_height="220dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                card_view:cardCornerRadius="2dp"
-                card_view:contentPadding="10dp">
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:elevation="10dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="10dp"
+        card_view:cardCornerRadius="1dp">
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
@@ -30,13 +31,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/hotelImage"
-                        android:fontFamily="monospace"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:paddingBottom="5dp"
                         android:paddingTop="15dp"
                         android:text="Vehicle Name"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fc8213"
-                        android:textSize="24dp"
+                        android:textColor="#660000"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -45,10 +46,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/hotelName"
                         android:layout_toRightOf="@id/hotelImage"
-                        android:fontFamily="serif"
                         android:paddingBottom="5dp"
                         android:text="From - To"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:textSize="18dp" />
 
                     <!-- <TextView
@@ -78,10 +79,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/roomtype"
                         android:layout_toRightOf="@id/hotelImage"
-                        android:fontFamily="serif"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:text="Price:"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#68ae00"
+                        android:textStyle="bold"
+                        android:textColor="@color/charcoal"
                         android:textSize="18dp" />
 
                     <TextView
@@ -90,10 +92,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/availability"
                         android:layout_toRightOf="@id/hotelImage"
-                        android:fontFamily="serif"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:text="Price:"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#68ae00"
+                        android:textStyle="bold"
+                        android:textColor="@color/charcoal"
                         android:textSize="18dp" />
 
                     <TextView
@@ -102,10 +105,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/businessfare"
                         android:layout_toRightOf="@id/hotelImage"
-                        android:fontFamily="serif"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:text="Price:"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#68ae00"
+                        android:textStyle="bold"
+                        android:textColor="@color/charcoal"
                         android:textSize="18dp" />
 
                     <TextView
@@ -114,8 +118,9 @@
                         android:text="Price:"
                         android:id="@+id/childrenfare"
                         android:textSize="18dp"
-                        android:textColor="#68ae00"
-                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textColor="@color/charcoal"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_toRightOf="@id/hotelImage"
                         android:layout_below="@id/economicfare"/>

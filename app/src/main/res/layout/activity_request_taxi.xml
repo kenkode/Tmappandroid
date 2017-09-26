@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:padding="15dp"
-    tools:context="com.upstridge.tmapp.RequestTaxiActivity">
+    tools:context="com.upstridge.tmapp.bus.RequestTaxiActivity">
 
     <TextView
         android:id="@+id/textView22"
