@@ -43,7 +43,7 @@ public class StartActivity extends AppCompatActivity {
                 R.drawable.pass,R.drawable.travel1
         };
 
-        int rooms[]={R.drawable.hotel5,R.drawable.hotel1,R.drawable.hotel3,R.drawable.hotel4
+        int rooms[]={R.drawable.hotel5,R.drawable.hotel1,R.drawable.hotel3,R.drawable.hotel4,R.drawable.hotel10
         };
 
         int taxis[]={R.drawable.taximg,R.drawable.taxi1
@@ -54,11 +54,12 @@ public class StartActivity extends AppCompatActivity {
                 R.drawable.train4,R.drawable.train6
         };
 
-        int evts[]={R.drawable.concert1,R.drawable.events1,R.drawable.events2,R.drawable.events3,
-                R.drawable.eventimg3,R.drawable.events4,R.drawable.audience,R.drawable.action
+        int evts[]={R.drawable.concert1,R.drawable.events3,
+                R.drawable.audience,R.drawable.action,
+                R.drawable.event11,R.drawable.event12,R.drawable.photography
         };
 
-        int carhire[]={R.drawable.carhire1,R.drawable.carhire3,
+        int carhire[]={R.drawable.carhire3,
                 R.drawable.limo,R.drawable.mercedez2,R.drawable.bmw3
         };
 
@@ -205,8 +206,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Bus");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -240,8 +240,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Car Hire");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -273,8 +272,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Airplane");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -306,8 +304,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Hotel");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -339,8 +336,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Taxi");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -372,8 +368,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("SGR");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -405,8 +400,7 @@ public class StartActivity extends AppCompatActivity {
         tv.setText("Events");
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(18);
-        tv.setTypeface(Typeface.SANS_SERIF);
-        tv.setTypeface(null, Typeface.BOLD);
+        tv.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
         tv.setMaxLines(2);
         tv.setBackgroundColor(Color.argb(99, 0, 0, 0));
         param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);

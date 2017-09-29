@@ -16,8 +16,7 @@
         <activity
             android:name=".bus.StartActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Design.NoActionBar"
-            >
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -128,7 +127,11 @@
             android:label="@string/app_name" />
         <activity
             android:name=".airline.PlaneHomeActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
+        <activity
+            android:name=".CarHireHomeActivity"
+            android:label="@string/title_activity_car_hire_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
