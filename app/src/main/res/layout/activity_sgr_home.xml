@@ -1,131 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.upstridge.tmapp.bus.HomeActivity"
     android:padding="15dp"
     android:background="@drawable/bg"
-    tools:context="com.upstridge.tmapp.sgr.SgrHomeActivity">
+    >
 
-    <TextView
-        android:id="@+id/textView9"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:textSize="28sp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textAlignment="center"
-        android:text="Select Destination" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="60dp"
-        android:text="Travel Date : "
-        android:fontFamily="sans-serif-smallcaps"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textSize="28sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAlignment="center"
+            android:text="Select Destination" />
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Select Travel Date"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:drawableRight="@drawable/calendar12"
-        android:layout_alignBaseline="@+id/textView10"
-        android:layout_alignBottom="@+id/textView10"
-        android:layout_toRightOf="@+id/textView10"
-        android:layout_toEndOf="@+id/textView10" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:layout_marginTop="30dp"
+            android:text="Travel Date : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="115dp"
-        android:text="Travel Time : "
-        android:fontFamily="sans-serif-smallcaps"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select Travel Date"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/textView9"
+            android:drawableRight="@drawable/calendar12"
+            android:layout_toRightOf="@+id/textView10"
+            />
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Select Travel Time"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:drawableRight="@drawable/time1"
-        android:layout_alignBaseline="@+id/textView15"
-        android:layout_alignBottom="@+id/textView15"
-        android:layout_toRightOf="@+id/textView15"
-        android:layout_toEndOf="@+id/textView15" />
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView10"
+            android:layout_marginTop="25dp"
+            android:text="Travel Time : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/textView10"
-        android:layout_marginTop="170dp"
-        android:text="From : "
-        android:fontFamily="sans-serif-smallcaps"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select Travel Time"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView10"
+            android:drawableRight="@drawable/time1"
+            android:layout_toRightOf="@+id/textView15"/>
 
-    <Spinner
-        android:id="@+id/from"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/date"
-        android:layout_alignStart="@+id/date"
-        android:layout_alignTop="@+id/textView11" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/textView10"
+            android:layout_marginTop="165dp"
+            android:text="From : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="230dp"
-        android:text="To : "
-        android:fontFamily="sans-serif-smallcaps"
-        android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/from"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textView11"
+            android:layout_below="@+id/textView15"
+            android:layout_marginTop="15dp"/>
 
-    <Spinner
-        android:id="@+id/to"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/from"
-        android:layout_alignStart="@+id/from"
-        android:layout_alignTop="@+id/textView13" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="220dp"
+            android:text="To : "
+            android:layout_below="@+id/textView11"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:background="#660000"
-        android:textSize="18sp"
-        android:textColor="#fff"
-        android:fontFamily="sans-serif-smallcaps"
-        android:layout_below="@+id/textView13"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp" />
+        <Spinner
+            android:id="@+id/to"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textView11"
+            android:layout_below="@+id/textView11"
+            android:layout_marginTop="15dp"/>
 
-</RelativeLayout>
+        <!--<Button-->
+        <!---->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorBlue"-->
+        <!--android:text="Search"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:layout_below="@+id/textView13"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="51dp" />-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0.4"
+            android:id="@+id/button"
+            android:text="SEARCH"
+            android:textColor="#f7f7f7"
+            android:background="#990000"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="18dp"
+            android:layout_below="@+id/textView13"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="70dp" />
+    </RelativeLayout>
+
+</ScrollView>

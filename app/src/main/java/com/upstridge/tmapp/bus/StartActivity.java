@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.airline.PlaneHomeActivity;
 import com.upstridge.tmapp.events.events;
@@ -33,32 +35,31 @@ public class StartActivity extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        int bus[]={R.drawable.bus4,R.drawable.bus5,R.drawable.bus6,
-                R.drawable.seats,R.drawable.bus7,R.drawable.bus8,R.drawable.bus9
+        int bus[]={R.drawable.bus4,R.drawable.bus9,
+                R.drawable.seats
         };
 
-        int plane[]={R.drawable.planeimg,R.drawable.planeimg2,R.drawable.plane6,R.drawable.planepassanger,
-                R.drawable.airport,R.drawable.passport
+        int plane[]={R.drawable.planeimg,R.drawable.planeimg2,R.drawable.travel2,
+                R.drawable.pass,R.drawable.travel1
         };
 
-        int rooms[]={R.drawable.hotel5,R.drawable.hotel6,R.drawable.hotel1,R.drawable.hotel3,R.drawable.hotel4
-                ,R.drawable.hotel2
+        int rooms[]={R.drawable.hotel5,R.drawable.hotel1,R.drawable.hotel3,R.drawable.hotel4
         };
 
-        int taxis[]={R.drawable.taximg,R.drawable.carimg,R.drawable.taxi1,R.drawable.taxi2
+        int taxis[]={R.drawable.taximg,R.drawable.taxi1
                 ,R.drawable.taxi_uber
         };
 
-        int trains[]={R.drawable.trainimg,R.drawable.train1,R.drawable.train2,R.drawable.train3,
-                R.drawable.train4,R.drawable.train5,R.drawable.train6
+        int trains[]={R.drawable.trainimg,R.drawable.train3,
+                R.drawable.train4,R.drawable.train6
         };
 
         int evts[]={R.drawable.concert1,R.drawable.events1,R.drawable.events2,R.drawable.events3,
                 R.drawable.eventimg3,R.drawable.events4,R.drawable.audience,R.drawable.action
         };
 
-        int carhire[]={R.drawable.carhire1,R.drawable.carhire3,R.drawable.carhire3,
-                R.drawable.limo,R.drawable.mercedes,R.drawable.mercedes1,R.drawable.bmw2
+        int carhire[]={R.drawable.carhire1,R.drawable.carhire3,
+                R.drawable.limo,R.drawable.mercedez2,R.drawable.bmw3
         };
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -183,6 +184,7 @@ public class StartActivity extends AppCompatActivity {
 
         RelativeLayout relativeLayout = new RelativeLayout(this);
         ImageButton image = new ImageButton(getApplicationContext());
+
         image.setBackgroundResource(res);
         image.setOnClickListener(new View.OnClickListener() {
 

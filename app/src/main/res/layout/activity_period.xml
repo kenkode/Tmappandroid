@@ -40,7 +40,7 @@
         android:id="@+id/from"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="47dp"
         android:layout_toRightOf="@id/textView11" />
 
     <TextView
@@ -59,7 +59,7 @@
     <Spinner
         android:id="@+id/to"
         android:layout_width="fill_parent"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="113dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textView13" />
 
@@ -93,8 +93,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView27"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_toRightOf="@id/textView27"
         android:ems="10"
         android:inputType="number" />
