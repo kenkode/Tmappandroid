@@ -43,6 +43,7 @@
     <string name="title_activity_sgr_home">SgrHomeActivity</string>
     <string name="title_activity_plane_home">PlaneHomeActivity</string>
     <string name="title_activity_car_hire_home">CarHireHomeActivity</string>
+    <string name="title_activity_select_car">SelectCarActivity</string>
 
 
 </resources>

@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.airline.PlaneHomeActivity;
+import com.upstridge.tmapp.carhire.CarHireHomeActivity;
 import com.upstridge.tmapp.events.events;
 import com.upstridge.tmapp.hotel.CheckTimeActivity;
 import com.upstridge.tmapp.sgr.SgrHomeActivity;
@@ -35,32 +36,31 @@ public class StartActivity extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        int bus[]={R.drawable.bus4,R.drawable.bus9,
-                R.drawable.seats
+        int bus[]={R.drawable.seats,R.drawable.bus11
         };
 
-        int plane[]={R.drawable.planeimg,R.drawable.planeimg2,R.drawable.travel2,
-                R.drawable.pass,R.drawable.travel1
+        int plane[]={R.drawable.planeimg2,R.drawable.travel2,
+                R.drawable.passport2,R.drawable.travel3
         };
 
-        int rooms[]={R.drawable.hotel5,R.drawable.hotel1,R.drawable.hotel3,R.drawable.hotel4,R.drawable.hotel10
+        int rooms[]={R.drawable.hotel5,R.drawable.hotel4,R.drawable.hotel10
         };
 
         int taxis[]={R.drawable.taximg,R.drawable.taxi1
                 ,R.drawable.taxi_uber
         };
 
-        int trains[]={R.drawable.trainimg,R.drawable.train3,
+        int trains[]={R.drawable.train3,
                 R.drawable.train4,R.drawable.train6
         };
 
-        int evts[]={R.drawable.concert1,R.drawable.events3,
-                R.drawable.audience,R.drawable.action,
-                R.drawable.event11,R.drawable.event12,R.drawable.photography
+        int evts[]={R.drawable.events3,
+                R.drawable.motobikes,R.drawable.aud11,
+                R.drawable.photography
         };
 
-        int carhire[]={R.drawable.carhire3,
-                R.drawable.limo,R.drawable.mercedez2,R.drawable.bmw3
+        int carhire[]={R.drawable.voxy1,R.drawable.wedding,
+                R.drawable.tour
         };
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -225,7 +225,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("mode", "car hire"));
+                startActivity(new Intent(getApplicationContext(),CarHireHomeActivity.class).putExtra("mode", "car hire"));
             }
         });
         relativeLayout.addView(image);

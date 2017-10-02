@@ -1,33 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.upstridge.tmapp.CarHireHomeActivity">
+    tools:context="com.upstridge.tmapp.carhire.CarHireHomeActivity"
+    android:padding="15dp"
+    android:background="@drawable/bg"
+    >
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <TextView
+            android:id="@+id/textView9"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textSize="28sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAlignment="center"
+            android:text="Select Duration" />
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:layout_marginTop="30dp"
+            android:text="Start Date : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
 
-    <include layout="@layout/content_car_hire_home" />
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select Start Date"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/textView9"
+            android:drawableRight="@drawable/calendar12"
+            android:layout_toRightOf="@+id/textView10"
+            />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView10"
+            android:layout_marginTop="25dp"
+            android:text="Time : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select Time"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView10"
+            android:drawableRight="@drawable/time1"
+            android:layout_toRightOf="@+id/textView15"/>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView15"
+            android:layout_marginTop="30dp"
+            android:text="End Date : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <EditText
+            android:id="@+id/date1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select End Date"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/textView15"
+            android:drawableRight="@drawable/calendar12"
+            android:layout_toRightOf="@+id/textView20"
+            />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView20"
+            android:layout_marginTop="25dp"
+            android:text="Time : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/time1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Select Time"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView20"
+            android:drawableRight="@drawable/time1"
+            android:layout_toRightOf="@+id/textView21"/>
+
+        <!--<Button-->
+        <!---->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorBlue"-->
+        <!--android:text="Search"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:layout_below="@+id/textView13"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="51dp" />-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0.4"
+            android:id="@+id/button"
+            android:text="SEARCH"
+            android:textColor="#f7f7f7"
+            android:background="@color/colorButton"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="18dp"
+            android:layout_below="@+id/textView13"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="320dp" />
+    </RelativeLayout>
+
+</ScrollView>

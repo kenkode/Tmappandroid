@@ -1,4 +1,4 @@
-package com.upstridge.tmapp;
+package com.upstridge.tmapp.carhire;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class CarHireHomeActivity extends AppCompatActivity {
+import com.upstridge.tmapp.R;
+
+public class SelectCarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_car_hire_home);
+        setContentView(R.layout.activity_select_car);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

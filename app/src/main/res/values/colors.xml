@@ -17,5 +17,7 @@
     <color name="colorBackground">#413e4f</color>
     <color name="colorText">#000000</color>
     <color name="colorTextHint">#ffc107</color>
+    <color name="colorButton">#ffce00</color>
+    <color name="colorRed">#990000</color>
 
 </resources>
