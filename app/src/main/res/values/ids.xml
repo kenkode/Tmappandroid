@@ -19,4 +19,6 @@
     <item type="id" name="travel"/>
     <item type="id" name="airplane"/>
     <item type="id" name="seatInvisibleError"/>
+    <item type="id" name="ctype"/>
+    <item type="id" name="cattypetxt"/>
 </resources>

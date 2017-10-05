@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.upstridge.tmapp.carhire.SelectCarActivity">
+    tools:context="com.upstridge.tmapp.carhire.NumberOfCarsActivity">
 
-    <include layout="@layout/content_select_car" />
-
+    <include layout="@layout/content_number_of_cars" />
 
 </android.support.design.widget.CoordinatorLayout>

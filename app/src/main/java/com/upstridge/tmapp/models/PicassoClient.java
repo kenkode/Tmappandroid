@@ -27,6 +27,8 @@ public class PicassoClient {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.hotel_default).into(img);
             }else if(type == "room") {
                 Picasso.with(c).load(imageUrl).placeholder(R.drawable.room).into(img);
+            }else if(type == "car") {
+                Picasso.with(c).load(imageUrl).placeholder(R.drawable.default_bus).into(img);
             }
         }else {
             if(type == "bus"){
@@ -43,6 +45,8 @@ public class PicassoClient {
                 Picasso.with(c).load(R.drawable.hotel_default).into(img);
             }else if(type == "room") {
                 Picasso.with(c).load(R.drawable.room).into(img);
+            }else if(type == "car") {
+                Picasso.with(c).load(R.drawable.default_bus).into(img);
             }
         }
     }

@@ -44,6 +44,8 @@
     <string name="title_activity_plane_home">PlaneHomeActivity</string>
     <string name="title_activity_car_hire_home">CarHireHomeActivity</string>
     <string name="title_activity_select_car">SelectCarActivity</string>
+    <string name="title_activity_number_of_cars">NumberOfCarsActivity</string>
+    <string name="title_activity_car_hire_booking">CarHireBooking</string>
 
 
 </resources>

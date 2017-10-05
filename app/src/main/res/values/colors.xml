@@ -19,5 +19,5 @@
     <color name="colorTextHint">#ffc107</color>
     <color name="colorButton">#ffce00</color>
     <color name="colorRed">#990000</color>
-
+    <color name="colorBlue">#11bdff</color>
 </resources>

@@ -10,18 +10,29 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.models.Location;
+import com.upstridge.tmapp.retrofit.RetrofitInterface;
+import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class CarHireHomeActivity extends AppCompatActivity {
 
@@ -31,6 +42,7 @@ public class CarHireHomeActivity extends AppCompatActivity {
     static final int DIALOG_ID1 = 2;
     String time = "";
     String date = "";
+    Spinner location;
 
     EditText timepick, timepick1, t, t2;
     static final int DIALOG_TID = 1;
@@ -44,6 +56,11 @@ public class CarHireHomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        LinearLayout errorLayout = (LinearLayout) findViewById(R.id.error_layout);
+        errorLayout.setVisibility(View.GONE);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.load_cars);
+
+        location = (Spinner)findViewById(R.id.location);
 
         Button search = (Button) findViewById(R.id.button);
         dp = (EditText) findViewById(R.id.date);
@@ -60,6 +77,8 @@ public class CarHireHomeActivity extends AppCompatActivity {
         showDate1();
         showTime1PickerDialog();
 
+        getLocations(location,errorLayout,progressBar);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,13 +89,19 @@ public class CarHireHomeActivity extends AppCompatActivity {
                 String time_txt1 = timepick1.getText().toString();
 
                 if(date_txt.equals("")){
-                    Toast.makeText(CarHireHomeActivity.this,"Please select travel date",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CarHireHomeActivity.this,"Please select start date",Toast.LENGTH_SHORT).show();
                 }else if(time_txt.equals("")){
-                    Toast.makeText(CarHireHomeActivity.this,"Please select Start date time",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CarHireHomeActivity.this,"Please select start time",Toast.LENGTH_SHORT).show();
+                }else if(date_txt1.equals("")){
+                    Toast.makeText(CarHireHomeActivity.this,"Please select end date",Toast.LENGTH_SHORT).show();
+                }else if(time_txt1.equals("")){
+                    Toast.makeText(CarHireHomeActivity.this,"Please select end time",Toast.LENGTH_SHORT).show();
+                }else if(location.getSelectedItem().toString().equals("")){
+                    Toast.makeText(CarHireHomeActivity.this,"Locations arent available at the moment!",Toast.LENGTH_SHORT).show();
                 }else {
 
-                    Toast.makeText(CarHireHomeActivity.this, "Start Date: "+date_txt+" "+time_txt+"\n"+
-                            "End Date: "+date_txt1+" "+time_txt1,Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(CarHireHomeActivity.this, "Start Date: "+date_txt+" "+time_txt+"\n"+
+                            "End Date: "+date_txt1+" "+time_txt1,Toast.LENGTH_LONG).show();*/
 
                     Intent i = new Intent(CarHireHomeActivity.this, SelectCarActivity.class);
                     Bundle b = new Bundle();
@@ -84,11 +109,61 @@ public class CarHireHomeActivity extends AppCompatActivity {
                     b.putString("starttime", time_txt);
                     b.putString("enddate", date_txt1);
                     b.putString("endtime", time_txt1);
+                    b.putString("location", location.getSelectedItem().toString());
                     i.putExtras(b);
                     startActivity(i);
                 }
             }
         });
+
+    }
+
+    public void getLocations(final Spinner loc, final LinearLayout errorLinear, final ProgressBar loadPrice) {
+
+        final ArrayList<String> rLocations = new ArrayList<>();
+
+        RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
+
+        Call<List<Location>> retroLocations = retrofitInterface.getLocations();
+
+        retroLocations.enqueue(new Callback<List<Location>>() {
+            @Override
+            public void onResponse(Call<List<Location>> call, retrofit2.Response<List<Location>> response) {
+                final List<Location> locations = response.body();
+                for (Location rLoc : locations) {
+                    rLocations.add(rLoc.getLocation());
+                }
+                if(rLocations.size() <= 0) {
+                    errorLinear.setVisibility(View.VISIBLE);
+                }else {
+                    errorLinear.setVisibility(View.GONE);
+                }
+                loadPrice.setVisibility(View.GONE);
+                ArrayAdapter adapter = new ArrayAdapter(CarHireHomeActivity.this, android.R.layout.simple_list_item_1, rLocations);
+                // apply the Adapter:
+                loc.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Location>> call, Throwable t) {
+                t.printStackTrace();
+                errorLinear.setVisibility(View.VISIBLE);
+                loadPrice.setVisibility(View.GONE);
+                t.printStackTrace();
+                final Snackbar snackbar = Snackbar.make(loc, "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackbar.dismiss();
+                        errorLinear.setVisibility(View.GONE);
+                        loadPrice.setVisibility(View.VISIBLE);
+                        getLocations( loc, errorLinear, loadPrice );
+                    }
+                });
+                snackbar.show();
+            }
+        });
+
 
     }
 

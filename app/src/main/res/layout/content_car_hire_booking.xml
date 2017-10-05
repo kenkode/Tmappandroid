@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.upstridge.tmapp.carhire.CarHireBooking">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/booking">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:textSize="28sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textAlignment="center"
+                android:text="Hire Car"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView12"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="First Name:" />
+
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="First name"
+                android:inputType="textPersonName"
+                android:layout_toRightOf="@+id/textView14"
+                android:layout_alignBaseline="@+id/textView14"
+                android:layout_alignBottom="@+id/textView14"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView14"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Last Name:" />
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView15"
+                android:layout_alignBaseline="@+id/textView15"
+                android:layout_alignBottom="@+id/textView15"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:hint="Last name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView15"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Phone No:" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView16"
+                android:layout_alignBaseline="@+id/textView16"
+                android:layout_alignBottom="@+id/textView16"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView16"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Email:" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView17"
+                android:layout_alignBaseline="@+id/textView17"
+                android:layout_alignBottom="@+id/textView17"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView17"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Identity No /\nPassport No:" />
+
+            <EditText
+                android:id="@+id/idno"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView18"
+                android:layout_toRightOf="@+id/textView18"
+                android:ems="10"
+                android:hint="Identity No / Passport No"
+                android:inputType="textPersonName" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/first"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="14dp"
+            android:id="@+id/lin">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lin"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Total KES:" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textView20"
+            android:layout_alignBaseline="@+id/textView20"
+            android:layout_alignBottom="@+id/textView20"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="0.00" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/last"
+            android:layout_below="@+id/textView20">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Payment Mode:" />
+
+            <Spinner
+                android:id="@+id/mode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView21"
+                android:layout_alignTop="@+id/textView21"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:id="@+id/book"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:text="Book Now"
+                android:background="@color/colorButton"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_below="@+id/mode"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.upstridge.tmapp.carhire.NumberOfCarsActivity"
+        tools:showIn="@layout/activity_number_of_cars"
+        android:padding="15dp"
+        android:background="@drawable/bg"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textAlignment="center"
+        android:text="Number of Vehicles Hired" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:id="@+id/tv"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rel"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textView9"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/rel"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentBottom="true">
+
+            <!--<Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/select"
+                android:textColor="#fff"
+                android:background="@color/colorBlue"
+                android:layout_marginRight="10dp"
+                android:text="Select all"/>
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/deselect"
+                android:textColor="#fff"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorRed"
+                android:text="Deselct all"/>-->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/select"
+                android:textColor="#fff"
+                android:background="@color/colorButton"
+                android:text="Select"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

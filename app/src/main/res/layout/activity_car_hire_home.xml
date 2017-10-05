@@ -58,7 +58,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView10"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:text="Time : "
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="20sp" />
@@ -72,7 +72,7 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="13dp"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/textView10"
             android:drawableRight="@drawable/time1"
             android:layout_toRightOf="@+id/textView15"/>
@@ -110,7 +110,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView20"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:text="Time : "
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="20sp" />
@@ -124,10 +124,60 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="13dp"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/textView20"
             android:drawableRight="@drawable/time1"
             android:layout_toRightOf="@+id/textView21"/>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView21"
+            android:layout_marginTop="30dp"
+            android:text="Location : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/location"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView21"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/textView22"
+            android:layout_toEndOf="@+id/textView22" />
+
+        <LinearLayout
+            android:id="@+id/error_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/warning"
+                android:tint="@color/colorRed"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="No data"
+                android:textColor="@color/colorRed" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/load_cars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true" />
 
         <!--<Button-->
         <!---->
@@ -152,7 +202,7 @@
             android:textSize="18dp"
             android:layout_below="@+id/textView13"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="320dp" />
+            android:layout_marginTop="380dp" />
     </RelativeLayout>
 
 </ScrollView>
