@@ -10,4 +10,5 @@ public class Constants {
 
     public static final String GET_CARS = "get_cars";
     public static final String GET_LOCATIONS = "get_locations";
+    public static final String HIRE_CAR = "hire_car";
 }

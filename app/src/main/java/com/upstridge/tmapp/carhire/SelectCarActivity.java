@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
@@ -61,6 +62,7 @@ public class SelectCarActivity extends AppCompatActivity {
                 if(CustomCarHireAdapter.getModel().size() == CustomCarHireAdapter.carCount()){
                     Toast.makeText(SelectCarActivity.this,"Please select atleast one car",Toast.LENGTH_SHORT).show();
                 }else {
+                    TextView org = (TextView) findViewById(R.id.organization);
                     Intent intent = new Intent(SelectCarActivity.this, NumberOfCarsActivity.class);
                     Bundle b = new Bundle();
                     b.putString("startdate", sdate);
@@ -68,6 +70,7 @@ public class SelectCarActivity extends AppCompatActivity {
                     b.putString("enddate", edate);
                     b.putString("endtime", etime);
                     b.putString("location", location);
+                    b.putString("organization", org.getText().toString());
                     intent.putExtras(b);
                     startActivity(intent);
                 }

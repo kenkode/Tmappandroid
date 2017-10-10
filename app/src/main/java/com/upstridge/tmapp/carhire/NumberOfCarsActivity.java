@@ -47,6 +47,8 @@ public class NumberOfCarsActivity extends AppCompatActivity {
         final String edate = bundle.getString("enddate");
         final String etime = bundle.getString("endtime");
         final String location = bundle.getString("location");
+        final String organization = bundle.getString("organization");
+
 
         select = (Button)findViewById(R.id.select);
 
@@ -80,6 +82,7 @@ public class NumberOfCarsActivity extends AppCompatActivity {
                     b.putString("enddate", edate);
                     b.putString("endtime", etime);
                     b.putString("location", location);
+                    b.putString("organization", organization);
                     b.putInt("count", CustomCarHireAdapter.cars.size());
                     for (int i = 0; i < CustomCarHireAdapter.cars.size(); i++) {
                         if (CustomCarHireAdapter.cars.get(i).getSelected()) {
