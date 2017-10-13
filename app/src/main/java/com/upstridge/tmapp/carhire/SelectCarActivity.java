@@ -1,10 +1,15 @@
 package com.upstridge.tmapp.carhire;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,13 +23,17 @@ import android.widget.Toast;
 import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
 import com.upstridge.tmapp.data.CarData;
+import com.upstridge.tmapp.decorators.RecyclerDecorator;
 import com.upstridge.tmapp.models.Carhire;
 
 import java.util.ArrayList;
 
+import static com.upstridge.tmapp.data.CarData.adapter;
+import static com.upstridge.tmapp.data.CarData.rCars;
+
 public class SelectCarActivity extends AppCompatActivity {
 
-    private ListView lv;
+    private RecyclerView lv;
     private ArrayList<Carhire> modelArrayList;
     private CustomCarHireAdapter customAdapter;
     private Button btnselect;
@@ -43,17 +52,51 @@ public class SelectCarActivity extends AppCompatActivity {
         final String etime = bundle.getString("endtime");
         final String location = bundle.getString("location");
 
-        lv = (ListView) findViewById(R.id.carList);
-        SearchView searchView = (SearchView)findViewById(R.id.searchBar);
+        lv = (RecyclerView) findViewById(R.id.carList);
+
+        final GridLayoutManager llm = new GridLayoutManager(this, 1);
+
+        lv.setLayoutManager(llm);
+
+
+
+        /*Drawable recDrawable = ContextCompat.getDrawable(this, R.drawable.recycler_spacer);
+        RecyclerDecorator recyclerDecorator = new RecyclerDecorator(recDrawable);
+
+        lv.addItemDecoration(recyclerDecorator);*/
+
+        final SearchView searchView = (SearchView)findViewById(R.id.searchBar);
 
         btnselect = (Button) findViewById(R.id.next);
 
-        LinearLayout errorLayout = (LinearLayout) findViewById(R.id.error_layout);
+        final LinearLayout errorLayout = (LinearLayout) findViewById(R.id.error_layout);
         errorLayout.setVisibility(View.GONE);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.load_cars);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.load_cars);
 
-        CarData loan = new CarData(this);
+        final CarData loan = new CarData(this);
         loan.getCars(sdate, stime, edate, etime, location, lv, errorLayout, progressBar,searchView);
+
+        /*lv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                adapter.notifyDataSetChanged();
+
+                if(llm.findLastCompletelyVisibleItemPosition() == rCars.size()-1){
+                    rCars.clear();
+                    loan.getCars(sdate, stime, edate, etime, location, lv, errorLayout, progressBar,searchView);
+                }
+
+            }
+        });*/
+
+        /*this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.refreshEvents(rCars);
+            }
+
+        });*/
 
 
         btnselect.setOnClickListener(new View.OnClickListener() {

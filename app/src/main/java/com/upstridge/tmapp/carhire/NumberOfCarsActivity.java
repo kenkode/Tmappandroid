@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
@@ -33,6 +34,7 @@ public class NumberOfCarsActivity extends AppCompatActivity {
     ArrayList<String> cars= new ArrayList<String>();
     ArrayList<String> carids= new ArrayList<String>();
     ArrayList<String> number = new ArrayList<>();
+    int size = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,15 @@ public class NumberOfCarsActivity extends AppCompatActivity {
         final String location = bundle.getString("location");
         final String organization = bundle.getString("organization");
 
+
+
+        for (int i = 0; i < CustomCarHireAdapter.cars.size(); i++) {
+            if (CustomCarHireAdapter.cars.get(i).getSelected()) {
+                size += 1;
+            }
+        }
+
+        //Toast.makeText(this, String.valueOf(size),Toast.LENGTH_SHORT).show();
 
         select = (Button)findViewById(R.id.select);
 
@@ -83,7 +94,7 @@ public class NumberOfCarsActivity extends AppCompatActivity {
                     b.putString("endtime", etime);
                     b.putString("location", location);
                     b.putString("organization", organization);
-                    b.putInt("count", CustomCarHireAdapter.cars.size());
+                    b.putInt("count", size);
                     for (int i = 0; i < CustomCarHireAdapter.cars.size(); i++) {
                         if (CustomCarHireAdapter.cars.get(i).getSelected()) {
                             b.putString("car"+i, CustomCarHireAdapter.cars.get(i).getType());
@@ -148,8 +159,10 @@ public class NumberOfCarsActivity extends AppCompatActivity {
     public boolean isnumEdited(){
 
         for (int i = 0; i < CustomCarHireAdapter.cars.size(); i++) {
-            if (num[i].getText().toString().trim().equals("")) {
-                return false;
+            if (CustomCarHireAdapter.cars.get(i).getSelected()) {
+                if (num[i].getText().toString().trim().equals("")) {
+                    return false;
+                }
             }
         }
         // we reached this point so all edit texts have been given input

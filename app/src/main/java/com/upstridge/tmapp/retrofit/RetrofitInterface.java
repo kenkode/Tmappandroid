@@ -5,6 +5,7 @@ package com.upstridge.tmapp.retrofit;
  */
 
 import com.upstridge.tmapp.config.Constants;
+import com.upstridge.tmapp.models.Booking;
 import com.upstridge.tmapp.models.Carhire;
 import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.models.Location;
@@ -33,12 +34,12 @@ public interface RetrofitInterface {
 
     @GET(Constants.HIRE_CAR)
     Call<Hire> hireCar(@Query("sdate") String sdate, @Query("stime") String stime,
-                       @Query("edate") String edate, @Query("etime") String etime,
-                       @Query("location") String location, @Query("organization") String organization,
-                       @Query("firstname") String firstname, @Query("lastname") String lastname,
-                       @Query("phone") String phone, @Query("email") String email, @Query("idno") String idno,
-                       @Query("mode") String mode, @Query("types") String[] types, @Query("nums") int[] nums,
-                       @Query("amounts") double[] amounts);
+                          @Query("edate") String edate, @Query("etime") String etime,
+                          @Query("location") String location, @Query("organization") String organization,
+                          @Query("firstname") String firstname, @Query("lastname") String lastname,
+                          @Query("phone") String phone, @Query("email") String email, @Query("idno") String idno,
+                          @Query("mode") String mode, @Query("types") String[] types, @Query("nums") int[] nums,
+                          @Query("amounts") double[] amounts, @Query("diffDays") long diffDays, @Query("amount") double amount);
 
 
 }

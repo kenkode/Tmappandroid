@@ -25,18 +25,28 @@ import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
 import com.upstridge.tmapp.bus.HideHintEditText;
 import com.upstridge.tmapp.bus.StartActivity;
+import com.upstridge.tmapp.config.GsonHelper;
+import com.upstridge.tmapp.models.Booking;
 import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CarHireBooking extends AppCompatActivity {
 
     Spinner mode;
     EditText firstname,lastname,email,phone,idno;
     TextView amount;
+    double total = 0;
     TextView [] cartype,id,carprice;
     Button book;
 
@@ -63,9 +73,27 @@ public class CarHireBooking extends AppCompatActivity {
         final String organization = bundle.getString("organization");
         final int count = bundle.getInt("count");
 
-        String[] types = new String[count];
-        int[] nums = new int[count];
-        double[] amounts = new double[count];
+        long diff = 0;
+        long diffDays = 0;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
+
+        Date d1 = null;
+        Date d2 = null;
+
+        try {
+            d1 = format.parse(sdate);
+            d2 = format.parse(edate);
+            diff = d2.getTime() - d1.getTime();
+            diffDays = diff / (24 * 60 * 60 * 1000);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        final String[] types = new String[count];
+        final int[] nums = new int[count];
+        final double[] amounts = new double[count];
 
         for(int i = 0; i < count; i++){
             final String car_i = bundle.getString("car"+i);
@@ -101,7 +129,6 @@ public class CarHireBooking extends AppCompatActivity {
         head.setLayoutParams(params);
         rootLayout.addView(head);
 
-        double total = 0;
 
         for (int i = 0; i < count; i++){
 
@@ -109,7 +136,7 @@ public class CarHireBooking extends AppCompatActivity {
             nums[i] = Integer.parseInt(bundle.getString("number"+i));
             amounts[i] = bundle.getDouble("price"+i);
 
-            total += (bundle.getDouble("price"+i) * Integer.parseInt(bundle.getString("number"+i)));
+            total += (bundle.getDouble("price"+i) * Integer.parseInt(bundle.getString("number"+i)) * diffDays);
 
             DecimalFormat formatter = new DecimalFormat("#,##0.00");
 
@@ -154,13 +181,41 @@ public class CarHireBooking extends AppCompatActivity {
         DecimalFormat formatter = new DecimalFormat("#,##0.00");
 
             TextView t = (TextView)findViewById(R.id.amount);
+            TextView t1 = (TextView)findViewById(R.id.textView20);
             t.setText("KES "+formatter.format(total));
+            t1.setText("Total * "+diffDays+" days");
 
         final ProgressDialog progressDialog = new ProgressDialog(CarHireBooking.this);
 
-        hireCar(sdate, stime, edate, etime, location, organization, firstname.getText().toString()
-                , lastname.getText().toString(), phone.getText().toString(), email.getText().toString(),
-                idno.getText().toString(), mode.getSelectedItem().toString(), types, nums, amounts, progressDialog);
+        book = (Button)findViewById(R.id.book);
+
+        final long finalDiffDays = diffDays;
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (firstname.getText().toString().trim().equalsIgnoreCase("")) {
+                    firstname.setError("Please insert your first name");
+                }else if (lastname.getText().toString().trim().equalsIgnoreCase("")) {
+                    lastname.setError("Please insert your last name");
+                }else if (email.getText().toString().trim().equalsIgnoreCase("")) {
+                    email.setError("Please insert your email address");
+                }else if (phone.getText().toString().trim().equalsIgnoreCase("")) {
+                    phone.setError("Please insert your phone number");
+                }else if (idno.getText().toString().trim().equalsIgnoreCase("")) {
+                    idno.setError("Please insert your national identity number / passport number");
+                }else {
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setMessage("Car Hiring...");
+                    progressDialog.show();
+                    hireCar(sdate, stime, edate, etime, location, organization, firstname.getText().toString()
+                            , lastname.getText().toString(), phone.getText().toString(), email.getText().toString(),
+                            idno.getText().toString(), mode.getSelectedItem().toString(), types, nums, amounts, finalDiffDays,
+                            total, progressDialog);
+                }
+            }
+        });
+
+
 
         /*for(int i = 0; i < count; i++) {
             Toast.makeText(CarHireBooking.this, bundle.getString("car"+i)+"\n"+bundle.getString("number"+i)+"\n"+bundle.getString("carid"+i)+"\n"+String.valueOf(bundle.getDouble("price"+i)), Toast.LENGTH_LONG).show();
@@ -170,32 +225,37 @@ public class CarHireBooking extends AppCompatActivity {
     private void hireCar(final String sdate, final String stime, final String edate, final String etime, final String location,
                          final String organization, final String firstname, final String lastname, final String phone,
                          final String email, final String idno, final String mode, final String[] types, final int[] nums,
-                         final double[] amounts, final ProgressDialog progressDialog) {
+                         final double[] amounts, long finalDiffDays, final double amount, final ProgressDialog progressDialog) {
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
-        retrofit2.Call<Hire> hcare = retrofitInterface.hireCar(sdate, stime, edate, etime, location, organization, firstname
-                , lastname, phone, email, idno, mode, types, nums, amounts);
+        Gson gson = GsonHelper.getBuilder().create();
+        Hire h = new Hire(sdate, stime, edate, etime, location, organization, firstname
+                , lastname, phone, email, idno, mode, types, nums, amounts, finalDiffDays, amount);
+        final String userJson = gson.toJson(h);
+        Log.d("Result",userJson);
+        Call<Hire> hcare = retrofitInterface.hireCar(sdate, stime, edate, etime, location, organization, firstname
+                , lastname, phone, email, idno, mode, types, nums, amounts, finalDiffDays, amount);
 
-        hcare.enqueue(new retrofit2.Callback<Hire>() {
+        hcare.enqueue(new Callback<Hire>() {
             @Override
-            public void onResponse(retrofit2.Call<Hire> call, retrofit2.Response<Hire> response) {
+            public void onResponse(Call<Hire> call, Response<Hire> response) {
                 //Toast.makeText(RegisterActivity.this, userJson, Toast.LENGTH_LONG).show();
                // Log.e("Tag", userid);
-                Hire hire = response.body();
-                if (hire.getSuccess().equals("Book Successful")){
+                Hire booking = response.body();
+                if (booking.getSuccess().equals("Book Successful")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(CarHireBooking.this);
-                    builder.setMessage("Car Hire Successful!")
+                    builder.setMessage("Booking Successful... Your booking Details have been sent to your email address!")
                             .setTitle("Success Message")
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
-                    Intent i = new Intent(CarHireBooking.this, StartActivity.class);
-                    startActivity(i);
+                    /*Intent i = new Intent(CarHireBooking.this, StartActivity.class);
+                    startActivity(i);*/
 
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(CarHireBooking.this);
-                    builder.setMessage("Something went wrong!")
+                    builder.setMessage("An error occured during booking...please try again!")
                             .setTitle("Error Message")
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
@@ -206,12 +266,13 @@ public class CarHireBooking extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(retrofit2.Call<Hire> call, Throwable t) {
+            public void onFailure(Call<Hire> call, Throwable t) {
                 t.printStackTrace();
-                //Toast.makeText(RegisterActivity.this, userJson, Toast.LENGTH_LONG).show();
-                //Log.e("TAG", userid);
+
+                Log.e("TAG", userJson);
                 progressDialog.dismiss();
-                Snackbar snackbar = Snackbar.make(book, "Something went wrong", Snackbar.LENGTH_LONG);
+                Toast.makeText(CarHireBooking.this, "Something went wrong...Please try again later!", Toast.LENGTH_LONG).show();
+                /*Snackbar snackbar = Snackbar.make(book, "Something went wrong", Snackbar.LENGTH_INDEFINITE);
                 snackbar.setAction("Retry", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -220,7 +281,7 @@ public class CarHireBooking extends AppCompatActivity {
                                 , lastname, phone, email, idno, mode, types, nums, amounts, progressDialog);
                     }
                 });
-                snackbar.show();
+                snackbar.show();*/
             }
         });
 

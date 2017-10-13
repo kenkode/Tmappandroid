@@ -4,8 +4,12 @@ package com.upstridge.tmapp.data;
  * Created by root on 10/3/17.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.SearchView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -26,15 +30,14 @@ import retrofit2.Callback;
 
 public class CarData {
     private final Context context;
-    CustomCarHireAdapter adapter;
+    public static CustomCarHireAdapter adapter;
+    public static ArrayList<Carhire> rCars = new ArrayList<>();
 
     public CarData(Context context) {
         this.context = context;
     }
 
-    public void getCars(final String startdate, final String starttime, final String enddate, final String endtime, final String location, final ListView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
-
-        final ArrayList<Carhire> rCars = new ArrayList<>();
+    public void getCars(final String startdate, final String starttime, final String enddate, final String endtime, final String location, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
 
@@ -44,6 +47,7 @@ public class CarData {
             @Override
             public void onResponse(Call<List<Carhire>> call, retrofit2.Response<List<Carhire>> response) {
                 final List<Carhire> cars = response.body();
+
                 for (Carhire rCar : cars) {
                     rCars.add(rCar);
                 }
@@ -54,7 +58,10 @@ public class CarData {
                 }
                 loadPrice.setVisibility(View.GONE);
                 adapter = new CustomCarHireAdapter(context, rCars);
-                listView.setAdapter(adapter);
+
+                listView.setAdapter( adapter );
+
+                listView.invalidate();
 
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
@@ -103,5 +110,10 @@ public class CarData {
 
 
     }
+
+    public void refreshDetails(final CustomCarHireAdapter mAdapter, final ArrayList<Carhire> cars){
+
+    }
+
 
 }

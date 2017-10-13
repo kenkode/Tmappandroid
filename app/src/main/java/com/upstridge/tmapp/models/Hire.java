@@ -1,6 +1,7 @@
 package com.upstridge.tmapp.models;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by root on 10/10/17.
@@ -37,10 +38,16 @@ public class Hire {
     private int[] nums;
     @Expose
     private double[] amounts;
+    @Expose
+    private long diffDays;
+    @Expose
+    private double amount;
 
+    @SerializedName("success")
+    @Expose
     private String success;
 
-    public Hire(String sdate, String stime, String edate, String etime, String location, String organization, String firstname, String lastname, String phone, String email, String idno, String mode, String[] types, int[] nums, double[] amounts) {
+    public Hire(String sdate, String stime, String edate, String etime, String location, String organization, String firstname, String lastname, String phone, String email, String idno, String mode, String[] types, int[] nums, double[] amounts, long diffDays, double amount) {
         this.sdate = sdate;
         this.stime = stime;
         this.edate = edate;
@@ -56,6 +63,8 @@ public class Hire {
         this.types = types;
         this.nums = nums;
         this.amounts = amounts;
+        this.diffDays = diffDays;
+        this.amount = amount;
     }
 
     public String getSdate() {
@@ -170,12 +179,28 @@ public class Hire {
         this.nums = nums;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public double[] getAmounts() {
         return amounts;
     }
 
     public void setAmounts(double[] amounts) {
         this.amounts = amounts;
+    }
+
+    public long getDiffDays() {
+        return diffDays;
+    }
+
+    public void setDiffDays(long diffDays) {
+        this.diffDays = diffDays;
     }
 
     public String getSuccess() {

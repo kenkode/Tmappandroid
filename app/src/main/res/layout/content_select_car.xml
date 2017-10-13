@@ -15,7 +15,7 @@
         android:queryHint="Search Car...."/>
 
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/carList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

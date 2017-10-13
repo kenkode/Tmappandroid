@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="First name"
+
                 android:inputType="textPersonName"
                 android:layout_toRightOf="@+id/textView14"
                 android:layout_alignBaseline="@+id/textView14"
