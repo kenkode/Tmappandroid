@@ -11,6 +11,7 @@ import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.models.Location;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -34,12 +35,12 @@ public interface RetrofitInterface {
 
     @GET(Constants.HIRE_CAR)
     Call<Hire> hireCar(@Query("sdate") String sdate, @Query("stime") String stime,
-                          @Query("edate") String edate, @Query("etime") String etime,
-                          @Query("location") String location, @Query("organization") String organization,
-                          @Query("firstname") String firstname, @Query("lastname") String lastname,
-                          @Query("phone") String phone, @Query("email") String email, @Query("idno") String idno,
-                          @Query("mode") String mode, @Query("types") String[] types, @Query("nums") int[] nums,
-                          @Query("amounts") double[] amounts, @Query("diffDays") long diffDays, @Query("amount") double amount);
+                       @Query("edate") String edate, @Query("etime") String etime,
+                       @Query("location") String location, @Query("organization") String organization,
+                       @Query("firstname") String firstname, @Query("lastname") String lastname,
+                       @Query("phone") String phone, @Query("email") String email, @Query("idno") String idno,
+                       @Query("mode") String mode, @Query("types") String types, @Query("nums") String  nums,
+                       @Query("amounts") String amounts, @Query("diffDays") long diffDays, @Query("amount") double amount);
 
 
 }

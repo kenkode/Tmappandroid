@@ -3,6 +3,8 @@ package com.upstridge.tmapp.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 /**
  * Created by root on 10/10/17.
  */
@@ -35,9 +37,9 @@ public class Hire {
     @Expose
     private String[] types;
     @Expose
-    private int[] nums;
+    private String[] nums;
     @Expose
-    private double[] amounts;
+    private String[] amounts;
     @Expose
     private long diffDays;
     @Expose
@@ -47,7 +49,7 @@ public class Hire {
     @Expose
     private String success;
 
-    public Hire(String sdate, String stime, String edate, String etime, String location, String organization, String firstname, String lastname, String phone, String email, String idno, String mode, String[] types, int[] nums, double[] amounts, long diffDays, double amount) {
+    public Hire(String sdate, String stime, String edate, String etime, String location, String organization, String firstname, String lastname, String phone, String email, String idno, String mode, String[] types, String[] nums, String[] amounts, long diffDays, double amount) {
         this.sdate = sdate;
         this.stime = stime;
         this.edate = edate;
@@ -171,12 +173,20 @@ public class Hire {
         this.types = types;
     }
 
-    public int[] getNums() {
+    public String[] getNums() {
         return nums;
     }
 
-    public void setNums(int[] nums) {
+    public void setNums(String[] nums) {
         this.nums = nums;
+    }
+
+    public String[] getAmounts() {
+        return amounts;
+    }
+
+    public void setAmounts(String[] amounts) {
+        this.amounts = amounts;
     }
 
     public double getAmount() {
@@ -185,14 +195,6 @@ public class Hire {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public double[] getAmounts() {
-        return amounts;
-    }
-
-    public void setAmounts(double[] amounts) {
-        this.amounts = amounts;
     }
 
     public long getDiffDays() {

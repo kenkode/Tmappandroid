@@ -31,10 +31,12 @@ import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -85,7 +87,7 @@ public class CarHireBooking extends AppCompatActivity {
             d1 = format.parse(sdate);
             d2 = format.parse(edate);
             diff = d2.getTime() - d1.getTime();
-            diffDays = diff / (24 * 60 * 60 * 1000);
+            diffDays = (diff / (24 * 60 * 60 * 1000)) + 1;
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -199,6 +201,8 @@ public class CarHireBooking extends AppCompatActivity {
                     lastname.setError("Please insert your last name");
                 }else if (email.getText().toString().trim().equalsIgnoreCase("")) {
                     email.setError("Please insert your email address");
+                }else if(!email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")){
+                    email.setError("Please insert a valid email address");
                 }else if (phone.getText().toString().trim().equalsIgnoreCase("")) {
                     phone.setError("Please insert your phone number");
                 }else if (idno.getText().toString().trim().equalsIgnoreCase("")) {
@@ -224,17 +228,18 @@ public class CarHireBooking extends AppCompatActivity {
 
     private void hireCar(final String sdate, final String stime, final String edate, final String etime, final String location,
                          final String organization, final String firstname, final String lastname, final String phone,
-                         final String email, final String idno, final String mode, final String[] types, final int[] nums,
-                         final double[] amounts, long finalDiffDays, final double amount, final ProgressDialog progressDialog) {
+                         final String email, final String idno, final String mode, final String[] types,
+                         final int[] nums, final double[] amounts, long finalDiffDays,
+                         final double amount, final ProgressDialog progressDialog) {
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
         Gson gson = GsonHelper.getBuilder().create();
-        Hire h = new Hire(sdate, stime, edate, etime, location, organization, firstname
+        /*Hire h = new Hire(sdate, stime, edate, etime, location, organization, firstname
                 , lastname, phone, email, idno, mode, types, nums, amounts, finalDiffDays, amount);
-        final String userJson = gson.toJson(h);
-        Log.d("Result",userJson);
+        final String userJson = gson.toJson(h);*/
+       // Log.d("Result",userJson);
         Call<Hire> hcare = retrofitInterface.hireCar(sdate, stime, edate, etime, location, organization, firstname
-                , lastname, phone, email, idno, mode, types, nums, amounts, finalDiffDays, amount);
+                , lastname, phone, email, idno, mode, Arrays.toString(types), Arrays.toString(nums), Arrays.toString(amounts), finalDiffDays, amount);
 
         hcare.enqueue(new Callback<Hire>() {
             @Override
@@ -254,7 +259,9 @@ public class CarHireBooking extends AppCompatActivity {
                     startActivity(i);*/
 
                 }else{
+                    Toast.makeText(CarHireBooking.this, booking.getSuccess(), Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(CarHireBooking.this);
+                    //builder.setMessage(booking.getSuccess())
                     builder.setMessage("An error occured during booking...please try again!")
                             .setTitle("Error Message")
                             .setPositiveButton(android.R.string.ok, null);
@@ -269,7 +276,7 @@ public class CarHireBooking extends AppCompatActivity {
             public void onFailure(Call<Hire> call, Throwable t) {
                 t.printStackTrace();
 
-                Log.e("TAG", userJson);
+                //Log.e("TAG", userJson);
                 progressDialog.dismiss();
                 Toast.makeText(CarHireBooking.this, "Something went wrong...Please try again later!", Toast.LENGTH_LONG).show();
                 /*Snackbar snackbar = Snackbar.make(book, "Something went wrong", Snackbar.LENGTH_INDEFINITE);
