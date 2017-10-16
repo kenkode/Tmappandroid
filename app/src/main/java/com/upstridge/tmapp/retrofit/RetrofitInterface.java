@@ -5,10 +5,16 @@ package com.upstridge.tmapp.retrofit;
  */
 
 import com.upstridge.tmapp.config.Constants;
+import com.upstridge.tmapp.models.Aeroplanes;
 import com.upstridge.tmapp.models.Booking;
 import com.upstridge.tmapp.models.Carhire;
+import com.upstridge.tmapp.models.Event;
 import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.models.Location;
+import com.upstridge.tmapp.models.Route;
+import com.upstridge.tmapp.models.Taxi;
+import com.upstridge.tmapp.models.Trains;
+import com.upstridge.tmapp.models.Vehicles;
 
 
 import java.util.ArrayList;
@@ -30,8 +36,29 @@ public interface RetrofitInterface {
     Call<List<Carhire>> getCars(@Query("start_date") String start_date, @Query("start_time") String start_time,
                           @Query("end_date") String end_date, @Query("end_time") String end_time, @Query("location") String location);
 
+    @GET(Constants.GET_VEHICLES)
+    Call<List<Vehicles>> getVehicles(@Query("date") String date, @Query("start_time") String time,
+                                 @Query("destination") String destination, @Query("origin") String origin);
+
+    @GET(Constants.GET_TRAINS)
+    Call<List<Trains>> getTrains(@Query("date") String date, @Query("start_time") String time,
+                                 @Query("destination") String destination, @Query("origin") String origin);
+
+    @GET(Constants.GET_TAXI)
+    Call<List<Taxi>> getTaxis();
+
+    @GET(Constants.GET_AIRPLANES)
+    Call<List<Aeroplanes>> getAirplanes(@Query("date") String date, @Query("start_time") String time,
+                                        @Query("destination") String destination, @Query("origin") String origin);
+
+    @GET(Constants.GET_EVENTS)
+    Call<List<Event>> getEvents();
+
     @GET(Constants.GET_LOCATIONS)
     Call<List<Location>> getLocations();
+
+    @GET(Constants.GET_ROUTES)
+    Call<List<Route>> getRoutes(@Query("type") String type);
 
     @GET(Constants.HIRE_CAR)
     Call<Hire> hireCar(@Query("sdate") String sdate, @Query("stime") String stime,

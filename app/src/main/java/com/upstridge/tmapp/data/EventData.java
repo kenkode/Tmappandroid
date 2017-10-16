@@ -1,23 +1,15 @@
 package com.upstridge.tmapp.data;
 
-/**
- * Created by root on 10/3/17.
- */
-
-import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.SearchView;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
-import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
-import com.upstridge.tmapp.models.Carhire;
+import com.upstridge.tmapp.adapters.CustomEventAdapter;
+import com.upstridge.tmapp.models.Event;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
@@ -27,30 +19,33 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+/**
+ * Created by root on 10/16/17.
+ */
 
-public class CarData {
+public class EventData {
     private final Context context;
-    public static CustomCarHireAdapter adapter;
-    public static ArrayList<Carhire> rCars = new ArrayList<>();
+    public static CustomEventAdapter adapter;
+    public static ArrayList<Event> rCars = new ArrayList<>();
 
-    public CarData(Context context) {
+    public EventData(Context context) {
         this.context = context;
     }
 
-    public void getCars(final String startdate, final String starttime, final String enddate, final String endtime, final String location, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
+    public void getEvents(final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
 
         rCars.clear();
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
 
-        Call<List<Carhire>> retroCars = retrofitInterface.getCars(startdate,starttime,enddate,endtime,location);
+        Call<List<Event>> retroCars = retrofitInterface.getEvents();
 
-        retroCars.enqueue(new Callback<List<Carhire>>() {
+        retroCars.enqueue(new Callback<List<Event>>() {
             @Override
-            public void onResponse(Call<List<Carhire>> call, retrofit2.Response<List<Carhire>> response) {
-                final List<Carhire> cars = response.body();
+            public void onResponse(Call<List<Event>> call, retrofit2.Response<List<Event>> response) {
+                final List<Event> cars = response.body();
 
-                for (Carhire rCar : cars) {
+                for (Event rCar : cars) {
                     rCars.add(rCar);
                 }
                 if(rCars.size() <= 0) {
@@ -59,7 +54,7 @@ public class CarData {
                     errorLinear.setVisibility(View.GONE);
                 }
                 loadPrice.setVisibility(View.GONE);
-                adapter = new CustomCarHireAdapter(context, rCars);
+                adapter = new CustomEventAdapter(context, rCars);
 
                 listView.setAdapter( adapter );
 
@@ -74,15 +69,15 @@ public class CarData {
                     @Override
                     public boolean onQueryTextChange(String newText) {
                         int textlength = newText.length();
-                        ArrayList<Carhire> tempArrayList = new ArrayList<Carhire>();
-                        for(Carhire c: cars){
-                            if (textlength <= c.getType().length()) {
-                                if (c.getType().toLowerCase().contains(newText.toString().toLowerCase())) {
+                        ArrayList<Event> tempArrayList = new ArrayList<Event>();
+                        for(Event c: cars){
+                            if (textlength <= c.getName().length()) {
+                                if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                     tempArrayList.add(c);
                                 }
                             }
                         }
-                        adapter = new CustomCarHireAdapter(context, tempArrayList);
+                        adapter = new CustomEventAdapter(context, tempArrayList);
                         listView.setAdapter(adapter);
                         //adapter.getFilter().filter(newText);
                         return false;
@@ -91,7 +86,7 @@ public class CarData {
             }
 
             @Override
-            public void onFailure(Call<List<Carhire>> call, Throwable t) {
+            public void onFailure(Call<List<Event>> call, Throwable t) {
                 t.printStackTrace();
                 errorLinear.setVisibility(View.VISIBLE);
                 loadPrice.setVisibility(View.GONE);
@@ -103,7 +98,7 @@ public class CarData {
                         snackbar.dismiss();
                         errorLinear.setVisibility(View.GONE);
                         loadPrice.setVisibility(View.VISIBLE);
-                        getCars(startdate, starttime, enddate, endtime, location, listView, errorLinear, loadPrice ,searchView);
+                        getEvents(listView, errorLinear, loadPrice,  searchView);
                     }
                 });
                 snackbar.show();
@@ -112,10 +107,4 @@ public class CarData {
 
 
     }
-
-    public void refreshDetails(final CustomCarHireAdapter mAdapter, final ArrayList<Carhire> cars){
-
-    }
-
-
 }

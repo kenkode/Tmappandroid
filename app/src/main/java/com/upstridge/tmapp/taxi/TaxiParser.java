@@ -9,12 +9,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.upstridge.tmapp.adapters.CustomTaxiAdapter;
+import com.upstridge.tmapp.models.Taxi;
 
 import com.upstridge.tmapp.R;
 
@@ -29,7 +32,7 @@ import static com.upstridge.tmapp.config.Constants.BASE_URL;
 public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String data;
     SearchView searchView;
     String organization;
@@ -42,7 +45,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public TaxiParser(Context c, String data, ListView lv, SearchView searchView) {
+    public TaxiParser(Context c, String data, RecyclerView lv, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
@@ -113,7 +116,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 }
             });
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
@@ -134,7 +137,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                     i.putExtras(b);
                     c.startActivity(i);
                 }
-            });
+            });*/
         }else{
             Toast.makeText(c,"No Taxi available",Toast.LENGTH_SHORT).show();
         }
@@ -168,7 +171,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
                 tx = new Taxi();
                 tx.setName(name);
                 tx.setImageUrl(imageUrl);
-                tx.setEcprice(ecprice);
+                //tx.setEcprice(ecprice);
                 tx.setCapacity(capacity);
                 tx.setVehicleid(vehicleid);
                 taxi.add(tx);

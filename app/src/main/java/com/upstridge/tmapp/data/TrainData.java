@@ -1,23 +1,15 @@
 package com.upstridge.tmapp.data;
 
-/**
- * Created by root on 10/3/17.
- */
-
-import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.SearchView;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
-import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
-import com.upstridge.tmapp.models.Carhire;
+import com.upstridge.tmapp.adapters.CustomTrainAdapter;
+import com.upstridge.tmapp.models.Trains;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
@@ -26,42 +18,54 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
+/**
+ * Created by root on 10/16/17.
+ */
 
-public class CarData {
+public class TrainData {
     private final Context context;
-    public static CustomCarHireAdapter adapter;
-    public static ArrayList<Carhire> rCars = new ArrayList<>();
+    public static CustomTrainAdapter adapter;
+    public static ArrayList<Trains> rVehicles = new ArrayList<>();
+    String date;
+    String time;
+    String destination;
+    String origin;
 
-    public CarData(Context context) {
+    public TrainData(Context context,String date,String time,String destination,String origin) {
         this.context = context;
+        this.date = date;
+        this.time = time;
+        this.destination = destination;
+        this.origin = origin;
     }
 
-    public void getCars(final String startdate, final String starttime, final String enddate, final String endtime, final String location, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
+    public void getTrains(final String date, final String time, final String destination, final String origin, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
 
-        rCars.clear();
+        rVehicles.clear();
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
 
-        Call<List<Carhire>> retroCars = retrofitInterface.getCars(startdate,starttime,enddate,endtime,location);
+        Call<List<Trains>> retroCars = retrofitInterface.getTrains(date,time,destination,origin);
 
-        retroCars.enqueue(new Callback<List<Carhire>>() {
+        retroCars.enqueue(new Callback<List<Trains>>() {
             @Override
-            public void onResponse(Call<List<Carhire>> call, retrofit2.Response<List<Carhire>> response) {
-                final List<Carhire> cars = response.body();
+            public void onResponse(Call<List<Trains>> call, Response<List<Trains>> response) {
+                final List<Trains> cars = response.body();
 
-                for (Carhire rCar : cars) {
-                    rCars.add(rCar);
+                for (Trains rCar : cars) {
+                    rVehicles.add(rCar);
                 }
-                if(rCars.size() <= 0) {
+                if(rVehicles.size() <= 0) {
                     errorLinear.setVisibility(View.VISIBLE);
                 }else {
                     errorLinear.setVisibility(View.GONE);
                 }
                 loadPrice.setVisibility(View.GONE);
-                adapter = new CustomCarHireAdapter(context, rCars);
+                adapter = new CustomTrainAdapter(context, rVehicles, destination, date, time, origin);
 
-                listView.setAdapter( adapter );
+                listView.setAdapter(adapter);
 
                 listView.invalidate();
 
@@ -74,15 +78,15 @@ public class CarData {
                     @Override
                     public boolean onQueryTextChange(String newText) {
                         int textlength = newText.length();
-                        ArrayList<Carhire> tempArrayList = new ArrayList<Carhire>();
-                        for(Carhire c: cars){
-                            if (textlength <= c.getType().length()) {
-                                if (c.getType().toLowerCase().contains(newText.toString().toLowerCase())) {
+                        ArrayList<Trains> tempArrayList = new ArrayList<Trains>();
+                        for(Trains c: cars){
+                            if (textlength <= c.getName().length()) {
+                                if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                     tempArrayList.add(c);
                                 }
                             }
                         }
-                        adapter = new CustomCarHireAdapter(context, tempArrayList);
+                        adapter = new CustomTrainAdapter(context, tempArrayList, destination, date, time, origin);
                         listView.setAdapter(adapter);
                         //adapter.getFilter().filter(newText);
                         return false;
@@ -91,7 +95,7 @@ public class CarData {
             }
 
             @Override
-            public void onFailure(Call<List<Carhire>> call, Throwable t) {
+            public void onFailure(Call<List<Trains>> call, Throwable t) {
                 t.printStackTrace();
                 errorLinear.setVisibility(View.VISIBLE);
                 loadPrice.setVisibility(View.GONE);
@@ -103,7 +107,7 @@ public class CarData {
                         snackbar.dismiss();
                         errorLinear.setVisibility(View.GONE);
                         loadPrice.setVisibility(View.VISIBLE);
-                        getCars(startdate, starttime, enddate, endtime, location, listView, errorLinear, loadPrice ,searchView);
+                        getTrains(date, time, destination, origin, listView, errorLinear, loadPrice ,searchView);
                     }
                 });
                 snackbar.show();
@@ -112,10 +116,4 @@ public class CarData {
 
 
     }
-
-    public void refreshDetails(final CustomCarHireAdapter mAdapter, final ArrayList<Carhire> cars){
-
-    }
-
-
 }

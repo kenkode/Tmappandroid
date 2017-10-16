@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,7 +32,7 @@ import static com.upstridge.tmapp.config.Constants.BASE_URL;
 public class eventParser  extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String data;
     //String date;
     String date;
@@ -47,7 +48,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public eventParser(Context c, String data, ListView lv, SearchView searchView) {
+    public eventParser(Context c, String data, RecyclerView lv, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
@@ -118,7 +119,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                 }
             });
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String organization =((TextView)view.findViewById(R.id.organization)).getText().toString();
@@ -141,7 +142,7 @@ public class eventParser  extends AsyncTask<Void, Integer, Integer> {
                     i.putExtras(b);
                     c.startActivity(i);
                 }
-            });
+            });*/
 
         }else{
             Toast.makeText(c,"No events available",Toast.LENGTH_SHORT).show();

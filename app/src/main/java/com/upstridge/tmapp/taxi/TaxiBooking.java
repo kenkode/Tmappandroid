@@ -58,7 +58,7 @@ public class TaxiBooking extends Activity {
         final String from = bundle.getString("from");
         final String to = bundle.getString("to");
         vehiclename = bundle.getString("vehicle");
-        slots = bundle.getInt("capacity");
+        slots = bundle.getInt("nop");
         amount =  Double.parseDouble(economic) * 20;
 
         String[] modes=new String[]{"Mpesa","Airtel Money","VISA"};

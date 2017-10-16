@@ -66,7 +66,7 @@ public class CustomTaxiAdapter extends BaseAdapter implements Filterable{
 
         Taxi taxi = taxis.get(position);
         nametxt.setText(taxi.getName());
-        ecprice.setText(taxi.getEcprice());
+       // ecprice.setText(taxi.getEcprice());
         capacity.setText(taxi.getCapacity());
         vehicleid.setText(taxi.getVehicleid());
 

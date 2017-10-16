@@ -3,6 +3,7 @@ package com.upstridge.tmapp.events;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -25,12 +26,12 @@ import java.net.URLEncoder;
 
 public class eventDownloader extends AsyncTask<String, Integer, String> {
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String address;
     SearchView search;
     ProgressDialog pd;
 
-    public eventDownloader(Context c, String address, ListView lv, SearchView search){
+    public eventDownloader(Context c, String address, RecyclerView lv, SearchView search){
         this.c = c;
         this.lv = lv;
         this.address = address;

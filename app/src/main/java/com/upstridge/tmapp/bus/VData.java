@@ -3,6 +3,7 @@ package com.upstridge.tmapp.bus;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -22,11 +23,11 @@ import java.net.URLEncoder;
 /**
  * Created by Wango on 12/11/2016.
  */
-public class VehicleData extends AsyncTask<String, Integer, String> {
+public class VData extends AsyncTask<String, Integer, String> {
 
     Context c;
     String address;
-    ListView lv;
+    RecyclerView lv;
     String date;
     String time;
     String destination;
@@ -34,7 +35,7 @@ public class VehicleData extends AsyncTask<String, Integer, String> {
     SearchView searchView;
     ProgressDialog pd;
 
-    public VehicleData(Context c, String address, ListView lv, String date, String time, String destination, String origin, SearchView searchView){
+    public VData(Context c, String address, RecyclerView lv, String date, String time, String destination, String origin, SearchView searchView){
         this.c = c;
         this.address = address;
         this.lv = lv;

@@ -1,23 +1,15 @@
 package com.upstridge.tmapp.data;
 
-/**
- * Created by root on 10/3/17.
- */
-
-import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.SearchView;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
-import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
-import com.upstridge.tmapp.models.Carhire;
+import com.upstridge.tmapp.adapters.CustomTaxiAdapter;
+import com.upstridge.tmapp.models.Taxi;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
@@ -26,40 +18,45 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
+/**
+ * Created by root on 10/16/17.
+ */
 
-public class CarData {
+public class TaxiData {
     private final Context context;
-    public static CustomCarHireAdapter adapter;
-    public static ArrayList<Carhire> rCars = new ArrayList<>();
+    public static CustomTaxiAdapter adapter;
+    public static ArrayList<Taxi> rVehicles = new ArrayList<>();
 
-    public CarData(Context context) {
+
+    public TaxiData(Context context) {
         this.context = context;
+
     }
 
-    public void getCars(final String startdate, final String starttime, final String enddate, final String endtime, final String location, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
-
-        rCars.clear();
+    public void getTaxis(final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
+        rVehicles.clear();
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
 
-        Call<List<Carhire>> retroCars = retrofitInterface.getCars(startdate,starttime,enddate,endtime,location);
+        Call<List<Taxi>> retroCars = retrofitInterface.getTaxis();
 
-        retroCars.enqueue(new Callback<List<Carhire>>() {
+        retroCars.enqueue(new Callback<List<Taxi>>() {
             @Override
-            public void onResponse(Call<List<Carhire>> call, retrofit2.Response<List<Carhire>> response) {
-                final List<Carhire> cars = response.body();
+            public void onResponse(Call<List<Taxi>> call, Response<List<Taxi>> response) {
+                final List<Taxi> cars = response.body();
 
-                for (Carhire rCar : cars) {
-                    rCars.add(rCar);
+                for (Taxi rCar : cars) {
+                    rVehicles.add(rCar);
                 }
-                if(rCars.size() <= 0) {
+                if(rVehicles.size() <= 0) {
                     errorLinear.setVisibility(View.VISIBLE);
                 }else {
                     errorLinear.setVisibility(View.GONE);
                 }
                 loadPrice.setVisibility(View.GONE);
-                adapter = new CustomCarHireAdapter(context, rCars);
+                adapter = new CustomTaxiAdapter(context, rVehicles);
 
                 listView.setAdapter( adapter );
 
@@ -74,15 +71,15 @@ public class CarData {
                     @Override
                     public boolean onQueryTextChange(String newText) {
                         int textlength = newText.length();
-                        ArrayList<Carhire> tempArrayList = new ArrayList<Carhire>();
-                        for(Carhire c: cars){
-                            if (textlength <= c.getType().length()) {
-                                if (c.getType().toLowerCase().contains(newText.toString().toLowerCase())) {
+                        ArrayList<Taxi> tempArrayList = new ArrayList<Taxi>();
+                        for(Taxi c: cars){
+                            if (textlength <= c.getName().length()) {
+                                if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                     tempArrayList.add(c);
                                 }
                             }
                         }
-                        adapter = new CustomCarHireAdapter(context, tempArrayList);
+                        adapter = new CustomTaxiAdapter(context, tempArrayList);
                         listView.setAdapter(adapter);
                         //adapter.getFilter().filter(newText);
                         return false;
@@ -91,7 +88,7 @@ public class CarData {
             }
 
             @Override
-            public void onFailure(Call<List<Carhire>> call, Throwable t) {
+            public void onFailure(Call<List<Taxi>> call, Throwable t) {
                 t.printStackTrace();
                 errorLinear.setVisibility(View.VISIBLE);
                 loadPrice.setVisibility(View.GONE);
@@ -103,7 +100,7 @@ public class CarData {
                         snackbar.dismiss();
                         errorLinear.setVisibility(View.GONE);
                         loadPrice.setVisibility(View.VISIBLE);
-                        getCars(startdate, starttime, enddate, endtime, location, listView, errorLinear, loadPrice ,searchView);
+                        getTaxis(listView, errorLinear, loadPrice ,searchView);
                     }
                 });
                 snackbar.show();
@@ -112,10 +109,4 @@ public class CarData {
 
 
     }
-
-    public void refreshDetails(final CustomCarHireAdapter mAdapter, final ArrayList<Carhire> cars){
-
-    }
-
-
 }

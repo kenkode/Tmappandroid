@@ -7,10 +7,18 @@ package com.upstridge.tmapp.taxi;
 public class Taxi {
     String name;
     String imageUrl;
-    String ecprice;
     String capacity;
     String Vehicleid;
     String organization;
+    String economicfare;
+
+    public String getEconomicfare() {
+        return economicfare;
+    }
+
+    public void setEconomicfare(String economicfare) {
+        this.economicfare = economicfare;
+    }
 
     public String getName() {
         return name;
@@ -26,14 +34,6 @@ public class Taxi {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getEcprice() {
-        return ecprice;
-    }
-
-    public void setEcprice(String ecprice) {
-        this.ecprice = ecprice;
     }
 
     public String getCapacity() {

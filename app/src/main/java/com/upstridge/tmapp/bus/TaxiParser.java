@@ -7,6 +7,7 @@ package com.upstridge.tmapp.bus;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ import static com.upstridge.tmapp.config.Constants.BASE_URL;
 public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String data;
     SearchView searchView;
     ArrayList<Taxi> taxi = new ArrayList<>();
@@ -34,7 +35,7 @@ public class TaxiParser extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public TaxiParser(Context c, String data, ListView lv, SearchView searchView) {
+    public TaxiParser(Context c, String data, RecyclerView lv, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;

@@ -18,6 +18,8 @@ public class Vehicles {
     String firstclassapply;
     String type;
     String capacity;
+    String oname;
+    String dname;
 
     public String getName() {
         return name;
@@ -121,5 +123,21 @@ public class Vehicles {
 
     public void setCapacity(String capacity) {
         this.capacity = capacity;
+    }
+
+    public String getOname() {
+        return oname;
+    }
+
+    public void setOname(String oname) {
+        this.oname = oname;
+    }
+
+    public String getDname() {
+        return dname;
+    }
+
+    public void setDname(String dname) {
+        this.dname = dname;
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,7 +32,7 @@ import static com.upstridge.tmapp.config.Constants.BASE_URL;
 public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String data;
     String date;
     String time;
@@ -51,7 +52,7 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public SgrDetailsParser(Context c, String data, ListView lv, String date, String time, String destination, String origin, SearchView searchView) {
+    public SgrDetailsParser(Context c, String data, RecyclerView lv, String date, String time, String destination, String origin, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
@@ -85,7 +86,7 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
         //Toast.makeText(c,integer,Toast.LENGTH_SHORT).show();
 
         if(integer == 1){
-            adapter = new CustomTrainAdapter(c,veh);
+            adapter = new CustomTrainAdapter(c,veh, destination, date, time, origin);
             /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,veh){
 
                 @Override
@@ -119,14 +120,14 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                             }
                         }
                     }
-                    adapter = new CustomTrainAdapter(c, tempArrayList);
+                    adapter = new CustomTrainAdapter(c, tempArrayList, destination, date, time, origin);
                     lv.setAdapter(adapter);
                     //adapter.getFilter().filter(newText);
                     return false;
                 }
             });
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String vehicle =((TextView)view.findViewById(R.id.hotelName)).getText().toString();
@@ -159,7 +160,7 @@ public class SgrDetailsParser  extends AsyncTask<Void, Integer, Integer> {
                     i.putExtras(b);
                     c.startActivity(i);
                 }
-            });
+            });*/
 
         }else{
             Toast.makeText(c,"No trains available",Toast.LENGTH_SHORT).show();

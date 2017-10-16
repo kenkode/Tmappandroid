@@ -3,6 +3,7 @@ package com.upstridge.tmapp.taxi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,12 +29,12 @@ import java.net.URLEncoder;
 
 public class TaxiDownloader extends AsyncTask<String, Integer, String> {
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String address;
     SearchView search;
     ProgressDialog pd;
 
-    public TaxiDownloader(Context c, String address, ListView lv, SearchView search){
+    public TaxiDownloader(Context c, String address, RecyclerView lv, SearchView search){
         this.c = c;
         this.lv = lv;
         this.address = address;

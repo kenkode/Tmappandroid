@@ -3,20 +3,35 @@ package com.upstridge.tmapp.airline;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.models.Route;
+import com.upstridge.tmapp.retrofit.RetrofitInterface;
+import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.upstridge.tmapp.config.Constants.BASE_URL;
 
@@ -36,8 +51,8 @@ public class PlaneHomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plane_home);
-        Spinner from = (Spinner) findViewById(R.id.from);
-        Spinner to = (Spinner) findViewById(R.id.to);
+        final Spinner from = (Spinner) findViewById(R.id.from);
+        final Spinner to = (Spinner) findViewById(R.id.to);
         Button search = (Button) findViewById(R.id.button);
         dp = (EditText) findViewById(R.id.date);
         t = (EditText) findViewById(R.id.time);
@@ -49,8 +64,89 @@ public class PlaneHomeActivity extends Activity {
         showDate();
         showTimePickerDialog();
 
-        final PlaneHomeDownloader d = new PlaneHomeDownloader(this, url, from, to, search, dp, t);
-        d.execute();
+        LinearLayout errorLayout = (LinearLayout) findViewById(R.id.error_layout);
+        errorLayout.setVisibility(View.GONE);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.load_cars);
+
+        getRoutes(from,to,errorLayout,progressBar);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date_txt = btnpick.getText().toString();
+                String time_txt = timepick.getText().toString();
+                String frm_txt = from.getSelectedItem().toString();
+                String to_txt = to.getSelectedItem().toString();
+
+                if(date_txt.equals("")){
+                    Toast.makeText(PlaneHomeActivity.this,"Please select travel date",Toast.LENGTH_SHORT).show();
+                }else if(time_txt.equals("")){
+                    Toast.makeText(PlaneHomeActivity.this,"Please select travel time",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent i = new Intent(PlaneHomeActivity.this, Airplanes.class);
+                    Bundle b = new Bundle();
+                    b.putString("from", frm_txt);
+                    b.putString("to", to_txt);
+                    b.putString("date", date_txt);
+                    b.putString("time", time_txt);
+                    i.putExtras(b);
+                    startActivity(i);
+                }
+            }
+        });
+
+        /*final PlaneHomeDownloader d = new PlaneHomeDownloader(this, url, from, to, search, dp, t);
+        d.execute();*/
+    }
+
+    public void getRoutes(final Spinner from, final Spinner to, final LinearLayout errorLinear, final ProgressBar loadPrice) {
+
+        final ArrayList<String> rLocations = new ArrayList<>();
+
+        RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
+
+        Call<List<Route>> retroRoutes = retrofitInterface.getRoutes("Airline");
+
+        retroRoutes.enqueue(new Callback<List<Route>>() {
+            @Override
+            public void onResponse(Call<List<Route>> call, Response<List<Route>> response) {
+                final List<Route> route = response.body();
+                for (Route rLoc : route) {
+                    rLocations.add(rLoc.getName());
+                }
+                if(rLocations.size() <= 0) {
+                    errorLinear.setVisibility(View.VISIBLE);
+                }else {
+                    errorLinear.setVisibility(View.GONE);
+                }
+                loadPrice.setVisibility(View.GONE);
+                ArrayAdapter adapter = new ArrayAdapter(PlaneHomeActivity.this, android.R.layout.simple_list_item_1, rLocations);
+                // apply the Adapter:
+                from.setAdapter(adapter);
+                to.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Route>> call, Throwable t) {
+                t.printStackTrace();
+                errorLinear.setVisibility(View.VISIBLE);
+                loadPrice.setVisibility(View.GONE);
+                t.printStackTrace();
+                final Snackbar snackbar = Snackbar.make(from, "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackbar.dismiss();
+                        errorLinear.setVisibility(View.GONE);
+                        loadPrice.setVisibility(View.VISIBLE);
+                        getRoutes( from, to, errorLinear, loadPrice );
+                    }
+                });
+                snackbar.show();
+            }
+        });
+
+
     }
 
     public void showTimePickerDialog() {
