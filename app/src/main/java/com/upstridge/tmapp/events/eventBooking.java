@@ -54,14 +54,14 @@ public class eventBooking extends Activity {
         Bundle bundle = getIntent().getExtras();
         final String organization = bundle.getString("organization");
         final String eventid = bundle.getString("eventid");
-        final String vip = bundle.getString("vip");
-        final String economic = bundle.getString("economic");
-        final String children = bundle.getString("children");
+        final String vip = bundle.getString("vip").replace("Vip Fare","");
+        final String economic = bundle.getString("economic").replace("Economic Fare","");
+        final String children = bundle.getString("children").replace("Children Fare","");
         final int adults = bundle.getInt("adults");
         final int child = bundle.getInt("child");
         slots =  adults + child;
 
-        String[] faretypes=new String[]{"VIP Entrance Fee : KES "+vip,"Economic Entrance Fee : KES "+economic, "Children Entrance Fee : KES "+children};
+        String[] faretypes=new String[]{"VIP Entrance Fee"+vip,"Normal Entrance Fee"+economic, "Children Entrance Fee"+children};
 
         String[] modes=new String[]{"Mpesa","Airtel Money","VISA"};
 

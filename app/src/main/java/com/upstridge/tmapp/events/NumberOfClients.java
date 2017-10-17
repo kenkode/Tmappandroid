@@ -32,14 +32,22 @@ public class NumberOfClients extends Activity {
         customers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(adults.getText().toString().trim().equals("") || child.getText().toString().trim().equals("")){
+                if(adults.getText().toString().trim().equals("") && child.getText().toString().trim().equals("")){
                     Toast.makeText(NumberOfClients.this,"Please insert atleast one person",Toast.LENGTH_SHORT).show();
                 }else {
                     Intent i = new Intent(getApplicationContext(), eventBooking.class);
                     Bundle b = new Bundle();
                     b.putString("eventid", eventid);
-                    b.putInt("adults", Integer.parseInt(adults.getText().toString()));
-                    b.putInt("child", Integer.parseInt(child.getText().toString()));
+                    if(!adults.getText().toString().equals("")) {
+                        b.putInt("adults", Integer.parseInt(adults.getText().toString()));
+                    }else{
+                        b.putInt("adults", 0);
+                    }
+                    if(!child.getText().toString().equals("")) {
+                        b.putInt("child", Integer.parseInt(child.getText().toString()));
+                    }else{
+                        b.putInt("child", 0);
+                    }
                     b.putString("vip", vip);
                     b.putString("economic", economic);
                     b.putString("children", children);
