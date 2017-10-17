@@ -1,6 +1,7 @@
 package com.upstridge.tmapp.hotel;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.InputType;
@@ -126,13 +127,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(title);
 
                 param = new RelativeLayout.LayoutParams(
-                        350,
+                        250,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView fname = new TextView(this);
                 fname.setId(R.id.fname);
                 fname.setText("First Name:");
-                fname.setTextSize(15);
+                fname.setTextSize(18);
+                fname.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
                 param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.BELOW, title.getId());
@@ -161,13 +163,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(fnametxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        350,
+                        250,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView lname = new TextView(this);
                 lname.setId(R.id.lname);
                 lname.setText("Last Name:");
-                lname.setTextSize(15);
+                lname.setTextSize(18);
+                lname.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
                 param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.BELOW, fname.getId());
@@ -195,13 +198,14 @@ public class hotelBooking extends Activity {
 
 
                 param = new RelativeLayout.LayoutParams(
-                        350,
+                        250,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView phoneno = new TextView(this);
                 phoneno.setId(R.id.phoneno);
                 phoneno.setText("Phone No:");
-                phoneno.setTextSize(15);
+                phoneno.setTextSize(18);
+                phoneno.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
                 param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.BELOW, lname.getId());
@@ -229,13 +233,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(phonetxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        350,
+                        250,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView emailaddress = new TextView(this);
                 emailaddress.setId(R.id.emailaddress);
                 emailaddress.setText("Email:");
-                emailaddress.setTextSize(15);
+                emailaddress.setTextSize(18);
+                emailaddress.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
                 param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.BELOW, phoneno.getId());
@@ -263,13 +268,14 @@ public class hotelBooking extends Activity {
                 relativeLayout[i].addView(emailtxt[i]);
 
                 param = new RelativeLayout.LayoutParams(
-                        350,
+                        250,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 // Creating a new TextView
                 TextView idnumber = new TextView(this);
                 idnumber.setId(R.id.idpass);
                 idnumber.setText("Identity No /\nPassport No:");
-                idnumber.setTextSize(15);
+                idnumber.setTextSize(18);
+                idnumber.setTypeface(Typeface.create("sans-serif-smallcaps",Typeface.NORMAL));
                 param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
                 param.addRule(RelativeLayout.BELOW, emailaddress.getId());
