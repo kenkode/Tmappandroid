@@ -36,19 +36,27 @@ public class Customers extends Activity {
         customers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(adults.getText().toString().trim().equals("") || child.getText().toString().trim().equals("")){
+                if(adults.getText().toString().trim().equals("") && child.getText().toString().trim().equals("")){
                     Toast.makeText(Customers.this,"Please insert atleast one person",Toast.LENGTH_SHORT).show();
-                }else if(Integer.parseInt(adults.getText().toString()) > Integer.parseInt(adultno)){
+                }else if(!adults.getText().toString().equals("") && Integer.parseInt(adults.getText().toString()) > Integer.parseInt(adultno)){
                     Toast.makeText(Customers.this,"Maximum adults number is "+adultno,Toast.LENGTH_SHORT).show();
-                }else if(Integer.parseInt(child.getText().toString()) > Integer.parseInt(children)){
+                }else if(!child.getText().toString().equals("") && Integer.parseInt(child.getText().toString()) > Integer.parseInt(children)){
                     Toast.makeText(Customers.this,"Maximum children number is "+children,Toast.LENGTH_SHORT).show();
                 }else {
                     //Toast.makeText(Customers.this,price,Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), hotelBooking.class);
                     Bundle b = new Bundle();
                     b.putString("roomid", roomid);
-                    b.putInt("adults", Integer.parseInt(adults.getText().toString()));
-                    b.putInt("child", Integer.parseInt(child.getText().toString()));
+                    if(!adults.getText().toString().equals("")) {
+                        b.putInt("adults", Integer.parseInt(adults.getText().toString()));
+                    }else{
+                        b.putInt("adults", 0);
+                    }
+                    if(!child.getText().toString().equals("")) {
+                        b.putInt("child", Integer.parseInt(child.getText().toString()));
+                    }else{
+                        b.putInt("child", 0);
+                    }
                     b.putString("price", price);
                     b.putString("type", type);
                     b.putString("adultno", adultno);

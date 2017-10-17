@@ -2,10 +2,17 @@ package com.upstridge.tmapp.hotel;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.data.RData;
 import com.upstridge.tmapp.hotel.RoomData;
 
 import static com.upstridge.tmapp.config.Constants.BASE_URL;
@@ -30,11 +37,21 @@ public class rooms extends Activity {
 
         searchBar = (SearchView)findViewById(R.id.searchRoom);
 
-        //Toast.makeText(VehicleActivity.this, time, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(rooms.this, branchid, Toast.LENGTH_SHORT).show();
 
-        final ListView lv = (ListView) findViewById(R.id.room);
-        final RoomData v = new RoomData(this, url, lv, date, time, branchid, searchBar);
-        v.execute();
+        final RecyclerView lv = (RecyclerView) findViewById(R.id.room);
+        final GridLayoutManager llm = new GridLayoutManager(this, 1);
+
+        lv.setLayoutManager(llm);
+        //final VehicleData v = new VehicleData(this, url, lv,date, time, destination, origin, searchBar);
+        final LinearLayout errorLayout = (LinearLayout) findViewById(R.id.error_layout);
+        errorLayout.setVisibility(View.GONE);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.load_cars);
+
+        final RData v = new RData(this, date, time, branchid);
+        v.getRooms(date, time, branchid, lv, errorLayout, progressBar,searchBar);
+        /*final RoomData v = new RoomData(this, url, lv, date, time, branchid, searchBar);
+        v.execute();*/
     }
 
 }

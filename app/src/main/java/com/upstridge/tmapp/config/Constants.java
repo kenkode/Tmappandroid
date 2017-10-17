@@ -17,4 +17,7 @@ public class Constants {
     public static final String GET_ROUTES = "get_routes";
     public static final String GET_TRAINS = "get_trains";
     public static final String GET_TAXI = "get_taxis";
+    public static final String GET_BRANCHES = "get_branches";
+    public static final String GET_HOTELS = "get_hotels";
+    public static final String GET_ROOMS = "get_rooms";
 }

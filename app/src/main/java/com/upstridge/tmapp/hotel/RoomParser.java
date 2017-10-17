@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,7 +32,7 @@ import static com.upstridge.tmapp.config.Constants.BASE_URL;
 public class RoomParser extends AsyncTask<Void, Integer, Integer> {
 
     Context c;
-    ListView lv;
+    RecyclerView lv;
     String data;
     String date;
     String time;
@@ -51,7 +52,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
 
     ProgressDialog pd;
 
-    public RoomParser(Context c, String data, ListView lv, String date, String time, String branchid, SearchView searchView) {
+    public RoomParser(Context c, String data, RecyclerView lv, String date, String time, String branchid, SearchView searchView) {
         this.c = c;
         this.data = data;
         this.lv = lv;
@@ -84,7 +85,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
         //Toast.makeText(c,integer,Toast.LENGTH_SHORT).show();
 
         if(integer == 1){
-            adapter = new CustomRoomAdapter(c,rm);
+            adapter = new CustomRoomAdapter(c,rm, date, time, branchid);
             /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,veh){
 
                 @Override
@@ -118,14 +119,14 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                             }
                         }
                     }
-                    adapter = new CustomRoomAdapter(c, tempArrayList);
+                    adapter = new CustomRoomAdapter(c, tempArrayList, date, time, branchid);
                     lv.setAdapter(adapter);
                     //adapter.getFilter().filter(newText);
                     return false;
                 }
             });
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -166,7 +167,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                         c.startActivity(i);
                     }
                 }
-            });
+            });*/
 
         }else{
             Toast.makeText(c,"No rooms available",Toast.LENGTH_SHORT).show();
@@ -269,7 +270,7 @@ public class RoomParser extends AsyncTask<Void, Integer, Integer> {
                 room = new Room();
                 room.setName(name);
                 room.setImageUrl(imageUrl);
-                room.setPrice(hotelprice);
+                //room.setPrice(hotelprice);
                 room.setAdults(adultno);
                 room.setChildren(childno);
                 room.setAvailability(availability);

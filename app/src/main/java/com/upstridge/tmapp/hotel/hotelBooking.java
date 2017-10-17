@@ -18,6 +18,7 @@ import com.upstridge.tmapp.bus.HideHintEditText;
 import com.upstridge.tmapp.R;
 import com.upstridge.tmapp.bus.SendMail;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,9 +62,10 @@ public class hotelBooking extends Activity {
         final int child = bundle.getInt("child");
         slots =  adults + child;
         double totalprice = slots * Double.parseDouble(price);
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
 
         TextView tp = (TextView)findViewById(R.id.price);
-        tp.setText(Double.toString(totalprice));
+        tp.setText(formatter.format(totalprice));
 
         String[] modes=new String[]{"Mpesa","Airtel Money","VISA"};
 

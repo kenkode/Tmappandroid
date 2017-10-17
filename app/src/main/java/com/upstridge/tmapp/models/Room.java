@@ -7,12 +7,18 @@ package com.upstridge.tmapp.models;
 public class Room {
     String name;
     String imageUrl;
-    String price;
     String availability;
     String adults;
     String children;
     String organization;
     String roomid;
+    String mon;
+    String tue;
+    String wen;
+    String thur;
+    String fri;
+    String sat;
+    String sun;
 
     public String getName() {
         return name;
@@ -30,12 +36,60 @@ public class Room {
         this.imageUrl = imageUrl;
     }
 
-    public String getPrice() {
-        return price;
+    public String getMon() {
+        return mon;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setMon(String mon) {
+        this.mon = mon;
+    }
+
+    public String getTue() {
+        return tue;
+    }
+
+    public void setTue(String tue) {
+        this.tue = tue;
+    }
+
+    public String getWen() {
+        return wen;
+    }
+
+    public void setWen(String wen) {
+        this.wen = wen;
+    }
+
+    public String getThur() {
+        return thur;
+    }
+
+    public void setThur(String thur) {
+        this.thur = thur;
+    }
+
+    public String getFri() {
+        return fri;
+    }
+
+    public void setFri(String fri) {
+        this.fri = fri;
+    }
+
+    public String getSat() {
+        return sat;
+    }
+
+    public void setSat(String sat) {
+        this.sat = sat;
+    }
+
+    public String getSun() {
+        return sun;
+    }
+
+    public void setSun(String sun) {
+        this.sun = sun;
     }
 
     public String getAvailability() {

@@ -3,6 +3,7 @@ package com.upstridge.tmapp.hotel;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -26,14 +27,14 @@ public class RoomData extends AsyncTask<String, Integer, String> {
 
     Context c;
     String address;
-    ListView lv;
+    RecyclerView lv;
     String date;
     String time;
     String branchid;
     SearchView searchView;
     ProgressDialog pd;
 
-    public RoomData(Context c, String address, ListView lv, String date, String time, String branchid, SearchView searchView){
+    public RoomData(Context c, String address, RecyclerView lv, String date, String time, String branchid, SearchView searchView){
         this.c = c;
         this.address = address;
         this.lv = lv;

@@ -7,10 +7,13 @@ package com.upstridge.tmapp.retrofit;
 import com.upstridge.tmapp.config.Constants;
 import com.upstridge.tmapp.models.Aeroplanes;
 import com.upstridge.tmapp.models.Booking;
+import com.upstridge.tmapp.models.Branch;
 import com.upstridge.tmapp.models.Carhire;
 import com.upstridge.tmapp.models.Event;
 import com.upstridge.tmapp.models.Hire;
+import com.upstridge.tmapp.models.Hotels;
 import com.upstridge.tmapp.models.Location;
+import com.upstridge.tmapp.models.Room;
 import com.upstridge.tmapp.models.Route;
 import com.upstridge.tmapp.models.Taxi;
 import com.upstridge.tmapp.models.Trains;
@@ -40,6 +43,13 @@ public interface RetrofitInterface {
     Call<List<Vehicles>> getVehicles(@Query("date") String date, @Query("start_time") String time,
                                  @Query("destination") String destination, @Query("origin") String origin);
 
+    @GET(Constants.GET_HOTELS)
+    Call<List<Hotels>> getHotels(@Query("date") String date, @Query("time") String time,
+                                   @Query("area") String area);
+
+    @GET(Constants.GET_ROOMS)
+    Call<List<Room>> getRooms(@Query("branchid") String branchid);
+
     @GET(Constants.GET_TRAINS)
     Call<List<Trains>> getTrains(@Query("date") String date, @Query("start_time") String time,
                                  @Query("destination") String destination, @Query("origin") String origin);
@@ -59,6 +69,9 @@ public interface RetrofitInterface {
 
     @GET(Constants.GET_ROUTES)
     Call<List<Route>> getRoutes(@Query("type") String type);
+
+    @GET(Constants.GET_BRANCHES)
+    Call<List<Branch>> getBranches();
 
     @GET(Constants.HIRE_CAR)
     Call<Hire> hireCar(@Query("sdate") String sdate, @Query("stime") String stime,

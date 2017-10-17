@@ -8,10 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 
-import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
-import com.upstridge.tmapp.adapters.CustomVehicleAdapter;
-import com.upstridge.tmapp.models.Carhire;
-import com.upstridge.tmapp.models.Vehicles;
+import com.upstridge.tmapp.adapters.CustomHotelAdapter;
+import com.upstridge.tmapp.models.Hotels;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
@@ -20,51 +18,49 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
- * Created by root on 10/16/17.
+ * Created by root on 10/17/17.
  */
 
-public class VehicleData {
+public class HData {
     private final Context context;
-    public static CustomVehicleAdapter adapter;
-    public static ArrayList<Vehicles> rVehicles = new ArrayList<>();
     String date;
     String time;
-    String destination;
-    String origin;
+    String branchid;
+    public static CustomHotelAdapter adapter;
+    public static ArrayList<Hotels> rCars = new ArrayList<>();
 
-    public VehicleData(Context context,String date,String time,String destination,String origin) {
+    public HData(Context context, String date, String time, String branchid) {
         this.context = context;
         this.date = date;
         this.time = time;
-        this.destination = destination;
-        this.origin = origin;
+        this.branchid = branchid;
     }
 
-    public void getVehicles(final String date, final String time, final String destination, final String origin, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
-        rVehicles.clear();
+    public void getHotels(final String date, final String time, final String area, final RecyclerView listView, final LinearLayout errorLinear, final ProgressBar loadPrice, final SearchView searchView) {
+
+        rCars.clear();
 
         RetrofitInterface retrofitInterface = ServiceGenerator.getClient().create(RetrofitInterface.class);
 
-        Call<List<Vehicles>> retroCars = retrofitInterface.getVehicles(date,time,destination,origin);
+        Call<List<Hotels>> retroCars = retrofitInterface.getHotels(date, time, area);
 
-        retroCars.enqueue(new Callback<List<Vehicles>>() {
+        retroCars.enqueue(new Callback<List<Hotels>>() {
             @Override
-            public void onResponse(Call<List<Vehicles>> call, Response<List<Vehicles>> response) {
-                final List<Vehicles> cars = response.body();
+            public void onResponse(Call<List<Hotels>> call, retrofit2.Response<List<Hotels>> response) {
+                final List<Hotels> cars = response.body();
 
-                for (Vehicles rCar : cars) {
-                    rVehicles.add(rCar);
+                for (Hotels rCar : cars) {
+                    rCars.add(rCar);
                 }
-                if(rVehicles.size() <= 0) {
+                if(rCars.size() <= 0) {
                     errorLinear.setVisibility(View.VISIBLE);
                 }else {
                     errorLinear.setVisibility(View.GONE);
                 }
                 loadPrice.setVisibility(View.GONE);
-                adapter = new CustomVehicleAdapter(context, rVehicles, destination, date, time, origin);
+                adapter = new CustomHotelAdapter(context, rCars, date, time, area);
 
                 listView.setAdapter( adapter );
 
@@ -79,15 +75,15 @@ public class VehicleData {
                     @Override
                     public boolean onQueryTextChange(String newText) {
                         int textlength = newText.length();
-                        ArrayList<Vehicles> tempArrayList = new ArrayList<Vehicles>();
-                        for(Vehicles c: cars){
-                            if (textlength <= c.getType().length()) {
-                                if (c.getType().toLowerCase().contains(newText.toString().toLowerCase())) {
+                        ArrayList<Hotels> tempArrayList = new ArrayList<Hotels>();
+                        for(Hotels c: cars){
+                            if (textlength <= c.getName().length()) {
+                                if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                     tempArrayList.add(c);
                                 }
                             }
                         }
-                        adapter = new CustomVehicleAdapter(context, tempArrayList, destination, date, time, origin);
+                        adapter = new CustomHotelAdapter(context, tempArrayList, date, time, area);
                         listView.setAdapter(adapter);
                         //adapter.getFilter().filter(newText);
                         return false;
@@ -96,7 +92,7 @@ public class VehicleData {
             }
 
             @Override
-            public void onFailure(Call<List<Vehicles>> call, Throwable t) {
+            public void onFailure(Call<List<Hotels>> call, Throwable t) {
                 t.printStackTrace();
                 errorLinear.setVisibility(View.VISIBLE);
                 loadPrice.setVisibility(View.GONE);
@@ -108,17 +104,13 @@ public class VehicleData {
                         snackbar.dismiss();
                         errorLinear.setVisibility(View.GONE);
                         loadPrice.setVisibility(View.VISIBLE);
-                        getVehicles(date, time, destination, origin, listView, errorLinear, loadPrice ,searchView);
+                        getHotels(date, time, area, listView, errorLinear, loadPrice ,searchView);
                     }
                 });
                 snackbar.show();
             }
         });
 
-
-    }
-
-    public void refreshDetails(final CustomCarHireAdapter mAdapter, final ArrayList<Carhire> cars){
 
     }
 }

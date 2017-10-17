@@ -15,6 +15,7 @@ public class Hotels {
     String children;
     String organization;
     String hotelid;
+    String branchid;
 
     public String getName() {
         return name;
@@ -94,5 +95,13 @@ public class Hotels {
 
     public void setHotelid(String hotelid) {
         this.hotelid = hotelid;
+    }
+
+    public String getBranchid() {
+        return branchid;
+    }
+
+    public void setBranchid(String branchid) {
+        this.branchid = branchid;
     }
 }
