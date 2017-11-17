@@ -26,8 +26,8 @@ public class ServiceGenerator {
     private Context context;
     private static Retrofit retrofit;
 
-    public static String BASE_URL = "http://10.0.2.2/tmapp/";
-    //public static String BASE_URL = "http://admin.upstridge.co.ke/";
+    //public static String BASE_URL = "http://10.0.2.2/tmapp/";
+    public static String BASE_URL = "http://admin.upstridge.co.ke/";
 
     private static final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

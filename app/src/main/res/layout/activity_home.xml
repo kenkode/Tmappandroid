@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.upstridge.tmapp.bus.HomeActivity"
     android:padding="15dp"
-    android:background="@drawable/bg"
+    android:background="#f5f5f5"
     >
 
     <RelativeLayout
