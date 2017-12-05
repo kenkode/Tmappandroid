@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/planeimg2"
     tools:context="com.upstridge.tmapp.airline.Airplanes">
 
     <SearchView
@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Search"
+        android:background="#ddffffff"
         android:queryHint="Search Airplane...."/>
 
 

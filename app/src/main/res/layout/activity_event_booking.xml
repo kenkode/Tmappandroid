@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/eventimg2"
+    android:fillViewport="true"
     tools:context="com.upstridge.tmapp.events.eventBooking">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#bbffffff"
+        android:padding="15dp"
         android:id="@+id/booking">
 
         <RelativeLayout
@@ -230,7 +233,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:text="Book Now"
-                android:background="#660000"
+                android:background="@color/colorButton"
                 android:textSize="18sp"
                 android:textColor="#fff"
                 android:fontFamily="sans-serif-smallcaps"

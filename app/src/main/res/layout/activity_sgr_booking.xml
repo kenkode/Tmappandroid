@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/t"
+    android:fillViewport="true"
     tools:context="com.upstridge.tmapp.sgr.SgrBooking">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="#bbffffff"
         android:layout_height="match_parent"
         android:id="@+id/booking">
 
@@ -27,7 +29,7 @@
                 android:textSize="28sp"
                 android:fontFamily="sans-serif-smallcaps"
                 android:textAlignment="center"
-                android:text="Book Vehicle"
+                android:text="Book Sgr"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -248,7 +250,7 @@
             <Button
                 android:id="@+id/book"
                 android:layout_width="fill_parent"
-                android:background="#660000"
+                android:background="@color/colorButton"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"

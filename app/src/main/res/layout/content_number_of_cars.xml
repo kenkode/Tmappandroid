@@ -6,12 +6,14 @@
         android:layout_height="match_parent"
         tools:context="com.upstridge.tmapp.carhire.NumberOfCarsActivity"
         tools:showIn="@layout/activity_number_of_cars"
-        android:padding="15dp"
-        android:background="@drawable/bg"
+        android:background="@drawable/voxy"
+        android:fillViewport="true"
         >
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="#bbffffff"
+        android:padding="15dp"
         android:layout_height="match_parent">
 
     <TextView

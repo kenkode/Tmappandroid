@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/hotel10"
     tools:context="com.upstridge.tmapp.hotel.HotelActivity">
 
 
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Search"
+        android:background="#ddffffff"
         android:queryHint="Search Vehicle...."/>
 
 

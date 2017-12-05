@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/hotel10"
+    android:fillViewport="true"
     tools:context="com.upstridge.tmapp.hotel.hotelBooking">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#bbffffff"
         android:id="@+id/booking">
 
         <RelativeLayout

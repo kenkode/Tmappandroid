@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.upstridge.tmapp.bus.HomeActivity"
-    android:padding="15dp"
-    android:background="@drawable/bg"
+    android:fillViewport="true"
+    android:background="@drawable/planeimg2"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="#bbffffff"
+        android:padding="15dp"
         android:layout_height="match_parent">
 
         <TextView
@@ -168,7 +170,7 @@
             android:id="@+id/button"
             android:text="SEARCH"
             android:textColor="#f7f7f7"
-            android:background="#990000"
+            android:background="@color/colorButton"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="18dp"
             android:layout_below="@+id/textView13"

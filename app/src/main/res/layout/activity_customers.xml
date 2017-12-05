@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:padding="15dp"
+    android:background="@drawable/hotel10"
+    android:fillViewport="true"
     tools:context="com.upstridge.tmapp.hotel.Customers">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:padding="15dp"
+        android:background="#bbffffff"
         android:layout_height="match_parent">
 
     <TextView
@@ -80,7 +82,7 @@
         android:layout_height="wrap_content"
         android:text="Done"
         android:textColor="#f7f7f7"
-        android:background="#990000"
+        android:background="@color/colorButton"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="18dp"
         android:layout_marginTop="51dp"

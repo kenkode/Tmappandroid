@@ -198,10 +198,9 @@
             android:text="Done"
             android:fontFamily="sans-serif-smallcaps"
             android:textColor="#fff"
-            android:background="#660000"
+            android:background="@color/colorButton"
             android:textSize="18.0sp" />
 
 
     </RelativeLayout>
-
 </RelativeLayout>

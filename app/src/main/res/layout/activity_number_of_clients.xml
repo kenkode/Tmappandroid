@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:padding="15dp"
+    android:background="@drawable/eventimg2"
+    android:fillViewport="true"
     tools:context="com.upstridge.tmapp.events.NumberOfClients">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:padding="15dp"
+        android:background="#bbffffff"
         android:layout_height="match_parent">
 
     <TextView
@@ -78,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Done"
-        android:background="#660000"
+        android:background="@color/colorButton"
         android:textSize="18sp"
         android:textColor="#fff"
         android:fontFamily="sans-serif-smallcaps"

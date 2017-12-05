@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.upstridge.tmapp.carhire.CarHireHomeActivity"
-    android:padding="15dp"
-    android:background="@drawable/bg"
+
+    android:fillViewport="true"
+    android:background="@drawable/voxy"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="#bbffffff"
+        android:padding="15dp"
         android:layout_height="match_parent">
 
         <TextView

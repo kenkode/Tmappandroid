@@ -1,6 +1,7 @@
 package com.upstridge.tmapp.bus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,9 +12,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.upstridge.tmapp.R;
+import com.upstridge.tmapp.airline.PlaneHomeActivity;
+import com.upstridge.tmapp.carhire.CarHireHomeActivity;
+import com.upstridge.tmapp.events.events;
+import com.upstridge.tmapp.hotel.CheckTimeActivity;
+import com.upstridge.tmapp.sgr.SgrHomeActivity;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -36,6 +43,64 @@ public class StartActivity extends AppCompatActivity {
         mViewFlipper.setAutoStart(true);
         mViewFlipper.setFlipInterval(3000);
         mViewFlipper.startFlipping();
+
+        ImageView bus = (ImageView)findViewById(R.id.bus);
+        ImageView plane = (ImageView)findViewById(R.id.plane);
+        ImageView car = (ImageView)findViewById(R.id.car);
+        ImageView train = (ImageView)findViewById(R.id.train);
+        ImageView taxi = (ImageView)findViewById(R.id.taxi);
+        ImageView hotel = (ImageView)findViewById(R.id.hotel);
+        ImageView events = (ImageView)findViewById(R.id.events);
+
+        bus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("mode", "travel"));
+            }
+        });
+
+        plane.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PlaneHomeActivity.class).putExtra("mode", "airline"));
+            }
+        });
+
+        car.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),CarHireHomeActivity.class).putExtra("mode", "car hire"));
+            }
+        });
+
+        train.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SgrHomeActivity.class).putExtra("mode", "train"));
+            }
+        });
+
+        taxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TaxiActivity.class).putExtra("mode", "taxi"));
+            }
+        });
+
+        hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),CheckTimeActivity.class).putExtra("mode", "hotel"));
+            }
+        });
+
+        events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), events.class).putExtra("mode", "events"));
+            }
+        });
+
         mViewFlipper.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent event) {

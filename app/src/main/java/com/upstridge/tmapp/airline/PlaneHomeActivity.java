@@ -177,7 +177,7 @@ public class PlaneHomeActivity extends Activity {
             case DIALOG_ID:
                 //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener, year_x, month_x, day_x);
                 Calendar calendar = Calendar.getInstance();
 
                 calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -186,12 +186,12 @@ public class PlaneHomeActivity extends Activity {
                 return datePickerDialog;
 
             case DIALOG_TID:
-                return new TimePickerDialog(this, kTimePickerListener, hour, min, true);
+                return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener, hour, min, true);
 
         }
         if (id == DIALOG_ID) {
             //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener, year_x, month_x, day_x);
             Calendar calendar = Calendar.getInstance();
 
             calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -199,7 +199,7 @@ public class PlaneHomeActivity extends Activity {
             datePickerDialog.getDatePicker().setMinDate(newDate.getTime()-(newDate.getTime()%(24*60*60*1000)));
             return datePickerDialog;
         }else if (id == DIALOG_TID) {
-            return new TimePickerDialog(this, kTimePickerListener, hour, min, false);
+            return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener, hour, min, false);
         }
         return null;
 

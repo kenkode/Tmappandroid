@@ -81,8 +81,8 @@ public class VehicleData {
                         int textlength = newText.length();
                         ArrayList<Vehicles> tempArrayList = new ArrayList<Vehicles>();
                         for(Vehicles c: cars){
-                            if (textlength <= c.getType().length()) {
-                                if (c.getType().toLowerCase().contains(newText.toString().toLowerCase())) {
+                            if (textlength <= c.getName().length()) {
+                                if (c.getName().toLowerCase().contains(newText.toString().toLowerCase())) {
                                     tempArrayList.add(c);
                                 }
                             }

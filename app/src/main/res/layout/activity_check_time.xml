@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
-    android:background="@drawable/bg"
+    android:fillViewport="true"
+    android:background="@drawable/hotel10"
     tools:context="com.upstridge.tmapp.hotel.CheckTimeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="#bbffffff"
+        android:padding="15dp"
         android:layout_height="match_parent">
 
     <TextView
@@ -136,7 +138,7 @@
         android:text="Search"
         android:textSize="18sp"
         android:textColor="#fff"
-        android:background="#660000"
+        android:background="@color/colorButton"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_marginTop="70dp"
         android:layout_below="@+id/textView29"

@@ -217,7 +217,7 @@ public class CarHireHomeActivity extends AppCompatActivity {
             case DIALOG_ID:
                 //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener, year_x, month_x, day_x);
                 Calendar calendar = Calendar.getInstance();
 
                 calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -228,7 +228,7 @@ public class CarHireHomeActivity extends AppCompatActivity {
             case DIALOG_ID1:
                 //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
 
-                DatePickerDialog datePickerDialog1 = new DatePickerDialog(this, dPickerListener1, year_x, month_x, day_x);
+                DatePickerDialog datePickerDialog1 = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener1, year_x, month_x, day_x);
                 Calendar calendar1 = Calendar.getInstance();
 
                 calendar1.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -237,15 +237,15 @@ public class CarHireHomeActivity extends AppCompatActivity {
                 return datePickerDialog1;
 
             case DIALOG_TID:
-                return new TimePickerDialog(this, kTimePickerListener, hour, min, true);
+                return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener, hour, min, true);
 
             case DIALOG_TID1:
-                return new TimePickerDialog(this, kTimePickerListener1, hour, min, true);
+                return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener1, hour, min, true);
 
         }
         if (id == DIALOG_ID) {
             //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener, year_x, month_x, day_x);
             Calendar calendar = Calendar.getInstance();
 
             calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -254,7 +254,7 @@ public class CarHireHomeActivity extends AppCompatActivity {
             return datePickerDialog;
         }else  if (id == DIALOG_ID1) {
             //return new DatePickerDialog(this, dPickerListener, year_x, month_x, day_x);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, dPickerListener1, year_x, month_x, day_x);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, dPickerListener1, year_x, month_x, day_x);
             Calendar calendar = Calendar.getInstance();
 
             calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
@@ -262,9 +262,9 @@ public class CarHireHomeActivity extends AppCompatActivity {
             datePickerDialog.getDatePicker().setMinDate(newDate.getTime()-(newDate.getTime()%(24*60*60*1000)));
             return datePickerDialog;
         }else if (id == DIALOG_TID) {
-            return new TimePickerDialog(this, kTimePickerListener, hour, min, false);
+            return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener, hour, min, false);
         }else if (id == DIALOG_TID1) {
-            return new TimePickerDialog(this, kTimePickerListener1, hour, min, false);
+            return new TimePickerDialog(this, R.style.DialogTheme, kTimePickerListener1, hour, min, false);
         }
         return null;
 
