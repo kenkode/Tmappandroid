@@ -143,6 +143,10 @@
         <activity
             android:name=".carhire.CarHireBooking"
             android:label="@string/title_activity_car_hire_booking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bus.StartActivity1"
+            android:label="@string/title_activity_start"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

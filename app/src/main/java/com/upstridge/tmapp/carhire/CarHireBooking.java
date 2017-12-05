@@ -2,15 +2,10 @@ package com.upstridge.tmapp.carhire;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,20 +17,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.upstridge.tmapp.R;
-import com.upstridge.tmapp.adapters.CustomCarHireAdapter;
-import com.upstridge.tmapp.bus.HideHintEditText;
-import com.upstridge.tmapp.bus.StartActivity;
 import com.upstridge.tmapp.config.GsonHelper;
-import com.upstridge.tmapp.models.Booking;
 import com.upstridge.tmapp.models.Hire;
 import com.upstridge.tmapp.retrofit.RetrofitInterface;
 import com.upstridge.tmapp.retrofit.ServiceGenerator;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
